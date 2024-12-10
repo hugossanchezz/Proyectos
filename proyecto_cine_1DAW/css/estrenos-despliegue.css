@@ -1,0 +1,12 @@
+.cartelera {
+    transform: translateX(300%);
+    transition: transform 0.4s ease;
+}
+
+.cartelera:nth-of-type(even) {
+    transform: translateX(-400%);
+}
+
+.cartelera.show {
+    transform: translateX(0);
+}

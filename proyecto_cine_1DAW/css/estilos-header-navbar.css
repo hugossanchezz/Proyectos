@@ -1,0 +1,102 @@
+.cabecera {
+  width: 100%;
+  background-image: url(../recursos/personas-cine-3106704.webp);
+  /* reemplaza con la ruta de tu imagen */
+  background-size: cover;
+  /* ajusta el tamaño para cubrir completamente el div */
+  background-position: center;
+  /* posiciona la imagen en el centro del div */
+  background-repeat: no-repeat;
+  /* evita que la imagen se repita */
+}
+
+.header-cabecera {
+  padding: 20px;
+  height: 35rem;
+  flex-direction: row;
+  align-items: center;
+}
+
+/*================ BUSCADOR ================*/
+
+.logo {
+  width: 41rem;
+}
+
+.section-buscador-lupa {
+  align-items: start;
+}
+
+.buscador {
+  width: 100%;
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-self: flex-start;
+}
+
+.cuadro-busqueda {
+  width: 70%;
+  height: 24px;
+  border-radius: 5px;
+  box-shadow: -1px 0px 17px 1px rgba(0, 0, 0, 0.75);
+}
+
+.buscador-button {
+  background-color: rgb(223, 225, 226);
+  margin-left: 10px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.1s ease 0s;
+  /*para evitar el delay*/
+  box-shadow: -1px 0px 17px 1px rgba(0, 0, 0, 0.75);
+
+  &:hover {
+    background-color: rgb(151, 151, 151);
+  }
+}
+
+
+/*================ NAVBAR ================*/
+
+.navbar-cabecera {
+  width: 100%;
+  font-weight: bolder;
+  font-size: large;
+  padding: 20px;
+  width: 100%;
+  height: 8rem;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 0px 4px 26px 0px rgba(0, 0, 0, 0.75);
+}
+
+nav a {
+  padding: 10px;
+  color: rgb(109, 109, 109);
+  text-decoration: none;
+
+  &:hover {
+    color: rgb(51, 51, 51);
+  }
+}
+
+.login {
+  margin-top: 5px;
+  transform: translateY(-2px);
+  transition: 5;
+
+  & svg {
+    height: 28px;
+    width: 28px;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    transition: 5;
+    border-radius: 25px;
+    background-color: #c5c5c5;
+  }
+}

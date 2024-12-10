@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Normalize permite a la pagina adaptarse a cualquier dispositivo-->
+  <link rel="preload" href="css/normalize.css" as="style" />
+  <link rel="stylesheet" href="css/global.css" as="style" />
+  <link rel="stylesheet" href="css/estilos-footer.css" as="style" />
+  <link rel="stylesheet" href="css/estilos-header-navbar.css" as="style" />
+  <link rel="stylesheet" href="css/estilos-form.css" as="style" />
+
+  <title>Dia de cine - Subscribirse</title>
+
+  <!--icono con favicon-->
+  <link rel="icon" sizes="16x16 32x32 48x48" type="image/png" href="recursos/logo-favicon.ico" />
+</head>
+
+<body>
+  <header class="cabecera">
+    <div class="header-cabecera flex">
+
+      <div class="logo-web">
+        <a href="p1-index.html"><img class="logo" src="recursos/logo.png"></img></a>
+      </div>
+
+    </div>
+  </header>
+
+  <nav class="navbar-cabecera flex">
+    <a href="p2-peliculas.html">PELICULAS</a>
+    <a href="p3-series.html">SERIES</a>
+    <a href="p4-plataformas-streaming.html">PLATAFORMAS DE STREAMING</a>
+    <a href="p5-mejor-valorado.html">MEJOR VALORADO</a>
+    <a href="p6-historia-cine.html">HISTORIA DEL CINE</a>
+    <a class="login" href="p7-subscribirse.html"><svg xmlns="http://www.w3.org/2000/svg" height="24"
+        viewBox="0 -960 960 960" width="24">
+        <path
+          d="M480-120v-80h280v-560H480v-80h280q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H480Zm-80-160-55-58 102-102H120v-80h327L345-622l55-58 200 200-200 200Z" />
+      </svg></a>
+  </nav>
+
+  <main class="bloque-cental" style="background-image: url('recursos/login/cine-fondo-login.png')">
+
+    <a id="miBoton" class="btn-flotante" href="#top"><svg xmlns="http://www.w3.org/2000/svg" height="24"
+        viewBox="0 -960 960 960" width="24">
+        <path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z" />
+      </svg></a>
+
+    <section class="section-subscribirse">
+
+      <div class="encabezado flex">
+
+        <h1>¿Desea recibir mensajes ✉️ de todas las novedades del mundo del cine?</h1>
+        <h2>¡Regístrese para no perderse nada!</h2>
+
+      </div>
+
+      <div class="container">
+        <h1>Iniciar Sesión</h1>
+        <form>
+          <div class="form-control">
+            <input type="text" required>
+            <label>Email</label>
+          </div>
+
+          <div class="form-control">
+            <input type="password" required>
+            <label>Contraseña</label>
+          </div>
+
+          <button class="btn">Entrar</button>
+
+          <p class="text">¿No tienes cuenta? <a href="#">Registrarse</a> </p>
+        </form>
+      </div>
+
+
+    </section>
+
+    <aside class="aside-index">
+
+      <div class="novedades flex">
+        <h2>¿Qué gano siendo <span class="sub">SUB</span>?</h2>
+
+        <p>Contenido <span class="sub">Exclusivo</span>.</p>
+        <p><span class="sub">Sin</span> Publicidad.</p>
+        <p>Acceso <span class="sub">Anticipado</span>.</p>
+        <p><span class="sub">Personalización</span> de contenidos.</p>
+        <p>Acceso a <span class="sub">artículos</span>, <span class="sub">videos</span>, <span
+            class="sub">podcasts</span>...</p>
+
+      </div>
+
+    </aside>
+
+  </main>
+
+  <footer>
+    <section class="top">
+      <div class="img-footer">
+        <img src="recursos/logo.png" />
+      </div>
+
+      <ul>
+        <li>
+          <h3>RECURSOS</h3>
+          <a>HTML5</a>
+          <a>CSS</a>
+          <a>JavaScript</a>
+          <a>GitHub</a>
+        </li>
+        <li>
+          <h3>BIBLIOGRAFÍA</h3>
+          <a>filmaffinity.com</a>
+          <a>fotogramas.es</a>
+        </li>
+        <li>
+          <h3>DESARROLLADORES</h3>
+          <a>Hugo Sánchez</a>
+        </li>
+        <li>
+          <h3>ASIGNATURA</h3>
+          <a>LMSGI</a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="bottom">© 2023-24 Proyecto Página Web</section>
+  </footer>
+  <script src="javascript/form.js"></script>
+  <script src="javascript/btn-flotante.js"></script>
+</body>
+
+</html>

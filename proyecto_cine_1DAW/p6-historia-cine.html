@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Normalize permite a la pagina adaptarse a cualquier dispositivo-->
+  <link rel="preload" href="css/normalize.css" as="style" />
+  <link rel="stylesheet" href="css/global.css" as="style" />
+  <link rel="stylesheet" href="css/estilos-footer.css" as="style" />
+  <link rel="stylesheet" href="css/estilos-header-navbar.css" as="style" />
+
+  <title>Dia de cine - Historia</title>
+
+  <!--icono con favicon-->
+  <link rel="icon" sizes="16x16 32x32 48x48" type="image/png" href="recursos/logo-favicon.ico" />
+</head>
+
+<body>
+  <header class="cabecera">
+    <div class="header-cabecera flex">
+
+      <div class="logo-web">
+        <a href="p1-index.html"><img class="logo" src="recursos/logo.png"></img></a>
+      </div>
+
+    </div>
+  </header>
+
+  <nav class="navbar-cabecera flex">
+    <a href="p2-peliculas.html">PELICULAS</a>
+    <a href="p3-series.html">SERIES</a>
+    <a href="p4-plataformas-streaming.html">PLATAFORMAS DE STREAMING</a>
+    <a href="p5-mejor-valorado.html">MEJOR VALORADO</a>
+    <a href="p6-historia-cine.html">HISTORIA DEL CINE</a>
+    <a class="login" href="p7-subscribirse.html"><svg xmlns="http://www.w3.org/2000/svg" height="24"
+        viewBox="0 -960 960 960" width="24">
+        <path
+          d="M480-120v-80h280v-560H480v-80h280q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H480Zm-80-160-55-58 102-102H120v-80h327L345-622l55-58 200 200-200 200Z" />
+      </svg></a>
+  </nav>
+
+
+  <main class="bloque-cental">
+
+    <a id="miBoton" class="btn-flotante" href="#top"><svg xmlns="http://www.w3.org/2000/svg" height="24"
+        viewBox="0 -960 960 960" width="24">
+        <path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z" />
+      </svg></a>
+
+    <section class="section-historia-cine flex">
+
+      <div class="encabezado flex">
+
+        <h1 class="q-cine">¿Qué es el cine? 🎬</h1>
+        <p>
+          El cine (abreviatura de cinematógrafo o cinematografía) es la técnica y el arte de crear y proyectar
+          metrajes (como se conocía a las películas en sus inicios). El origen del cine se remonta a fines del
+          siglo XIX, cuando se creó el cinematógrafo, o sea, la máquina capaz de grabar y reproducir imágenes
+          para crear la sensación del movimiento. Hubo muchos antecedentes a esta invención, que iba de la
+          mano de los primeros pasos formales en la técnica de la fotografía.
+        </p>
+      </div>
+
+      <div class="primera-pelicula flex">
+
+        <h1>¿Cúal fue la <span class="filme">primera</span> película de la Historia?</h1>
+        <p>
+          El 22 de marzo de <span class="dt-1895">1895</span>, los hermanos <span class="dt-1895">Lumière</span>
+          proyectaron los 46 segundos más importantes de la
+          historia del cine. El corto es conocido como <span class="dt-1895">"Salida de los obreros de la
+            fábrica"</span>. Así nacía un nuevo
+          género de comunicación y de arte que apasionaría a los espectadores, además de
+          servir para educar, progresar y recordar...
+        </p>
+
+        <div class="video">
+          <video autoplay muted loop controls>
+            <!-- Fuente del video, ruta de archivo de video -->
+            <source src="recursos/primera_pelicula.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <section class="top">
+      <div class="img-footer">
+        <img src="recursos/logo.png" />
+      </div>
+
+      <ul>
+        <li>
+          <h3>RECURSOS</h3>
+          <a>HTML5</a>
+          <a>CSS</a>
+          <a>JavaScript</a>
+          <a>GitHub</a>
+        </li>
+        <li>
+          <h3>BIBLIOGRAFÍA</h3>
+          <a>filmaffinity.com</a>
+          <a>fotogramas.es</a>
+        </li>
+        <li>
+          <h3>DESARROLLADORES</h3>
+          <a>Hugo Sánchez</a>
+        </li>
+        <li>
+          <h3>ASIGNATURA</h3>
+          <a>LMSGI</a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="bottom">© 2023-24 Proyecto Página Web</section>
+  </footer>
+  <script src="javascript/btn-flotante.js"></script>
+</body>
+
+</html>

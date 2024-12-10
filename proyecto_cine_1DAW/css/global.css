@@ -1,0 +1,659 @@
+/*-------------------------------------------------------------------*/
+/*------------------------TODAS LAS PAGINAS--------------------------*/
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background-color: #FAFAFA;
+  font-size: 16px;
+}
+
+.flex {
+  display: flex;
+}
+
+/*Los encabezados representan la introducción correspondiente a cada una de las paginas*/
+
+.encabezado {
+  background-color: white;
+  width: 80%;
+  margin-top: 30px;
+  flex-direction: column;
+  align-items: center;
+  /*al usar 'flex-direction: column;' tendremos que usar 'align-items: center;' en vez de 'justify-content: center;'*/
+
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px black;
+  /*sombreado a los bordes externos del item*/
+}
+
+.encabezado h1,
+p {
+  padding: 10px;
+  width: 85%;
+}
+
+.encabezado h1 {
+  text-align: center;
+}
+
+/*===BOTON FLOTANTE PARA SUBIR===*/
+.btn-flotante {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #ffffff;
+  border-radius: 50%;
+  background-color: #afafaf;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  transition: all 300ms ease 0ms;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+
+  &:hover {
+    background-color: #4f9188;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-7px);
+  }
+
+  &.fijo {
+    position: fixed;
+  }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .btn-flotante {
+    font-size: 14px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/*-------------------------------------------------------------------*/
+/*---------------------------INDEX.HTML------------------------------*/
+.bloque-cental {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+}
+
+main section,
+aside {
+  padding: 20px;
+  display: flex;
+}
+
+.section-index,
+.section-peliculas-series {
+  flex-basis: 80%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.noticia {
+  background-color: white;
+  width: 35%;
+  height: 45rem;
+  margin: 3rem;
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px black;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.noticia h2 {
+  border-bottom: 1px solid lightgray;
+}
+
+.sinopsis-noticia {
+  width: 100%;
+  text-align: center;
+}
+
+.noticia a {
+  color: black;
+  text-decoration: none;
+}
+
+.noticia-img {
+  width: 90%;
+  height: 20rem;
+  border-radius: 8px;
+  box-shadow: -1px 0px 17px 1px rgba(0, 0, 0, 0.75);
+}
+
+/*==ESTRENOS EN ASIDES==*/
+.aside-index {
+  margin-top: 20px;
+  flex-basis: 20%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.columna-estrenos {
+  flex-direction: column;
+}
+
+.estreno {
+  background-color: rgb(44, 44, 44);
+  color: white;
+  margin: 20px;
+  width: 30rem;
+  height: 45rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px rgb(73, 73, 73);
+}
+
+.estreno h2 {
+  padding: 5px;
+}
+
+.prox-estreno {
+  justify-content: center;
+  height: 8rem;
+}
+
+.enlace-estreno {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.estreno-img {
+  width: 22rem;
+  height: 28rem;
+  border-radius: 8px;
+  box-shadow: -1px 0px 17px 1px rgba(0, 0, 0, 0.75);
+}
+
+
+/*-------------------------------------------------------------------*/
+/*-------------------PELICULAS y SERIES.HTML-------------------------*/
+
+.section-peliculas-series {
+  flex-direction: column;
+  align-items: center;
+}
+
+.columnas-carteleras {
+  flex-direction: column;
+}
+
+
+.cartelera,
+.formulario
+
+/*Subscribirse.html*/
+  {
+  background-color: white;
+  width: 50rem;
+  height: 75rem;
+  margin: 3rem;
+  text-align: center;
+  line-height: 100%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px black;
+  /*sombreado a los bordes externos del item*/
+}
+
+.cartelera {
+  padding: 10px;
+}
+
+.pel-ser-resalto {
+  font-weight: bolder;
+  color: rgb(16, 65, 129);
+}
+
+.cartelera h1 {
+  padding-left: 50px;
+  padding-right: 50px;
+  line-height: 100%;
+}
+
+.cartelera p {
+  font-size:smaller;
+  margin: 0 auto;
+  height: 13rem;
+  width: 90%;
+}
+
+.poster {
+  width: 35rem;
+  height: 45rem;
+  border-radius: 10px;
+  box-shadow: 0px 3px 11px 0px rgba(83, 82, 128, 1);
+}
+
+/*-------------------------------------------------------------------*/
+/*-------------------PLATAFORMAS-STREAMING.HTML----------------------*/
+
+.section-plataformas-streaming {
+  flex-direction: column;
+  align-items: center;
+}
+
+.plataforma {
+  background-color: white;
+  padding: 20px;
+  width: 100rem;
+  height: 220rem;
+  margin: 3rem;
+  text-align: center;
+  line-height: 100%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px black;
+  /*sombreado a los bordes externos del item*/
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/*==Resaltar con <span> los nombres de las páginas de streaming==*/
+
+.plat-str-resalto {
+  color: #623fb6;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.plat-str-APV {
+  color: #2d89a5;
+  font-weight: bolder;
+}
+
+.plat-str-NET {
+  color: #9e3030;
+  font-weight: bolder;
+}
+
+.plat-str-HBO {
+  color: #492994;
+  font-weight: bolder;
+}
+
+.plat-str-APTV {
+  color: #3f3f3f;
+  font-weight: bolder;
+}
+
+.plat-str-DIS {
+  color: #080072;
+  font-weight: bolder;
+}
+
+/*hacer el mostrador de esta plataforma más alto*/
+.pt-amazon {
+  height: 200rem;
+}
+
+.pt-hbo {
+  height: 250rem;
+}
+
+/*hacer mas pequeña la primera imagen de la Plat-Amazon*/
+.ms-pq {
+  width: 80rem;
+  height: 40rem;
+}
+
+/*==Ranquin Plataformas Str==*/
+.dest-mjr {
+  color: #ffc965;
+  font-weight: bolder;
+}
+
+.ranquin-plat-str {
+  width: 30rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/*-------------------------------------------------------------------*/
+/*------------------------MAS-VALORADO.HTML--------------------------*/
+.section-mas-valorado {
+  flex-direction: column;
+  align-items: center;
+}
+
+.filmaffinity-sp {
+  font-weight: bolder;
+}
+
+.filmaffinity-a {
+  color: #2d89a5;
+}
+
+.mejr-valorado {
+  color: #dda859;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.contenedor-tabla-mas-valorado {
+  background-color: #0c5e96;
+  width: 100rem;
+  height: 163rem;
+  margin: 3rem;
+  text-align: center;
+  line-height: 100%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px black;
+  /*sombreado a los bordes externos del item*/
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.tabla-valoraciones {
+  background-color: white;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  width: 100%;
+  border: 0;
+}
+
+.fila-cat-izq {
+  background-color: #0c5e96;
+  color: white;
+  border-top-left-radius: 20px;
+}
+
+.fila-cat-cnt {
+  background-color: #0c5e96;
+  color: white;
+}
+
+.fila-cat-dch {
+  background-color: #0c5e96;
+  color: white;
+  border-top-right-radius: 20px;
+}
+
+.categoria {
+  padding: 20px;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.esp-nec {
+  padding: 5px;
+}
+
+.cart-pel-mas-val {
+  width: 30%;
+}
+
+.pais {
+  width: 20%;
+}
+
+/*==BANDA SONORA==*/
+
+.contenido-banda-sonora {
+  background-color: white;
+  padding: 20px;
+  width: 56%;
+  height: 75rem;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  /*al usar 'flex-direction: column;' tendremos que usar 'align-items: center;' en vez de 'justify-content: center;'*/
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px black;
+  /*sombreado a los bordes externos del item*/
+  border: 1px solid black;
+}
+
+.tt-bd-sonora {
+  color: #ebb756;
+  font-weight: bolder;
+}
+
+.p-cont {
+  padding: 0px 30px;
+}
+
+.audio-banda-sonora {
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px black;
+  /*sombreado a los bordes externos del item*/
+}
+
+.sin-nv-frt {
+  color: #282831;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.director,
+.compositor {
+  color: #9e3030;
+  font-weight: bolder;
+}
+
+.img-bd-sonora {
+  width: 25%;
+  border-radius: 10px;
+  box-shadow: 0px 3px 11px 0px rgba(83, 82, 128, 1);
+}
+
+/*-------------------------------------------------------------------*/
+/*------------------------HISTORIA-CINE.HTML-------------------------*/
+.section-historia-cine {
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.primera-pelicula {
+  background-color: white;
+  width: 60%;
+  height: 70rem;
+  flex-direction: column;
+  align-items: center;
+  /*al usar 'flex-direction: column;' tendremos que usar 'align-items: center;' en vez de 'justify-content: center;'*/
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px black;
+  /*sombreado a los bordes externos del item*/
+}
+
+.q-cine {
+  padding: 10px;
+  width: 80%;
+  text-align: center;
+}
+
+.primera-pelicula p {
+  padding: 10px;
+  width: 80%;
+}
+
+.filme {
+  text-transform: uppercase;
+  color: #ebb756;
+  font-weight: bolder;
+}
+
+.dt-1895 {
+  color: #21529b;
+  font-weight: bolder;
+}
+
+video {
+  padding: 20px;
+  width: 50rem;
+}
+
+/*-------------------------------------------------------------------*/
+/*------------------------SUBSCRIBIRSE.HTML--------------------------*/
+
+.novedades {
+  background-color: white;
+  padding: 5px;
+  width: 330px;
+  height: 55rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px black;
+}
+
+.novedades h2 {
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+}
+
+.novedades p {
+  font-weight: bold;
+}
+
+.sub {
+  font-weight: bolder;
+  color: #4c90af;
+}
+
+/*=======*/
+
+.section-subscribirse {
+  flex-basis: 80%;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.formulario {
+  height: 100rem;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.form-formulario {
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.titulo {
+  text-align: center;
+}
+
+.campo {
+  margin-bottom: 20px;
+}
+
+.etiqueta-label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.campo-texto,
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+}
+
+.boton-borrar,
+.boton-enviar {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.boton-borrar:hover {
+  background-color: #be4a4a;
+  color: white;
+}
+
+.boton-enviar:hover {
+  background-color: #4c90af;
+  color: white;
+}
+
+.condiciones {
+  flex-direction: column;
+  align-items: start;
+}
+
+.google-button {
+  max-width: 320px;
+  display: flex;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  gap: 0.75rem;
+
+  background-color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.google-button svg {
+  height: 24px;
+}
+
+.google-button a {
+  text-decoration: none;
+  color: rgb(65, 63, 63);
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .formulario {
+    width: 100%;
+    padding: 10px;
+  }
+}
