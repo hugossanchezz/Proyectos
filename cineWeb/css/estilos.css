@@ -13,6 +13,7 @@ body {
     grid:
         "header header"
         "main main"
+        "footer footer"
         / 30% 70%;
 }
 
@@ -53,10 +54,19 @@ nav {
 }
 
 main {
-    width: 100%;
+    border: 1px solid black;
+    width: 80%;
+    min-height: 100vh;
     margin: 0 auto;
 
     grid-area: main;
+
+    display: grid;
+    grid:
+        "header header"
+        "main main"
+        "footer footer"
+        / 30% 70%;
 }
 
 footer {
@@ -66,8 +76,6 @@ footer {
     height: 5rem;
 
     grid-area: footer;
-    position: fixed;
-    bottom: 0;
 
     text-align: center;
 }
