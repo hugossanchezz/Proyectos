@@ -23,8 +23,8 @@ Vista en smartphone.
 
 ### Links
 
-- [URL al repositorio en GitHub](https://github.com/hugossanchezz/Proyectos/tree/main/FrontendMentor/QR-code-component)
-- [URL a la web desplegada](https://qr-card-hugossanchezz.netlify.app/)
+- [URL al repositorio en GitHub](https://github.com/hugossanchezz/Proyectos/tree/main/FrontendMentor/Tarjeta-de-visita)
+- [URL a la web desplegada](https://tarjeta-visita-hugossanchezz.netlify.app/)
 
 ## Autor
 
