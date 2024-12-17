@@ -31,6 +31,6 @@ Vista en smartphone.
 
 ## Autor
 
-- Website - [hugossanchezz](https://github.com/hugossanchezz)
+- Github - [github.com/hugossanchezz](https://github.com/hugossanchezz)
 - Frontend Mentor - [@hugossanchezz](https://www.frontendmentor.io/profile/hugossanchezz)
 
