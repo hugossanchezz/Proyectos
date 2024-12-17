@@ -65,8 +65,9 @@ main {
     padding-left: 0.5rem;
 }
 
-.tarjeta h3 {
+.tarjeta h1 {
     font-weight: var(--font-weight-bold);
+    font-size: 20px;
 
     &:hover {
         color: var(--color-yellow);
