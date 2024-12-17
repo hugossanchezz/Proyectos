@@ -1,0 +1,47 @@
+:root {
+    /* Colors */
+    --white: hsl(0, 0%, 100%);
+    --color-green: hsl(75, 94%, 57%);
+    --color-grey-700: hsl(0, 0%, 20%);
+    --color-grey-800: hsl(0, 0%, 12%);
+    /* Typography */
+    --font-family: 'Inter', sans-serif;
+}
+
+
+
+.attribution {
+    background-color: var(--color-grey-700);
+    color: var(--white);
+    font-family: var(--font-family);
+    font-size: 11px;
+
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.attribution a {
+    color: var(--color-green);
+}
+
+
+@media (max-width: 375px) {
+
+    .card {
+        margin: 2rem;
+        height: 40rem;
+    }
+
+    .attribution {
+        font-size: 14px;
+
+        display: flex;
+        flex-direction: column;
+    }
+}
