@@ -1,0 +1,34 @@
+.attribution {
+    background-color: var(--slate-900);
+    color: var(--white);
+    font-size: 11px;
+
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.attribution a {
+    color: var(--slate-300);
+}
+
+
+@media (max-width: 375px) {
+
+    .card {
+        margin: 2rem;
+        height: 40rem;
+    }
+
+    .attribution {
+        font-size: 14px;
+
+        display: flex;
+        flex-direction: column;
+    }
+}
