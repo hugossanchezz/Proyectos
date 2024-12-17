@@ -17,6 +17,7 @@
 }
 
 html {
+    background-color: var(--color-yellow);
     font-family: var(--font-family);
 }
 
@@ -31,7 +32,8 @@ main {
 
 .tarjeta {
     border: 3px solid black;
-    box-shadow: 10px 10px 2px -1px rgba(0,0,0,0.75);
+    background-color: var(--color-white);
+    box-shadow: 10px 10px 2px -1px rgba(0, 0, 0, 0.75);
     max-width: 22rem;
     min-height: 30rem;
 
@@ -50,36 +52,62 @@ main {
 
 .learning {
     background-color: var(--color-yellow);
+    font-weight: var(--font-weight-bold);
+    font-size: 14px;
+    width: min-content;
     padding: 10px;
     border-radius: 0.5rem;
-    
-    width: min-content;
+
 }
 
-.date{
+.date {
     font-weight: var(--font-weight-regular);
+    padding-left: 0.5rem;
 }
 
-.tarjeta h3{
+.tarjeta h3 {
     font-weight: var(--font-weight-bold);
+
+    &:hover {
+        color: var(--color-yellow);
+    }
 }
 
-.tarjeta p{
+.tarjeta p {
     color: var(--color-gray-500);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
-.avatar{
+.avatar {
     min-height: 2rem;
 
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
-.avatar img{
+.avatar img {
     width: 2.25rem;
 }
 
-.avatar__name{
+.avatar__name {
     font-weight: var(--font-weight-bold);
+}
+
+
+@media (max-width: 375px) {
+
+    main {
+        padding: 2rem;
+    }
+
+    .tarjeta {
+        width: 100%;
+    }
+
+    .avatar__name {
+        font-size: 12px;
+    }
+
 }
