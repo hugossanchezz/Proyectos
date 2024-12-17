@@ -15,9 +15,11 @@ Esta es mi solución al reto [QR code component challenge on Frontend Mentor](ht
 ### Screenshots
 
 Vista en desktop.
+
 ![](./design/desktop-design.png)
 
 Vista en smartphone.
+
 ![](./design/mobile-design.png)
 
 
