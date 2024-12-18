@@ -116,6 +116,7 @@ ol li,
 ul li {
     margin-left: 1.5rem;
     margin-bottom: 1rem;
+    padding-left: 1rem;
 }
 
 .nutrition__table {
