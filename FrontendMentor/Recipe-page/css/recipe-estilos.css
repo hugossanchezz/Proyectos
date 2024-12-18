@@ -33,6 +33,7 @@ html {
 }
 
 main {
+    min-height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,21 +42,24 @@ main {
 h1 {
     color: var(--color-stone-900);
     font-family: var(--font-family-young-serif);
-    font-size: 45px;
+    width: 100%;
     margin: 0;
+    font-size: 34px;
+    text-align: start;
+    padding: 0.5rem 0;
 }
 
 h2 {
     font-family: var(--font-family-young-serif);
-    font-size: 35px;
+    font-size: 26px;
     color: var(--color-brown-800);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 p,
 li {
     font-size: var(--font-size-paragraph);
-    
+    padding: 0.5 1rem!important;
 }
 
 strong {
@@ -65,7 +69,7 @@ strong {
 .recipe {
     background-color: var(--color-white);
 
-    width: 50rem;
+    width: 30rem;
     height: min-content;
     margin: 2rem;
     border-radius: 1rem;
@@ -102,11 +106,77 @@ strong {
     color: var(--color-rose-800);
 }
 
-ol li, ul li {
+ol li,
+ul li {
     margin-left: 1.5rem;
     margin-bottom: 1rem;
 }
 
-ol,ul li::marker {
+ol,
+ul li::marker {
     color: var(--color-brown-800);
+}
+
+.nutrition__table {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.nutrient,
+.quantity {
+    padding: 1rem 2rem 1rem 2rem;
+    width: 50%;
+}
+
+.quantity {
+    color: var(--color-brown-800);
+    font-weight: var(--font-weight-bold);
+}
+
+hr {
+    color: var(--color-stone-150);
+    border-color: var(--color-stone-150);
+    /* Cambia el color del borde */
+    border-radius: 1rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+@media (max-width:768px) {
+    html {
+        background-color: var(--color-white);
+    }
+
+    h1 {
+        font-size: 34px;
+        padding: 0 1rem !important;
+    }
+
+    .recipe {
+        margin: 0;
+        padding: 0;
+        align-items: center;
+    }
+
+    .recipe>*:not(.image-omelette, hr) {
+        padding: 1rem;
+    }
+
+    .image-omelette {
+        border-radius: 0;
+    }
+
+    hr {
+        width: 90%;
+    }
+
+    .nutrient,
+    .quantity {
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+
 }
