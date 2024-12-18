@@ -15,16 +15,17 @@ Esta es mi solución al reto [Recipe page challenge on Frontend Mentor](https://
 
 Vista en desktop.
 
-![](./design/desktop-design.png)
+![](./design/desktop-design-1.png)
+![](./design/desktop-design-2.png)
 
 Vista en smartphone.
 
-![](./design/mobile-design.png)
+![](./design/mobile-design.jpeg)
 
 ### Links
 
 - [URL al repositorio en GitHub](https://github.com/hugossanchezz/Proyectos/tree/main/FrontendMentor/Social-links-profile)
-- [URL a la web desplegada](https://social-links-profile-hugossanchezz.netlify.app/)
+- [URL a la web desplegada](https://recipe-page-hugossanchezz.netlify.app/)
 
 ## Autor
 
