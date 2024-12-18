@@ -59,7 +59,7 @@ h2 {
 p,
 li {
     font-size: var(--font-size-paragraph);
-    padding: 0.5 1rem!important;
+    padding: 0.5 1rem !important;
 }
 
 strong {
@@ -106,15 +106,16 @@ strong {
     color: var(--color-rose-800);
 }
 
+.instructions ol li::marker,
+.ingredients ul li::marker {
+    color: var(--color-brown-800);
+    font-weight: bold;
+}
+
 ol li,
 ul li {
     margin-left: 1.5rem;
     margin-bottom: 1rem;
-}
-
-ol,
-ul li::marker {
-    color: var(--color-brown-800);
 }
 
 .nutrition__table {
