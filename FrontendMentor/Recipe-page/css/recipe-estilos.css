@@ -69,7 +69,7 @@ strong {
 .recipe {
     background-color: var(--color-white);
 
-    width: 30rem;
+    width: 45rem;
     height: min-content;
     margin: 2rem;
     border-radius: 1rem;
