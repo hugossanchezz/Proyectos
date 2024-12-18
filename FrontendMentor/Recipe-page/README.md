@@ -20,11 +20,11 @@ Vista en desktop.
 
 Vista en smartphone.
 
-![](./design/mobile-design.jpeg)
+<img src="./design/mobile-design.jpeg" alt="Mobile Design" width="300px">
 
 ### Links
 
-- [URL al repositorio en GitHub](https://github.com/hugossanchezz/Proyectos/tree/main/FrontendMentor/Social-links-profile)
+- [URL al repositorio en GitHub](https://github.com/hugossanchezz/Proyectos/tree/main/FrontendMentor/Recipe-page)
 - [URL a la web desplegada](https://recipe-page-hugossanchezz.netlify.app/)
 
 ## Autor
