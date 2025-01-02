@@ -1,5 +1,5 @@
 //Variables
-@import "_variables.scss";
+@use "_variables.scss" as *;
 
 .caja {
   border: 1px solid black;
