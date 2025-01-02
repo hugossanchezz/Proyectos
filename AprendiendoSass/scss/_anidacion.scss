@@ -1,12 +1,15 @@
 //Variables
-$color-fondo-caja:lightgreen;
-$color-letra-anidado:red;
+@import "_variables.scss";
 
-.caja{
-    border: 1px solid black;
-    background-color: $color-fondo-caja;
+.caja {
+  border: 1px solid black;
+  background-color: $color-fondo-caja;
 
-    p{
-        color: $color-letra-anidado;
-    }
+  p {
+    color: $color-letra-anidado;
+  }
+
+  &:hover {
+    border: 2px solid greenyellow;
+  }
 }

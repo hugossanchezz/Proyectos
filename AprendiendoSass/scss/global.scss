@@ -1,20 +1,15 @@
 // Sass (Syntactically Awesome Stylesheets)
-@use "_anidacion.scss";
-// Variables en SCSS
-$color-fondo: lightblue;
-$color-letra: blue;
-
-body {
-  background-color: $color-fondo;
-}
-
-p {
-  color: $color-letra;
-}
+@use "_variables.scss" as *;
+@use "_mixins.scss" as mixins;
+@use "_anidacion.scss" as anidacion;
 
 // Mixims
 @mixin caja_personalizada($fondo: white) {
   background-color: $fondo;
+}
+
+body {
+  background-color: $color-fondo;
 }
 
 .caja-per{
@@ -24,5 +19,5 @@ p {
 // Operadores
 .caja{
   margin: 10px;
-  width: 400px + 100px;
+  width: 400px + 100px; // + - / *
 }

@@ -1,0 +1,72 @@
+// Mixin FLEX
+@mixin flexible($direcion, $corte, $just, $align) {
+  display: flex;
+  flex-flow: $direcion $corte;
+  justify-content: $just;
+  align-items: $align;
+}
+
+/*  Ejemplo
+
+main{
+    @include flexible (flex,row,nowrap,center,center);
+}
+
+*/
+
+// Mixin GRID
+@mixin grid($columnas, $espacio) {
+  display: grid;
+  grid-template-columns: repeat($columnas, 1fr);
+  gap: $espacio;
+
+  @media screen and (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 0rem;
+  }
+}
+
+/*  Ejemplo
+
+main{
+    @include grid(4,1rem);
+}
+
+*/
+
+// Mixin Responsive Design
+@mixin responsive($medida: 480px) {
+  @media screen and (max-width: $medida) {
+    @content;
+  }
+}
+
+/*  Ejemplo
+
+article{
+    width:25%;
+
+    @include responsive(768px){
+    width:50%;
+    }
+
+    @include responsive(){
+    width:100%;
+    }
+}
+
+*/
+
+// Mixin Neomorfismo (Tarjetas en 3d)
+@mixin neo($radius, $eje) {
+  border-radius: $radius;
+  box-shadow: $eje $eje ($eje*2) #bebebe, (-$eje) (-$eje) ($eje*2) #ffffff;
+}
+
+/*  Ejemplo
+
+article{
+    @include neomorf(50px,21px);
+}
+
+*/
