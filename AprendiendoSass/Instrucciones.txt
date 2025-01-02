@@ -1,0 +1,4 @@
+Moverse a la ruta del proyecto
+
+Para compilar el archivo.scss y pasarlo a archivo.css:
+sass --watch archivo.scss archivo.css

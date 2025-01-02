@@ -1,0 +1,28 @@
+// Sass (Syntactically Awesome Stylesheets)
+@use "_anidacion.scss";
+// Variables en SCSS
+$color-fondo: lightblue;
+$color-letra: blue;
+
+body {
+  background-color: $color-fondo;
+}
+
+p {
+  color: $color-letra;
+}
+
+// Mixims
+@mixin caja_personalizada($fondo: white) {
+  background-color: $fondo;
+}
+
+.caja-per{
+  @include caja_personalizada($fondo: white)
+}
+
+// Operadores
+.caja{
+  margin: 10px;
+  width: 400px + 100px;
+}

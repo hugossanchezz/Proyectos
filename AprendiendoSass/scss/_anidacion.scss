@@ -1,0 +1,12 @@
+//Variables
+$color-fondo-caja:lightgreen;
+$color-letra-anidado:red;
+
+.caja{
+    border: 1px solid black;
+    background-color: $color-fondo-caja;
+
+    p{
+        color: $color-letra-anidado;
+    }
+}
