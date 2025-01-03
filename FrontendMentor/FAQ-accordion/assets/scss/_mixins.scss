@@ -1,0 +1,20 @@
+// Mixin Responsive Design
+@mixin responsive($medida: 480px) {
+  @media screen and (max-width: $medida) {
+    @content;
+  }
+}
+
+/*
+@media screen and (max-width: 768px) {
+    article {
+      width: 60%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    article {
+      width: 90%;
+    }
+  }*/
+  
