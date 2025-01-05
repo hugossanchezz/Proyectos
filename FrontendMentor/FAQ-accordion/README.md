@@ -19,7 +19,8 @@ Vista en desktop.
 
 Vista en smartphone.
 
-![](./design/mobile-design.jpg)
+<img src="./design/mobile-design.jpg" alt="Mobile Design" width="500"/>
+
 
 ### Links
 
