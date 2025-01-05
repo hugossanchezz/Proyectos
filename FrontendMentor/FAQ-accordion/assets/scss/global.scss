@@ -5,6 +5,7 @@
 html {
   background-color: $color-light-pink;
   font-family: $font-family-primary;
+  height: 100vh;
 }
 
 main {
@@ -13,10 +14,16 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 p {
   font-size: $font-size-paragraph;
+}
+
+hr{
+  border: none; 
+  border-top: 2px solid $color-light-pink;
 }
 
 .banner {
@@ -43,10 +50,10 @@ article {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  gap: 10px;
 
-  @include responsive(768px) {
-    width: 50%;
+  //Mixins para hacer el article responsive
+  @include responsive(1280px) {
+    width: 70%;
   }
 
   @include responsive() {
@@ -57,31 +64,44 @@ article {
 
 .article__despegable,
 .article__encabezado {
-  border: 1px solid black;
   display: flex;
   align-items: center;
   font-weight: $font-weight-bold;
 }
 
+.encabezado__titulo {
+  margin: 0;
+  color: $color-dark-purple;
+}
+
 .article__despegable {
   justify-content: space-between;
   margin: 1rem 0;
+}
 
-  h4 {
-    margin-right: 0.4rem;
-    color: $color-dark-purple;
-    font-weight: bolder;
-    font-size: 0.8rem;
+.desplegable__h4 {
+  color: $color-dark-purple;
+  font-weight: $font-weight-semi-bold;
+  font-size: $font-size-paragraph;
+  margin-right: 0.4rem;
+
+  &:hover {
+    color: $color-svg;
   }
 }
 
-.respuesta {
-  display: none;
-  p {
-    color: $color-grayish-purple;
-  }
+.desplegable__icono {
+  cursor: pointer;
 }
 
 .encabezado__estrella {
   margin-right: 1rem;
+}
+
+.respuesta {
+  margin-bottom: 1rem;
+  p {
+    color: $color-grayish-purple;
+    font-size: $font-size-paragraph;
+  }
 }
