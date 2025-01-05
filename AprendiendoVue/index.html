@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aprendiendo Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+
+    <style>
+      html {
+        background-color: rgb(31, 31, 31);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{mensaje}}</h1>
+      <input v-model="mensaje" placeholder="Escribe algo" />
+      <br />
+      <button @click="cambiarMensaje()">Cambiar texto</button>
+    </div>
+
+    <script>
+      const app = Vue.createApp({
+        // Version de Vue3 que sustituye a lo de abajo
+        /*setup() {
+          // Declarar variables reactivas
+          const mensaje = Vue.ref("Hola, Vue 3");
+
+          // 2. Definir funciones
+          const cambiarMensaje = () => {
+            mensaje.value = "¡Mensaje cambiado!";
+          };
+
+          // 3. Retornar datos y métodos al template
+          return { mensaje, cambiarMensaje };
+        },*/
+
+        // 1. Data: Todos los datos que está dentro de data se vuelve reactivo
+        data() {
+          return {
+            mensaje: "Texto inicial",
+          };
+        },
+
+        // 2. Methods: Define funciones
+        methods: {
+          cambiarMensaje() {
+            //hace falta this para acceder a variables de data()
+            this.mensaje = "Texto cambiado";
+          },
+        },
+
+        // 3. Computed: Propiedades derivadas, calculadas a partir de los datos reactivos
+        computed: {
+          mensajeMayusculas() {
+            return this.mensaje.toUpperCase();
+          },
+        },
+
+        // 4. Watchers: Observadores para reaccionar a cambios específicos en datos reactivos
+        watch: {
+          mensaje(nuevoValor, valorAnterior) {
+            if (nuevoValor.toUpperCase() === "CLAVE") {
+              alert(`¡Has introducido la clave! Antes: ${valorAnterior}, Ahora: ${nuevoValor}`);
+            }
+          },
+        },
+        
+        /*
+        // 5. Lifecycle Hooks: Métodos que se ejecutan en etapas específicas del ciclo de vida
+        mounted() {
+          console.log("El componente ha sido montado");
+        },
+
+        template: `
+        <div>
+            <h1>{{ mensaje }}</h1>
+            <button @click="cambiarMensaje">Cambiar Mensaje</button>
+        </div>
+        `,
+        */
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>
