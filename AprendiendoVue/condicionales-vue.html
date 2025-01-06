@@ -1,0 +1,16 @@
+<!-- v-if: Muestra un elemento solo si la condición es verdadera. -->
+<div v-if="mostrar">Este contenido solo aparece si 'mostrar' es verdadero.</div>
+
+<!-- v-else-if: Usado junto con v-if para añadir condiciones adicionales. -->
+<div v-if="condicion === 'A'">Condición A</div>
+<div v-else-if="condicion === 'B'">Condición B</div>
+
+<!-- v-else: Se muestra si ninguna de las condiciones anteriores (v-if o v-else-if) se cumplen. -->
+<div v-if="condicion === 'A'">Condición A</div>
+<div v-else>Otra opción</div>
+
+<!-- v-show: Similar a v-if, pero solo cambia la visibilidad del elemento, no lo elimina del DOM. -->
+<div v-show="esVisible">Este contenido se muestra si 'esVisible' es verdadero.</div>
+
+<!-- v-cloak: Se usa para evitar que se muestre el contenido de un bloque de código hasta que Vue haya sido completamente compilado. -->
+<div v-cloak>Este contenido será invisible hasta que Vue se haya montado.</div>

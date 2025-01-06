@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aprendiendo Vue: Estructura de la app</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+
+    <style>
+      html {
+        background-color: rgb(31, 31, 31);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      const app = Vue.createApp({
+        // 1. Data: Todos los datos dentro de data son reactivos.
+        data() {
+          return {
+            mensaje: "Texto inicial",
+          };
+        },
+
+        // 2. Methods: Define funciones.
+        methods: {
+          cambiarMensaje() {
+            this.mensaje = "Texto cambiado";
+          },
+        },
+
+        // 3. Computed: Propiedades derivadas, calculadas a partir de los datos reactivos.
+        computed: {
+          mensajeMayusculas() {
+            return this.mensaje.toUpperCase();
+          },
+        },
+
+        // 4. Watchers: Observadores para reaccionar a cambios específicos en datos reactivos.
+        watch: {
+          mensajeMayusculas(nuevoValor, valorAnterior) {
+            if (nuevoValor === "CLAVE") {
+              alert(
+                `¡Has introducido la clave! Antes: ${valorAnterior}, Ahora: ${nuevoValor}`
+              );
+            }
+          },
+        },
+
+        // 5. Lifecycle Hooks: Métodos que se ejecutan en etapas específicas del ciclo de vida.
+
+        // Creación del componente.
+        beforeCreate() {
+          console.log(
+            "beforeCreate: El componente ha sido inicializado, pero aún no tiene datos reactivos ni métodos."
+          );
+        },
+        created() {
+          console.log(
+            "created: El componente ha sido creado y los datos reactivos están disponibles."
+          );
+        },
+
+        // Montaje del componente.
+        beforeMount() {
+          console.log(
+            "beforeMount: El componente está a punto de ser montado en el DOM."
+          );
+        },
+        mounted() {
+          console.log(
+            "mounted: El componente ha sido montado en el DOM y ya está visible."
+          );
+        },
+
+        // Actualización del componente.
+        beforeUpdate() {
+          console.log(
+            "beforeUpdate: Los datos reactivos han cambiado, pero el DOM aún no se ha actualizado."
+          );
+        },
+        updated() {
+          console.log("updated: El DOM ha sido actualizado.");
+        },
+
+        // Destrucción del componente.
+        beforeUnmount() {
+          console.log(
+            "beforeUnmount: El componente está a punto de ser desmontado del DOM."
+          );
+        },
+        unmounted() {
+          console.log("unmounted: El componente ha sido desmontado del DOM.");
+        },
+
+        // Templates
+        template: `
+          <h1>{{ mensaje }}</h1>
+          <input v-model="mensaje" placeholder="Escribe algo" />
+          <p>
+            <!-- v-bind es para añadir atributos a las etiquetas -->
+            <a v-bind:href="www.google.com" target="_blank">Ir al enlace</a>
+          </p>
+          <button @click="cambiarMensaje()">Cambiar texto</button>
+        `,
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>

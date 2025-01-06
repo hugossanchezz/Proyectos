@@ -1,0 +1,22 @@
+<!-- v-for: Utilizado para iterar sobre listas o arrays. -->
+<ul>
+  <li v-for="item in lista" :key="item.id">{{ item.nombre }}</li>
+</ul>
+
+<!-- v-for con objetos: Se puede usar para iterar sobre las claves y valores de un objeto. -->
+<div v-for="(valor, clave) in objeto" :key="clave">
+  {{ clave }}: {{ valor }}
+</div>
+
+<!-- v-for con índices: Puedes acceder al índice de la iteración en un array. -->
+<ul>
+  <li v-for="(item, index) in lista" :key="index">{{ index }}: {{ item }}</li>
+</ul>
+
+<!-- v-for con rangos numéricos: Puedes iterar sobre un rango de números utilizando una función auxiliar. -->
+<ul>
+  <li v-for="n in 5" :key="n">{{ n }}</li>
+</ul>
+
+<!-- v-for con componentes: Es útil cuando necesitas iterar sobre una lista de componentes. -->
+<componente v-for="item in lista" :key="item.id" :propiedad="item" />

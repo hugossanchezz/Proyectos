@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo v-for con Componentes</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Lista de Componentes</h1>
+      <!-- Usando v-for para iterar sobre items -->
+      <item v-for="(producto, index) in productos" :key="index" :producto="producto"></item>
+    </div>
+
+    <script>
+      // Definir el componente Item
+      const Item = {
+        props: ['producto'], // Recibe la propiedad 'producto' como entrada
+        template: `
+          <div>
+            <h2>{{ producto.nombre }}</h2>
+            <p>Precio: {{ producto.precio }}</p>
+            <p>{{ producto.descripcion }}</p>
+          </div>
+        `,
+      };
+
+      // Crear la aplicación Vue
+      const app = Vue.createApp({
+        data() {
+          return {
+            productos: [
+              { nombre: 'Camiseta', precio: 20, descripcion: 'Una camiseta de algodón' },
+              { nombre: 'Pantalón', precio: 35, descripcion: 'Pantalón de mezclilla' },
+              { nombre: 'Zapatos', precio: 50, descripcion: 'Zapatos deportivos cómodos' },
+            ],
+          };
+        },
+        components: {
+          Item, // Registra el componente Item
+        },
+      });
+
+      app.mount('#app');
+    </script>
+  </body>
+</html>

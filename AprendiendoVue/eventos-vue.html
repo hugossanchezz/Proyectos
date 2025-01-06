@@ -1,0 +1,34 @@
+
+<!-- v-on: es @ -->
+<!-- 1. @click: Se dispara cuando se hace clic en un elemento -->
+<button @click="miMetodo">Hacer algo</button>
+
+<!-- 2. @input: Se dispara cuando el valor de un input cambia -->
+<input v-model="mensaje" @input="miMetodo" />
+
+<!-- 3. @submit: Se dispara cuando se envía un formulario -->
+<form @submit.prevent="enviarFormulario">
+  <input v-model="formData" />
+  <button type="submit">Enviar</button>
+</form>
+
+<!-- 4. @change: Se dispara cuando un elementos cambia(select, option,input,button)-->
+<select @change="miMetodo">
+  <option value="uno">Uno</option>
+  <option value="dos">Dos</option>
+</select>
+
+<!-- 5. @keydown: Se dispara cuando se presiona una tecla -->
+<input @keydown="miMetodo" />
+
+<!-- 6. @mouseover: Se dispara cuando el mouse entra en un elemento -->
+<div @mouseover="mostrarInfo">Pasa el ratón por aquí</div>
+
+<!-- 7. @mouseleave: Se dispara cuando el mouse sale de un elemento -->
+<div @mouseleave="ocultarInfo">Saliendo</div>
+
+<!-- 8. @focus: Se dispara cuando un campo recibe el foco -->
+<input @focus="campoFoco" />
+
+<!-- 9. @blur: Se dispara cuando un campo pierde el foco -->
+<input @blur="campoFueraFoco" />

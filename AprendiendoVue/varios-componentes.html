@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aprendiendo Vue: Componentes y templates</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <component :is="componenteActual"></component>
+      <button @click="cambiarComponente()">Cambiar Componente</button>
+    </div>
+
+    <script>
+      // Definir Componente 1
+      const ComponenteUno = {
+        template: `
+          <div>
+            <h2>Componente Uno</h2>
+            <p>Este es el contenido del primer componente.</p>
+          </div>
+        `,
+      };
+
+      // Definir Componente 2
+      const ComponenteDos = {
+        template: `
+          <div>
+            <h2>Componente Dos</h2>
+            <p>Este es el contenido del segundo componente.</p>
+          </div>
+        `,
+      };
+
+      // Crear la aplicación principal
+      const app = Vue.createApp({
+        data() {
+          return {
+            componenteActual: "ComponenteUno", // Controla qué componente mostrar
+          };
+        },
+        components: {
+          ComponenteUno,
+          ComponenteDos,
+        },
+        methods: {
+          cambiarComponente() {
+            if (this.componenteActual === "ComponenteUno") {
+              this.componenteActual = "ComponenteDos";
+            } else {
+              this.componenteActual = "ComponenteUno";
+            }
+          },
+        },
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>
