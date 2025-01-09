@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selección de elementos por posición con jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+      .resaltado {
+        background-color: yellow;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ejemplo de selección por posición</h1>
+    <ul id="lista">
+      <li>Elemento 1</li>
+      <li>Elemento 2</li>
+      <li>Elemento 3</li>
+      <li>Elemento 4</li>
+      <li>Elemento 5</li>
+    </ul>
+    <button id="btnPrimero">Seleccionar el primer elemento</button>
+    <button id="btnUltimo">Seleccionar el último elemento</button>
+    <button id="btnTercero">Seleccionar el tercer elemento</button>
+    <button id="btnPar">Seleccionar elementos pares</button>
+
+    <script>
+      $(document).ready(function () {
+        // Seleccionar el primer elemento
+        $("#btnPrimero").click(function () {
+          $("#lista li").first().addClass("resaltado");
+        });
+
+        // Seleccionar el último elemento
+        $("#btnUltimo").click(function () {
+          $("#lista li").last().addClass("resaltado");
+        });
+
+        // Seleccionar un elemento específico por su posición (tercer elemento)
+        $("#btnTercero").click(function () {
+          $("#lista li").eq(2).addClass("resaltado"); // Índice basado en 0
+        });
+
+        // Seleccionar elementos pares
+        $("#btnPar").click(function () {
+          $("#lista li:nth-child(even)").addClass("resaltado");
+        });
+      });
+    </script>
+  </body>
+</html>

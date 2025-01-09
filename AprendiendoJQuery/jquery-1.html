@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo de Selección con jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    #miId {
+      color: blue;
+    }
+    .miClase {
+      font-weight: bold;
+    }
+    p {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="miId">Esto es un elemento con un ID</h1>
+  <p class="miclase">Este es un párrafo con una clase</p>
+  <p>Este es un párrafo sin clase</p>
+  <button id="btnCambiar">Cambiar estilos</button>
+
+  <script>
+    $(document).ready(function () {
+      // Selección por ID
+      $("#miId").css("color", "red"); // Cambia el color del texto con ID "miId" a rojo
+
+      // Selección por clase
+      $(".miclase").css("background-color", "yellow"); // Cambia el fondo de los elementos con clase "miClase"
+
+      // Selección por etiqueta
+      $("p").css("font-size", "20px"); // Cambia el tamaño de fuente de todos los párrafos
+
+      // Evento para ilustrar los cambios
+      $("#btnCambiar").click(function () {
+        $("#miId").text("El ID fue seleccionado");
+        $(".miclase").text("La clase fue seleccionada");
+        $("p").css("font-style", "italic");
+      });
+    });
+  </script>
+</body>
+</html>

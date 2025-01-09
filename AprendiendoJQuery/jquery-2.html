@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selección múltiple y por atributos con jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+      .resaltado {
+        color: white;
+        background-color: green;
+        padding: 5px;
+      }
+      .atributo {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="titulo">Ejemplo de jQuery</h1>
+    <p class="resaltado">Este es un párrafo con la clase "resaltado".</p>
+    <p>Este es un párrafo normal.</p>
+    <div class="resaltado atributo" data-tipo="info">
+      Div con clase "resaltado" y atributo personalizado.
+    </div>
+    <button type="button" id="botonEjemplo">Haz clic aquí</button>
+    <a href="https://example.com" target="_blank">Este es un enlace</a>
+
+    <script>
+      $(document).ready(function () {
+        // Agregar evento al botón
+        $("#botonEjemplo").click(function () {
+          // Selección múltiple: Seleccionar varios elementos a la vez
+          $("p, #titulo, .atributo").css("border", "2px dashed blue");
+
+          // Selección por atributo: elementos con un atributo específico
+          $("[data-tipo]").css("background-color", "yellow");
+
+          // Selección por atributo y valor: elementos con un atributo específico con un valor determinado
+          $("[type='button']").css("font-size", "18px");
+
+          // Selección por atributo que contiene una cadena parcial (target="_blank")
+          $("[target*='_blank']").css("text-decoration", "underline");
+        });
+      });
+    </script>
+  </body>
+</html>

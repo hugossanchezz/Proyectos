@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Búsqueda y selección de hijos directos en jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+      .resaltado {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="contenedor">
+      <h2>Título principal</h2>
+      <p>Este es un párrafo dentro del contenedor.</p>
+      <div class="subcontenedor">
+        <p>Este es un párrafo dentro del subcontenedor.</p>
+        <span>Este es un span dentro del subcontenedor.</span>
+      </div>
+      <ul>
+        <li>Primer elemento</li>
+        <li>Segundo elemento</li>
+        <li>Último elemento</li>
+      </ul>
+    </div>
+    <button id="btnBuscar">Buscar elementos</button>
+    <button id="btnHijos">Seleccionar hijos directos</button>
+
+    <script>
+      $(document).ready(function () {
+        // Buscar elementos dentro de otro
+        $("#btnBuscar").click(function () {
+          // Buscar todos los párrafos dentro del contenedor
+          $("#contenedor p").addClass("resaltado");
+
+          // Buscar spans dentro de subcontenedores
+          $(".subcontenedor span").addClass("resaltado");
+        });
+
+        // Seleccionar hijos directos
+        $("#btnHijos").click(function () {
+          // Seleccionar solo los hijos directos del contenedor
+          $("#contenedor > *").addClass("resaltado");
+        });
+      });
+    </script>
+  </body>
+</html>
