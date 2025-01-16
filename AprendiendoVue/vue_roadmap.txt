@@ -1,0 +1,75 @@
+
+Roadmap para aprender Vue.js
+
+1. Fundamentos de JavaScript (si no lo dominas aún)
+- Variables (let, const) y tipos de datos.
+- Funciones y objetos.
+- Manipulación del DOM.
+- Promesas y async/await.
+- Módulos ES6 (import/export).
+
+2. Fundamentos de Vue.js
+- Instalación:
+  - Aprende a usar Vue con un CDN primero, luego configura un proyecto con Vue CLI o Vite.
+- Instancia Vue:
+  - Entiende cómo funciona el objeto principal de Vue.
+- Directivas básicas:
+  - v-bind, v-model, v-if, v-for, v-on.
+- Reactividad:
+  - Comprende cómo Vue detecta y reacciona a los cambios en los datos.
+
+3. Componentes
+- Qué son los Single File Components (SFC).
+- Crear y usar componentes.
+- Comunicación entre componentes:
+  - Props (de padre a hijo).
+  - Emisión de eventos (de hijo a padre).
+- Slots (contenido dinámico en componentes).
+
+4. Estilos y Diseño
+- Estilos globales vs. locales (scoped).
+- Uso de preprocesadores como Sass o PostCSS.
+- Integrar frameworks CSS como Tailwind CSS o Bootstrap.
+
+5. Manejo de Estados
+- Estados locales:
+  - Uso de data, computed y methods.
+- Estados globales:
+  - Aprende Pinia (o Vuex para proyectos legados) para manejar datos compartidos entre componentes.
+
+6. Rutas y Navegación
+- Aprende Vue Router para gestionar rutas:
+  - Rutas dinámicas (/user/:id).
+  - Navegación programática.
+  - Rutas protegidas (autenticación).
+
+7. Consumo de APIs
+- Realizar peticiones con fetch o Axios.
+- Manejo de estados asincrónicos (cargar datos y mostrar loaders).
+
+8. Optimización y Herramientas Avanzadas
+- Lifecycle hooks: mounted, created, watch, etc.
+- Lazy loading de componentes.
+- Transiciones y Animaciones.
+- Testing con herramientas como Jest o Cypress.
+- Deploy: Aprende a desplegar tu app (Netlify, Vercel o Docker).
+
+9. Profundizar y Escalar
+- Aprende Composition API (Vue 3):
+  - setup(), reactive, ref.
+- Uso de plugins en Vue (e.g., i18n, Vuetify).
+- SSR (Server-Side Rendering) con Nuxt.js.
+- Mejora el rendimiento:
+  - Optimizar el bundle.
+  - Dividir código (code splitting).
+
+10. Proyectos Prácticos
+- Empieza con proyectos simples:
+  - To-do list.
+  - Calculadora.
+- Escala a proyectos intermedios:
+  - Dashboard interactivo.
+  - Consumir APIs públicas (e.g., Pokémon API, OpenWeather).
+- Proyectos avanzados:
+  - SPA completa con autenticación.
+  - Blog dinámico usando Vue + una API en Laravel.
