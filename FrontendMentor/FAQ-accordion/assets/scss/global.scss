@@ -50,6 +50,8 @@ article {
   flex-direction: column;
   justify-content: space-evenly;
 
+  transition: 0.5s;
+
   //Mixins para hacer el article responsive
   @include responsive(1280px) {
     width: 70%;
