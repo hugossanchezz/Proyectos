@@ -1,0 +1,36 @@
+//Variables
+@use "_variables.scss" as *;
+
+header {
+  color: map-get($colores, "blanco");
+  background-color: map-get($colores, "fondo_html");
+
+  width: 100%;
+  height: 3rem;
+  padding: 0 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-logo {
+  width: 7rem;
+}
+
+.logo {
+  width: 100%;
+}
+
+nav {
+  gap: 1rem;
+}
+
+.nav__item {
+  a{
+    color: map-get($colores, "blanco");
+    text-decoration: none;
+  }
+}
+
+.acciones {
+  gap: 1rem;
+}

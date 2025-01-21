@@ -1,0 +1,14 @@
+@use "_variables.scss" as *;
+// Clases de CSS recurrentes en el proyecto
+
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
+
+.font-size-medio {
+    font-size: map-get($tamanios, "medio");
+}

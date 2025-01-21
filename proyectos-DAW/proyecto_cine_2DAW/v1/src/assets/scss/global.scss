@@ -1,0 +1,43 @@
+// Importar ficheros modulados
+@use "_variables.scss" as *;
+@use "_clases-rep.scss" as clases;
+
+@use "_main.scss" as main;
+@use "_header.scss" as header;
+@use "_aside.scss" as aside;
+@use "_footer.scss" as footer;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: grid;
+  grid:
+    "header header"
+    "main aside"
+    "footer footer"
+    / 70% 30%;
+}
+
+header {
+  grid-area: header;
+}
+
+aside {
+  grid-area: aside;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+}
