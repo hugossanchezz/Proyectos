@@ -3,7 +3,7 @@
 
 header {
   color: map-get($colores, "blanco");
-  background-color: map-get($colores, "fondo_html");
+  background-color: map-get($colores, "gris_oscuro");
 
   width: 100%;
   height: 3rem;
@@ -21,16 +21,56 @@ header {
 }
 
 nav {
-  gap: 1rem;
+  width: 25rem;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    border-top: 2px solid map-get($colores, "gris");
+
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      map-get($colores, "gris") 50%
+    );
+    background-size: 100% 200%;
+    transition: background-position 0.3s ease-in-out;
+  }
 }
 
 .nav__item {
-  a{
-    color: map-get($colores, "blanco");
+  min-width: 4.5rem;
+  max-width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
     text-decoration: none;
+    color: map-get($colores, "blanco");
+  }
+
+  &:hover {
+    background-position: 0 -100%;
   }
 }
 
 .acciones {
   gap: 1rem;
+}
+
+// Estilos comunes para los iconos
+[class$="__icono"] {
+  width: map-get($tamanios, "medio");
+
+  &:hover {
+    scale: 1.2;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
 }
