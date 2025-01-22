@@ -1,28 +1,28 @@
 <header class="flex">
     <section class="section-logo">
-        <a href="index.html">
-            <img class="logo" src="../src/assets/img/logo-no-cd.png" alt="Logo" />
+        <a href="index.php">
+            <img class="logo" src="src/assets/img/logo-no-cd.png" alt="Logo" />
         </a>
     </section>
 
     <nav class="flex">
         <div class="nav__item">
-            <a class="font-size-pequenio" href="nosotros.html">Nosotros</a>
+            <a class="font-size-pequenio" href="nosotros.php">Nosotros</a>
         </div>
         <div class="nav__item">
-            <a class="font-size-pequenio" href="estrenos.html">Estrenos</a>
+            <a class="font-size-pequenio" href="temporal.php">Estrenos</a>
         </div>
         <div class="nav__item">
-            <a class="font-size-pequenio" href="peliculas.html">Películas</a>
+            <a class="font-size-pequenio" href="temporal.php">Películas</a>
         </div>
         <div class="nav__item">
-            <a class="font-size-pequenio" href="series.html">Series</a>
+            <a class="font-size-pequenio" href="temporal.php">Series</a>
         </div>
         <div class="nav__item">
-            <a class="font-size-pequenio flex" href="mi-espacio.html">
+            <a class="font-size-pequenio flex" href="temporal.php">
                 Mi espacio
                 <img
-                    src="../src/assets/img/ico/bookmark.svg"
+                    src="src/assets/img/ico/bookmark.svg"
                     alt="Icono de guardado"
                     srcset="" />
             </a>
@@ -32,14 +32,16 @@
         <div class="acciones__busqueda">
             <img
                 class="busqueda__icono"
-                src="../src/assets/img/ico/lupa.svg"
+                src="src/assets/img/ico/lupa.svg"
                 alt="Icono de búsqueda" />
         </div>
         <div class="acciones__login">
-            <img
-                class="login__icono"
-                src="../src/assets/img/ico/login.svg"
-                alt="Icono de inicio de sesión" />
+            <a href="inicio-sesion.php">
+                <img
+                    class="login__icono"
+                    src="src/assets/img/ico/login.svg"
+                    alt="Icono de inicio de sesión" />
+            </a>
         </div>
     </section>
 </header>

@@ -11,7 +11,10 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+}
+
+hr{
+  width: 50%;
 }
 
 .contacto {
@@ -74,4 +77,13 @@ footer {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.copyright{
+  margin-top: 1rem;
+  font-size: map-get($tamanios, "parrafo");
+}
+.autor {
+  font-size: map-get($tamanios, "pequenio");
+  color: map-get($colores, "naranja");
 }

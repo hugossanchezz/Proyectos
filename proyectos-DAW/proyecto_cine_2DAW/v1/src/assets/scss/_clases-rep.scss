@@ -5,6 +5,12 @@
     display: flex;
 }
 
+.centrado-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .grid {
     display: grid;
 }

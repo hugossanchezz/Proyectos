@@ -4,18 +4,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dia de Cine - Inicio</title>
+  <title>Dia de Cine - Nosotros</title>
 
   <link rel="icon" type="image/png" sizes="32x32" href="../src/assets/img/ico/logo-favicon.ico" />
 
-  <link rel="stylesheet" href="/src/assets/css/normalize.css" />
-  <link rel="stylesheet" href="/src/assets/css/global.css" />
+  <link rel="stylesheet" href="src/assets/css/normalize.css" />
+  <link rel="stylesheet" href="src/assets/css/global.css" />
+
+
 </head>
 
 <body>
-  <?php include('/src/assets/include/templates/header.php'); ?>
+  <!-- Template del header -->
+  <?php include 'src/assets/include/templates/header.php'; ?>
+
   <main>
-    main
+    nosotros
     <section class="carrusel">
       <!-- carrusel en horizontal de franquicias -->
       <div class="carrusel__item"></div>
@@ -40,17 +44,9 @@
       <h3>Tendencias</h3>
     </section>
   </aside>
-  <footer>
-    <section class="contacto">
-      <a class="socialContainer containerOne" href="#">
-        <img src="../src/assets/img/ico/mail.svg" alt="Email Icon" class="socialSvg mailSvg" />
-      </a>
 
-      <a class="socialContainer containerTwo" href="#">
-        <img src="../src/assets/img/ico/linkedin.svg" alt="LinkedIn Icon" class="socialSvg linkdinSvg" />
-      </a>
-    </section>
-  </footer>
+  <!-- Template del footer -->
+  <?php include 'src/assets/include/templates/footer.php'; ?>
 </body>
 
 </html>

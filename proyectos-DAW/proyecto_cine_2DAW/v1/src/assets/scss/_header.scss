@@ -6,7 +6,7 @@ header {
   background-color: map-get($colores, "gris_oscuro");
 
   width: 100%;
-  height: 3rem;
+  height: 10vh;
   padding: 0 2rem;
   justify-content: space-between;
   align-items: center;
@@ -21,7 +21,7 @@ header {
 }
 
 nav {
-  width: 25rem;
+  min-width: 30rem;
   height: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -42,15 +42,17 @@ nav {
 }
 
 .nav__item {
-  min-width: 4.5rem;
-  max-width: 100%;
+  min-width: 15vh;
+  max-width: 15vh;
   height: 100%;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     text-decoration: none;
     color: map-get($colores, "blanco");
   }
@@ -66,7 +68,7 @@ nav {
 
 // Estilos comunes para los iconos
 [class$="__icono"] {
-  width: map-get($tamanios, "medio");
+  width: map-get($tamanios, "grande");
 
   &:hover {
     scale: 1.2;
