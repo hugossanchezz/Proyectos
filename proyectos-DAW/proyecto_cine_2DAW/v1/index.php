@@ -14,11 +14,11 @@
 
 </head>
 
-<body>
+<body class="body-grid">
   <!-- Template del header -->
   <?php include 'src/assets/include/templates/header.php'; ?>
 
-  <main>
+  <main class="main-grid">
     main
     <section class="carrusel">
       <!-- carrusel en horizontal de franquicias -->
@@ -47,6 +47,8 @@
 
   <!-- Template del footer -->
   <?php include 'src/assets/include/templates/footer.php'; ?>
+
+  <script src="./src/main.js"></script>
 </body>
 
 </html>

@@ -18,7 +18,7 @@
   <!-- Template del header -->
   <?php include 'src/assets/include/templates/header.php'; ?>
 
-  <main>
+  <main class="main-grid">
     estrenos
     <section class="carrusel">
       <!-- carrusel en horizontal de franquicias -->

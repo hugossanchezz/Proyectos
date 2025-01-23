@@ -14,11 +14,11 @@
 
 </head>
 
-<body>
+<body class="body-grid">
   <!-- Template del header -->
   <?php include 'src/assets/include/templates/header.php'; ?>
 
-  <main>
+  <main class="main-grid">
     peliculas
     <section class="carrusel">
       <!-- carrusel en horizontal de franquicias -->

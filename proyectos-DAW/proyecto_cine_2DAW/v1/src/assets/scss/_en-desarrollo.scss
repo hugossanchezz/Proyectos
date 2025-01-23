@@ -9,7 +9,7 @@
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   border-radius: 2rem;
   padding: 1rem;
-    
+
   position: relative;
 
   button {
@@ -21,12 +21,13 @@
     padding: 1rem;
     border-radius: 1rem;
     background-color: map-get($colores, "naranja");
-    
-    a{
-        color: map-get($colores, "blanco");
-        font-size: map-get($tamanios, "grande");
-        text-decoration: none;
+
+    a {
+      color: map-get($colores, "blanco");
+      font-size: map-get($tamanios, "grande");
+      text-decoration: none;
     }
+
   }
 }
 
@@ -44,7 +45,7 @@
     width: 30%;
   }
 
-  h1{
+  h1 {
     margin-left: 2rem;
     color: map-get($colores, "gris_oscuro");
   }

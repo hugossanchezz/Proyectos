@@ -11,42 +11,33 @@
   <link rel="stylesheet" href="src/assets/css/normalize.css" />
   <link rel="stylesheet" href="src/assets/css/global.css" />
 
-
 </head>
 
 <body>
   <!-- Template del header -->
   <?php include 'src/assets/include/templates/header.php'; ?>
 
-  <main>
-    inicio de sesión
-    <section class="carrusel">
-      <!-- carrusel en horizontal de franquicias -->
-      <div class="carrusel__item"></div>
-      <div class="carrusel__item"></div>
-      <div class="carrusel__item"></div>
-      <div class="carrusel__item"></div>
-      <div class="carrusel__item"></div>
-    </section>
-    <section class="populares">
-      <!-- más populares -->
-      <!-- titulo mas taquillero -->
-    </section>
-    <section class="recomendados">
-      <!-- recomendados segun los titulos vistos-->
-    </section>
-    <section class="noticias">
-      <!-- tarjetas con informacion/noticias de peliculas -->
+  <main class="main-inicio-sesion centrado-flex ">
+    <section class="contenedor-inicio-sesion centrado-flex">
+
+      <?php
+
+      include 'src/assets/include/app.php';
+      // Recuperar el valor de 'mostrar' de la URL (contenido a mostrar)
+      $formulario = isset($_GET['mostrar']) ? $_GET['mostrar'] : 'login';  // Si no se pasa 'form', se usa 'login' por defecto
+
+      // Llamar a la función que maneja los formularios, pasando el valor de $formulario
+      elegirContenido($formulario);
+      ?>
+
+
+
     </section>
   </main>
-  <aside>
-    <section>
-      <h3>Tendencias</h3>
-    </section>
-  </aside>
 
   <!-- Template del footer -->
   <?php include 'src/assets/include/templates/footer.php'; ?>
+  <script type="module" src="src/main.js"></script>
 </body>
 
 </html>
