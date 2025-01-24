@@ -48,7 +48,7 @@
   <!-- Template del footer -->
   <?php include 'src/assets/include/templates/footer.php'; ?>
 
-  <script src="./src/main.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 
 </html>

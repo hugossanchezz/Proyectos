@@ -64,6 +64,14 @@ nav {
 
 .acciones {
   gap: 1rem;
+
+  .acciones__busqueda{
+    height: 100%;
+
+    a{
+      height: 100%;
+    }
+  }
 }
 
 // Estilos comunes para los iconos

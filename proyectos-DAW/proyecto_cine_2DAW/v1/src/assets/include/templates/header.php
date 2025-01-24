@@ -39,7 +39,7 @@
             <a href="inicio-sesion.php">
                 <img
                     class="login__icono"
-                    src="src/assets/img/ico/login.svg"
+                    src="src/assets/img/ico/user-naranja.svg"
                     alt="Icono de inicio de sesión" />
             </a>
         </div>

@@ -1,4 +1,3 @@
-import { gestionarPaneles } from './assets/js/inicio-sesion-paneles.js';
+import { mostrarAnimacionYCargarPHP } from './assets/js/animacion-carga.js';
 
-// Ejecutar la funcionalidad
-gestionarPaneles();
+mostrarAnimacionYCargarPHP();

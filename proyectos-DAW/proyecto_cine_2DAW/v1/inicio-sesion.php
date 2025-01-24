@@ -20,16 +20,24 @@
   <main class="main-inicio-sesion centrado-flex ">
     <section class="contenedor-inicio-sesion centrado-flex">
 
-      <?php
+      <div id="loader" class="loader"></div>
+      <div id="contenido-mostrar" style="display: none;">
+        <?php
+        // Importar el controlador de templates
+        include 'src/assets/include/app.php';
 
-      include 'src/assets/include/app.php';
-      // Recuperar el valor de 'mostrar' de la URL (contenido a mostrar)
-      $formulario = isset($_GET['mostrar']) ? $_GET['mostrar'] : 'login';  // Si no se pasa 'form', se usa 'login' por defecto
+        // Recuperar el valor de 'mostrar' de la URL (contenido a mostrar)
+        if (isset($_GET['mostrar'])) {
+          $formulario = $_GET['mostrar'];
+        } else {
+          // Si no se pasa 'form', se usa 'login' por defecto
+          $formulario = 'login';
+        }
 
-      // Llamar a la función que maneja los formularios, pasando el valor de $formulario
-      elegirContenido($formulario);
-      ?>
-
+        // Llamar a la función que maneja los formularios, pasando el valor de $formulario
+        elegirContenido($formulario);
+        ?>
+      </div>
 
 
     </section>
@@ -37,7 +45,7 @@
 
   <!-- Template del footer -->
   <?php include 'src/assets/include/templates/footer.php'; ?>
-  <script type="module" src="src/main.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 
 </html>

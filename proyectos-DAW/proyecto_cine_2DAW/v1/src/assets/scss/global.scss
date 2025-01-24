@@ -9,6 +9,8 @@
 @use "_inicio-sesion.scss" as login;
 @use "_en-desarrollo.scss" as desarrollo;
 
+@use "_animacion-carga.scss" as carga;
+
 * {
   margin: 0;
   padding: 0;

@@ -13,7 +13,7 @@ footer {
   align-items: center;
 }
 
-hr{
+hr {
   width: 50%;
 }
 
@@ -79,11 +79,17 @@ hr{
   }
 }
 
-.copyright{
+.copyright {
   margin-top: 1rem;
   font-size: map-get($tamanios, "parrafo");
 }
 .autor {
-  font-size: map-get($tamanios, "pequenio");
+  font-size: map-get($tamanios, "parrafo");
   color: map-get($colores, "naranja");
+
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
