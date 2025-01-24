@@ -25,7 +25,7 @@ Vista en smartphone.
 ### Links
 
 - [URL al repositorio en GitHub](https://github.com/hugossanchezz/Proyectos/tree/main/FrontendMentor/Recipe-page)
-- [URL a la web desplegada](https://recipe-page-hugossanchezz.netlify.app/)
+- [URL a la web desplegada](https://recipe-hugossanchezz.netlify.app/)
 
 ## Autor
 
