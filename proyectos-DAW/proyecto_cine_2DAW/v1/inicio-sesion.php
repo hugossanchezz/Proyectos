@@ -17,7 +17,7 @@
   <!-- Template del header -->
   <?php include 'src/assets/include/templates/header.php'; ?>
 
-  <main class="main-inicio-sesion centrado-flex ">
+  <main class="main-content centrado-flex">
     <section class="contenedor-inicio-sesion centrado-flex">
 
       <div id="loader" class="loader"></div>

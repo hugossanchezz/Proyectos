@@ -6,6 +6,7 @@
 @use "_header.scss" as header;
 @use "_aside.scss" as aside;
 @use "_footer.scss" as footer;
+@use "_nosotros.scss" as nosotros;
 @use "_inicio-sesion.scss" as login;
 @use "_en-desarrollo.scss" as desarrollo;
 
@@ -47,4 +48,53 @@ aside {
 
 footer {
   grid-area: footer;
+}
+
+
+// Estilos globales para elementos de texto
+
+.encabezado h1 {
+  font-size: map-get($tamanios, "grande");
+}
+
+.encabezado p {
+  font-size: 1rem;
+  color: map-get($colores, "gris");
+}
+
+h2 {
+  font-size: map-get($tamanios, "medio");
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  img {
+    margin-right: 10px;
+  }
+}
+
+strong {
+  color: map-get($colores, "naranja");
+}
+
+p {
+  font-size: map-get($tamanios, "parrafo");
+  line-height: 1.6;
+  
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+
+  li {
+    font-size: map-get($tamanios, "parrafo");
+    margin-top: 5px;
+  }
+}
+
+hr {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: 0;
+  border-top: 1px solid map-get($colores, "gris_claro");
 }

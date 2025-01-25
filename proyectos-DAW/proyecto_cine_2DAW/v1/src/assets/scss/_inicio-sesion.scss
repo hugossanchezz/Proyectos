@@ -28,7 +28,7 @@
 .inputForm {
   border: 1.5px solid map-get($colores, "gris_claro");
   height: 50px;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
 
   align-items: center;
@@ -57,6 +57,7 @@
 // Estilos para .flex-row y sus elementos hijos
 .flex-row {
   gap: 5px;
+  align-items: center;
   > label {
     color: map-get($colores, "gris_oscuro");
     font-size: map-get($tamanios, "parrafo");
@@ -135,59 +136,12 @@
   border-radius: 10px;
   overflow-y: auto;
 
-  .encabezado h1 {
-    font-size: map-get($tamanios, "grande");
-  }
-
-  .encabezado p {
-    font-size: 1rem;
-    color: map-get($colores, "gris");
-  }
-
-  h2 {
-    font-size: map-get($tamanios, "medio");
-    align-items: center;
-
-    img {
-      margin-right: 10px;
-    }
-  }
-
-  strong {
-    color: map-get($colores, "naranja");
-  }
-
-  p {
-    font-size: map-get($tamanios, "parrafo");
-    line-height: 1.6;
-    color: map-get($colores, "gris_oscuro");
-  }
-
-  ul {
-    list-style-type: disc;
-    margin-left: 20px;
-
-    li {
-      font-size: map-get($tamanios, "parrafo");
-      margin-top: 5px;
-    }
-  }
-
   a {
     color: map-get($colores, "naranja");
     text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  hr {
-    width: 100%;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    border: 0;
-    border-top: 1px solid map-get($colores, "gris_claro");
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .final {
@@ -212,18 +166,70 @@
   padding: 2px;
   border-radius: 10px;
 
-  bottom: 0; 
+  bottom: 0;
   left: 100%;
-  z-index: 10; 
-  text-align: center; 
-  
-  a{
+  z-index: 10;
+  text-align: center;
+
+  a {
     color: map-get($colores, "blanco");
     font-size: map-get($tamanios, "pequenio");
   }
 }
 
+/* Estilos para el switch (checkbox) */
+.switch {
+  width: 2.5em;
+  height: 1.35em;
+  position: relative;
+  display: inline-block;
+}
 
+/* esconder el checkbox de HTML por defecto  */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
+/* slider */
+.slider {
+  background-color: map-get($colores, "blanco");
+  border: 1px solid map-get($colores, "gris_claro");
+  border-radius: 30px;
 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  transition: 0.4s;
+}
 
+.slider:before {
+  background-color: #adb5bd;
+  width: 0.75em;
+  height: 0.75em;
+  left: 0.27em;
+  bottom: 0.25em;
+  border-radius: 20px;
+  
+  position: absolute;
+  content: "";
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: map-get($colores, "naranja");
+  border: 1px solid map-get($colores, "naranja");
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px map-get($colores, "gris_claro");
+}
+
+input:checked + .slider:before {
+  transform: translateX(1.1em);
+  background-color: map-get($colores, "blanco");
+}

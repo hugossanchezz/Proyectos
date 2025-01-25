@@ -12,7 +12,7 @@
     <section class="copyright">
         <p>
             © 2022 Dia de Cine. 
-            <a class="autor" href="https://github.com/hugossanchezz">Hugo Sánchez Ciudad</a>.
+            <a class="autor" href="https://github.com/hugossanchezz" target="_blank">Hugo Sánchez Ciudad</a>.
         </p> 
     </section>
 </footer>

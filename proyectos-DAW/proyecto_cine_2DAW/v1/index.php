@@ -11,15 +11,16 @@
   <link rel="stylesheet" href="src/assets/css/normalize.css" />
   <link rel="stylesheet" href="src/assets/css/global.css" />
 
-
 </head>
 
 <body class="body-grid">
+
   <!-- Template del header -->
   <?php include 'src/assets/include/templates/header.php'; ?>
 
   <main class="main-grid">
     main
+
     <section class="carrusel">
       <!-- carrusel en horizontal de franquicias -->
       <div class="carrusel__item"></div>
@@ -38,6 +39,7 @@
     <section class="noticias">
       <!-- tarjetas con informacion/noticias de peliculas -->
     </section>
+
   </main>
   <aside>
     <section>
@@ -49,6 +51,7 @@
   <?php include 'src/assets/include/templates/footer.php'; ?>
 
   <script type="module" src="./src/main.js"></script>
+
 </body>
 
 </html>

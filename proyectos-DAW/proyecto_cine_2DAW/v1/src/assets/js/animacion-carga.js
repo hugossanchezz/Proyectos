@@ -6,7 +6,7 @@
  */
 export function mostrarAnimacionYCargarPHP() {
     // Comprobar si estamos en el archivo "inicio-sesion.php"
-    if (window.location.pathname.endsWith('inicio-sesion.php')) {
+    //
         const loader = document.getElementById("loader");
         const contenido = document.getElementById("contenido-mostrar");
 
@@ -18,6 +18,6 @@ export function mostrarAnimacionYCargarPHP() {
                 contenido.style.display = 'block';  // mostrar el contenido
             }, 500); // medio segundo
         });
-    }
+    //}
 }
 

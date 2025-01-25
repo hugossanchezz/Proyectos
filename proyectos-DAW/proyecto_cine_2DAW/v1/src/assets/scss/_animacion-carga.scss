@@ -2,7 +2,7 @@
 @use "_variables.scss" as *;
 
 // Elemento para usar en la web
-// <div class="loader"></div>
+// <div id="loader" class="loader"></div>
 
 .loader {
   border: 3px dotted map-get($colores, "gris_claro");

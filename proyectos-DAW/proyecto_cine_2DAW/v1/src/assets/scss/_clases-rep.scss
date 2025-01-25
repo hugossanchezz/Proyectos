@@ -11,6 +11,13 @@
   align-items: center;
 }
 
+.columna-centrado-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .grid {
   display: grid;
 }
