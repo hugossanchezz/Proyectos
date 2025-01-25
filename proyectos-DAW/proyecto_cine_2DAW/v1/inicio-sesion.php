@@ -21,7 +21,7 @@
     <section class="contenedor-inicio-sesion centrado-flex">
 
       <div id="loader" class="loader"></div>
-      <div id="contenido-mostrar" style="display: none;">
+      <div id="contenido-mostrar" class="contenido-mostrar flex" style="display: none;">
         <?php
         // Importar el controlador de templates
         include 'src/assets/include/app.php';
@@ -45,6 +45,7 @@
 
   <!-- Template del footer -->
   <?php include 'src/assets/include/templates/footer.php'; ?>
+  
   <script type="module" src="./src/main.js"></script>
 </body>
 

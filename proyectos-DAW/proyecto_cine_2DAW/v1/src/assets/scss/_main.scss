@@ -1,3 +1,6 @@
+//Variables
+@use "_variables.scss" as *;
+
 .main-grid {
   border: 1px solid black;
   min-height: 100vh;
@@ -10,3 +13,42 @@
   width: 90%;
   margin: 0 auto;
 }
+
+
+// Estilos y efecto infinito del carrusel
+.carrusel {
+  border: 1px solid black;
+  background-color: map-get($colores, "gris_claro");
+  height: 5.5rem;
+  overflow: hidden;
+  position: relative;
+  
+  .carrusel__items {
+    gap: 1rem;
+    animation: carrusel 15s linear infinite;
+  }
+
+  .carrusel__item {
+    height: 100%;
+    width: 8rem;
+    
+    
+    img {
+      border-radius: 15px;
+      height: 100%;
+      width: 100%;
+      
+    }
+  }
+}
+
+/* Animación del carrusel */
+@keyframes carrusel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
