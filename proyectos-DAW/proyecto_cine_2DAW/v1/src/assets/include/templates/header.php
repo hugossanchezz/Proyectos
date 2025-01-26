@@ -1,5 +1,5 @@
 <header class="flex">
-    <section class="section-logo">
+    <section class="section-logo centrado-flex">
         <a href="index.php">
             <img class="logo" src="src/assets/img/logo-no-cd.png" alt="Logo" />
         </a>
@@ -8,9 +8,6 @@
     <nav class="flex">
         <div class="nav__item">
             <a class="font-size-pequenio" href="nosotros.php">Nosotros</a>
-        </div>
-        <div class="nav__item">
-            <a class="font-size-pequenio" href="temporal.php">Estrenos</a>
         </div>
         <div class="nav__item">
             <a class="font-size-pequenio" href="temporal.php">Películas</a>

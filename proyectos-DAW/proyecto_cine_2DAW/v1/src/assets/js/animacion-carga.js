@@ -1,10 +1,10 @@
 // Array con el nombre de los archivos que usan la animación
-const archivos = ["inicio-sesion.php", "nosotros.php"];
+const archivos = ["index.php","inicio-sesion.php", "nosotros.php"];
 
 /**
  * Muestra una animación de carga y oculta el contenido mientras la página correspondiente se carga.
  * 
- * - Oculta el loader y muestra el contenido con un retraso de 500 ms.
+ * - Oculta el loader y muestra el contenido con un tiempo de retraso.
  * - Solo se ejecuta si el archivo actual está en el array de archivos.
  */
 export function mostrarAnimacionYCargarPHP() {
@@ -18,11 +18,11 @@ export function mostrarAnimacionYCargarPHP() {
 
         // Mostrar el contenido cuando se haya cargado el DOM al completo
         document.addEventListener('DOMContentLoaded', () => {
-            // Asegurar la carga del contenido con medio segundo de retraso
+            // Asegurar la carga del contenido
             setTimeout(() => {
                 loader.style.display = 'none'; // ocultar la animación de carga
                 contenido.style.display = 'block';  // mostrar el contenido
-            }, 500); // medio segundo
+            }, 300); // tiempo de retraso
         });
     }
 }

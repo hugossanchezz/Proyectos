@@ -96,6 +96,11 @@
   }
 }
 
+//Clase para hacer el boton máz pequeño
+.button-submit-pequenio {
+  max-width: 20rem;
+}
+
 // Estilos para .p
 .p {
   color: map-get($colores, "gris_oscuro");

@@ -20,24 +20,7 @@
 
   <main class="main-grid">
     mi espacio
-    <section class="carrusel">
-      <!-- carrusel en horizontal de franquicias -->
-      <div class="carrusel__item"></div>
-      <div class="carrusel__item"></div>
-      <div class="carrusel__item"></div>
-      <div class="carrusel__item"></div>
-      <div class="carrusel__item"></div>
-    </section>
-    <section class="populares">
-      <!-- más populares -->
-      <!-- titulo mas taquillero -->
-    </section>
-    <section class="recomendados">
-      <!-- recomendados segun los titulos vistos-->
-    </section>
-    <section class="noticias">
-      <!-- tarjetas con informacion/noticias de peliculas -->
-    </section>
+
   </main>
   <aside>
     <section>
