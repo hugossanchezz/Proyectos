@@ -39,9 +39,11 @@
     </div>
 
   </main>
-  <aside>
-    <section>
-      aside
+  <aside class="">
+
+    <section id="estrenos-container" class="estrenos-container flex">
+      <!-- https://www.fotogramas.es/noticias-cine/g62804921/mejores-peliculas-2025/ -->
+      <!-- Espacio de los estrenos de 2025  -->
     </section>
   </aside>
 

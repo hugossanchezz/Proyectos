@@ -18,10 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 //----------------------------------------------
 
 // Apartado de noticias del index
-import { mostrarNoticias } from './assets/js/noticias.js';
+import { mostrarNoticias,mostrarPeliculasEstrenos2025 } from './assets/js/noticias-estrenos.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     mostrarNoticias();  
+    mostrarPeliculasEstrenos2025();
 });
 
 //----------------------------------------------

@@ -3,14 +3,12 @@
 
 // main que está en el grid del body-grid, con aside a la derecha
 .main-grid {
-  border: 1px solid black;
   min-height: 100vh;
   margin-left: 5rem;
 }
 
 // main que aparece solo, sin aside
 .main-content {
-  border: 1px solid black;
   min-height: 85vh;
   width: 90%;
   margin: 0 auto;
@@ -24,11 +22,10 @@
   overflow: hidden;
   position: relative;
   margin-top: 1rem;
-  margin-bottom: 1rem;
 
   .carrusel__items {
     gap: 0.25rem;
-    animation: carrusel 25s linear infinite;
+    animation: carrusel 60s linear infinite;
   }
 
   .carrusel__item {
@@ -85,5 +82,17 @@
   p {
     font-size: 14px;
     color: map-get($colores, "gris");
+  }
+}
+
+// Estilos para el aside del index.php
+aside{
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  margin-right: 5rem;
+  .estrenos-container{
+    flex-direction: column;
+  
+    padding: 1rem;
+    gap: 1rem;
   }
 }

@@ -112,3 +112,46 @@ if (window.location.pathname.split('/').pop() === 'index.php') {
         location.reload();  // Recarga la página actual,el array de noticias se reordenará
     });
 }
+
+//-----------------------------------------------------------------------------------------------------------
+
+import { estrenos2025 } from './lista-estrenos.js';
+
+export function mostrarPeliculasEstrenos2025() {
+    // Array con los estrenos de 2025
+
+    const contenedorEstrenos = document.getElementById('estrenos-container');
+
+    estrenos2025.forEach(pelicula => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+    
+        // Crear la imagen de la card
+        const imagen = document.createElement('img');
+        imagen.src = pelicula.cartelera || 'https://via.placeholder.com/150';
+        imagen.alt = pelicula.titulo || 'Imagen de la película';
+        
+        // Crear el contenido de la card
+        const titulo = document.createElement('h3');
+        titulo.textContent = pelicula.titulo || 'Título de la película';
+    
+        const fechaEstreno = document.createElement('p');
+        fechaEstreno.textContent = pelicula.fechaEstreno || 'Fecha de estreno no disponible';
+
+        const descripcion = document.createElement('p');
+        descripcion.textContent = pelicula.descripcion || 'Descripción no disponible';
+    
+    
+    
+        // Agregar los elementos a la card
+        card.appendChild(imagen);
+        card.appendChild(titulo);
+        card.appendChild(fechaEstreno);
+        card.appendChild(descripcion);
+     
+
+        // Agregamos la card al contenedor
+        contenedorEstrenos.appendChild(card);
+    });
+
+}
