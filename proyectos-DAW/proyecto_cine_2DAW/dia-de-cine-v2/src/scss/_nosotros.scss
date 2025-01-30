@@ -1,0 +1,16 @@
+// Variables
+@use "_variables.scss" as *;
+
+.sobreNosotros {
+  border: 1px solid map-get($colores, "gris_claro");
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  min-height: 35rem;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+
+  p{
+    color: map-get($colores, "gris_oscuro");
+  }
+}

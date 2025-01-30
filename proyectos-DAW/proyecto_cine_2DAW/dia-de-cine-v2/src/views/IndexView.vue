@@ -1,0 +1,91 @@
+<template>
+  <div class="body-grid-index">
+    <!-- Header común -->
+    <Header />
+
+    <!-- Carrusel -->
+    <section class="carrusel flex">
+      <div id="carrusel__items" class="carrusel__items flex">
+        <!-- Espacio para el carrusel que se cargará dinámicamente con JavaScript -->
+      </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="main-grid centrado-flex">
+      <!-- Animación de carga -->
+      <div id="loader" class="loader" v-if="loading"></div>
+
+      <!-- Contenido principal -->
+      <div
+        id="contenido-mostrar"
+        class="contenido-mostrar flex"
+        v-show="!loading"
+      >
+        <div id="noticias-container" class="noticias-container">
+          <!-- Espacio de las noticias con el Api NewsAPI -->
+        </div>
+
+        <div class="noticias-boton-container centrado-flex">
+          <button
+            id="recargar-noticias"
+            class="button-submit button-submit-pequenio"
+          >
+            Recargar noticias
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Estrenos -->
+    <aside>
+      <section id="estrenos-container" class="estrenos-container flex">
+        <!-- Espacio de los estrenos de 2025 -->
+      </section>
+    </aside>
+
+    <!-- Footer común -->
+    <Footer />
+  </div>
+</template>
+
+<script>
+// Importar los scripts JavaScript con la lógica
+import { mostrarNoticias, recargarNoticias, mostrarEstrenos } from "../js/noticias-estrenos";
+
+import Header from "../components/Header.vue"; 
+import Footer from "../components/Footer.vue"; 
+
+export default {
+  name: "IndexView",
+  components: {
+    Header,
+    Footer
+  },
+  data() {
+    return {
+      loading: true, // Esta propiedad controla si mostramos el loader o el contenido
+    };
+  },
+  async mounted() {
+    // Mostrar las noticias mediante la función asíncrona
+    await mostrarNoticias();
+
+    // Mostrar los estrenos en el aside
+    mostrarEstrenos();
+
+    // Configurar el botón de recarga
+    const recargarNoticiasButton = document.getElementById('recargar-noticias');
+    recargarNoticiasButton.addEventListener('click', recargarNoticias);
+
+    // Llamar a la función para ocultar el loader y mostrar el contenido
+    this.mostrarContenido();
+  },
+  methods: {
+    mostrarContenido() {
+      setTimeout(() => {
+        this.loading = false; // Después de un tiempo, ocultamos el loader y mostramos el contenido
+      }, 300); // 300 ms de retraso
+    },
+  },
+};
+</script>

@@ -1,0 +1,36 @@
+//Variables
+@use "_variables.scss" as *;
+
+// Clases de CSS recurrentes en el proyecto
+.flex {
+  display: flex;
+}
+
+.centrado-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.columna-centrado-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+}
+
+.font-size-pequenio {
+  font-size: map-get($tamanios, "pequenio");
+}
+
+.font-size-medio {
+  font-size: map-get($tamanios, "medio");
+}
+
+.font-size-grande {
+  font-size: map-get($tamanios, "grande");
+}

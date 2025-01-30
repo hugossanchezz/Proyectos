@@ -1,0 +1,96 @@
+//Variables
+@use "_variables.scss" as *;
+
+footer {
+  color: map-get($colores, "blanco");
+  background-color: map-get($colores, "gris_oscuro");
+  width: 100%;
+  min-height: 5rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  hr {
+    width: 50%;
+  }
+}
+
+
+.contacto {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 25px;
+  gap: 20px;
+}
+
+.socialContainer {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
+  border: 2px solid map-get($colores, "blanco");
+  padding: 0.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+/* Email */
+.containerOne:hover {
+  background-color: map-get($colores, "rojo_mail");
+  transition-duration: 0.3s;
+}
+
+/* linkdin */
+.containerTwo:hover {
+  background-color: map-get($colores, "azul_linkedin");
+  transition-duration: 0.3s;
+}
+
+.socialContainer:active {
+  transform: scale(0.9);
+  transition-duration: 0.3s;
+}
+
+.socialSvg {
+  width: 17px;
+  height: 17px;
+}
+
+.socialContainer:hover .socialSvg {
+  animation: slide 0.3s both;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.copyright {
+  margin-top: 1rem;
+  font-size: map-get($tamanios, "parrafo");
+}
+.autor {
+  font-size: map-get($tamanios, "parrafo");
+  color: map-get($colores, "naranja");
+
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

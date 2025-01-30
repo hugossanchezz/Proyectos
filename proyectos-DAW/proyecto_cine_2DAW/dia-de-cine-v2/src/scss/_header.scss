@@ -1,0 +1,87 @@
+//Variables
+@use "_variables.scss" as *;
+
+header {
+  color: map-get($colores, "blanco");
+  background-color: map-get($colores, "gris_oscuro");
+
+  width: 100%;
+  height: 10vh;
+  padding: 0 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-logo {
+  width: 7rem;
+  height: 90%;
+}
+
+.logo {
+  width: 100%;
+}
+
+nav {
+  min-width: 30rem;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    border-top: 2px solid map-get($colores, "gris");
+
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      map-get($colores, "gris") 50%
+    );
+    background-size: 100% 200%;
+    transition: background-position 0.3s ease-in-out;
+  }
+}
+
+.nav__item {
+  min-width: 15vh;
+  max-width: 15vh;
+  height: 100%;
+
+  a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    color: map-get($colores, "blanco");
+  }
+
+  &:hover {
+    background-position: 0 -100%;
+  }
+}
+
+.acciones {
+  gap: 1rem;
+
+  .acciones__busqueda{
+    height: 100%;
+
+    a{
+      height: 100%;
+    }
+  }
+}
+
+// Estilos comunes para los iconos
+[class$="__icono"] {
+  width: map-get($tamanios, "grande");
+
+  &:hover {
+    scale: 1.2;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+}
