@@ -17,13 +17,24 @@
         >
           <!-- Mostrar el formulario de login, registro o terminos y condiciones -->
           <div v-if="formulario === 'login'" class="form-container">
-            <LoginForm /> <!-- Se renderiza el componente LoginForm -->
+            <LoginForm />
+            <!-- Se renderiza el componente LoginForm -->
           </div>
           <div v-if="formulario === 'registro'" class="form-container">
-            <RegisterForm /> <!-- Se renderiza el componente RegisterForm -->
+            <RegisterForm />
+            <!-- Se renderiza el componente RegisterForm -->
           </div>
           <div v-if="formulario === 'terminos'" class="form-container">
-            <Terminos /> <!-- Se renderiza el componente Terminos -->
+            <Terminos />
+            <!-- Se renderiza el componente Terminos -->
+          </div>
+          <div v-if="formulario === 'privacidad'" class="form-container">
+            <Privacidad />
+            <!-- Se renderiza el componente Privacidad -->
+          </div>
+          <div v-if="formulario === 'cookies'" class="form-container">
+            <Cookies />
+            <!-- Se renderiza el componente Cookies -->
           </div>
         </div>
       </section>
@@ -36,10 +47,12 @@
 
 <script>
 import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue"; 
-import LoginForm from "@/components/LoginForm.vue"; 
-import RegisterForm from "@/components/RegisterForm.vue"; 
-import Terminos from "@/components/Terminos.vue"; 
+import Footer from "@/components/Footer.vue";
+import LoginForm from "@/components/LoginForm.vue";
+import RegisterForm from "@/components/RegisterForm.vue";
+import Terminos from "@/components/Terminos.vue";
+import Privacidad from "@/components/Privacidad.vue";
+import Cookies from "@/components/Cookies.vue";
 
 export default {
   components: {
@@ -47,7 +60,9 @@ export default {
     Footer,
     LoginForm,
     RegisterForm,
-    Terminos
+    Terminos,
+    Privacidad,
+    Cookies,
   },
   data() {
     return {
@@ -75,7 +90,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* Estilos aquí */
-</style>

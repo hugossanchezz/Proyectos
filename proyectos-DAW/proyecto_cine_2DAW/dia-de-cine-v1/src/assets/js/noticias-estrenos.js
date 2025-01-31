@@ -65,7 +65,7 @@ export async function mostrarNoticias() {
         // Barajamos el array para que no salgan las noticias en el mismo orden
         const noticias = barajarArray(noticiasOriginal);
 
-        const NUM_NOTICIAS = 30; // Número de noticias a mostrar
+        const NUM_NOTICIAS = 36; // Número de noticias a mostrar
 
         // Seleccionamos el contenedor donde se mostrarán las noticias
         const contenedorNoticias = document.getElementById('noticias-container');
@@ -80,6 +80,7 @@ export async function mostrarNoticias() {
         noticiasLimitadas.forEach(noticia => {
             const card = document.createElement('div');
             card.classList.add('card');
+            card.classList.add('card-hover');
 
             // Crear el contenido de la card
             const titulo = document.createElement('h3');
@@ -92,6 +93,7 @@ export async function mostrarNoticias() {
             const imagen = document.createElement('img');
             imagen.src = noticia.urlToImage || 'https://via.placeholder.com/150'; // URL de la imagen
             imagen.alt = noticia.title || 'Imagen de la noticia';
+            imagen.classList.add('img-noticia');
 
             // Agregamos los elementos a la card
             card.appendChild(imagen);
@@ -122,33 +124,35 @@ export function mostrarPeliculasEstrenos2025() {
 
     const contenedorEstrenos = document.getElementById('estrenos-container');
 
-    estrenos2025.forEach(pelicula => {
+    //Barajamos el array de estrenos y seleccionamos los 9 primeros
+    const estrenos2025Barajados = barajarArray(estrenos2025);
+    const estrenos2025Limitados = estrenos2025Barajados.slice(0, 9);
+
+    estrenos2025Limitados.forEach(pelicula => {
         const card = document.createElement('div');
         card.classList.add('card');
-    
+
         // Crear la imagen de la card
         const imagen = document.createElement('img');
         imagen.src = pelicula.cartelera || 'https://via.placeholder.com/150';
         imagen.alt = pelicula.titulo || 'Imagen de la película';
-        
+        imagen.classList.add('img-estreno');
+
         // Crear el contenido de la card
         const titulo = document.createElement('h3');
         titulo.textContent = pelicula.titulo || 'Título de la película';
-    
+
         const fechaEstreno = document.createElement('p');
         fechaEstreno.textContent = pelicula.fechaEstreno || 'Fecha de estreno no disponible';
 
         const descripcion = document.createElement('p');
         descripcion.textContent = pelicula.descripcion || 'Descripción no disponible';
-    
-    
-    
+
         // Agregar los elementos a la card
         card.appendChild(imagen);
         card.appendChild(titulo);
         card.appendChild(fechaEstreno);
         card.appendChild(descripcion);
-     
 
         // Agregamos la card al contenedor
         contenedorEstrenos.appendChild(card);

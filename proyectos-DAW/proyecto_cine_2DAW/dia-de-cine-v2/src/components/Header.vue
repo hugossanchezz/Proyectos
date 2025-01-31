@@ -2,7 +2,7 @@
   <header class="flex">
     <section class="section-logo centrado-flex">
       <router-link to="/">
-        <img class="logo" src="../assets/img/logo-no-cd.png" alt="Logo" />
+        <img id="logo" class="logo" src="../assets/img/logo-no-cd.png" alt="Logo" />
       </router-link>
     </section>
 
@@ -56,7 +56,3 @@ export default {
   name: "Header",
 };
 </script>
-
-<style scoped>
-/* Puedes mantener los estilos tal como están o migrarlos aquí */
-</style>

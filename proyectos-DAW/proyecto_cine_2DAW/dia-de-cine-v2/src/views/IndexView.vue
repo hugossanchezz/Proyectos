@@ -11,14 +11,14 @@
     </section>
 
     <!-- Contenido principal -->
-    <main class="main-grid centrado-flex">
+    <section class="main-grid centrado-flex">
       <!-- Animación de carga -->
       <div id="loader" class="loader" v-if="loading"></div>
 
       <!-- Contenido principal -->
       <div
         id="contenido-mostrar"
-        class="contenido-mostrar flex"
+        class="contenido-mostrar flex-column"
         v-show="!loading"
       >
         <div id="noticias-container" class="noticias-container">
@@ -34,7 +34,7 @@
           </button>
         </div>
       </div>
-    </main>
+    </section>
 
     <!-- Estrenos -->
     <aside>
@@ -50,16 +50,20 @@
 
 <script>
 // Importar los scripts JavaScript con la lógica
-import { mostrarNoticias, recargarNoticias, mostrarEstrenos } from "../js/noticias-estrenos";
+import {
+  mostrarNoticias,
+  recargarNoticias,
+  mostrarEstrenos,
+} from "../js/noticias-estrenos";
 
-import Header from "../components/Header.vue"; 
-import Footer from "../components/Footer.vue"; 
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "IndexView",
   components: {
     Header,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -74,17 +78,31 @@ export default {
     mostrarEstrenos();
 
     // Configurar el botón de recarga
-    const recargarNoticiasButton = document.getElementById('recargar-noticias');
-    recargarNoticiasButton.addEventListener('click', recargarNoticias);
+    const recargarNoticiasButton = document.getElementById("recargar-noticias");
+    recargarNoticiasButton.addEventListener("click", recargarNoticias);
 
     // Llamar a la función para ocultar el loader y mostrar el contenido
     this.mostrarContenido();
+
+    this.forzarRecarga();
   },
   methods: {
     mostrarContenido() {
       setTimeout(() => {
         this.loading = false; // Después de un tiempo, ocultamos el loader y mostramos el contenido
       }, 300); // 300 ms de retraso
+    },
+    /**
+     * Fuerza una recarga de la página Index
+     * Esto se debe a que la Api del carrusel a veces no carga bien el contenido
+     * @return {void}
+     */
+    forzarRecarga() {
+      const logo = document.getElementById('logo');
+      
+      logo.addEventListener('click', () => {
+        location.reload();
+      });
     },
   },
 };

@@ -13,7 +13,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Aceptación de los Términos
     </h2>
     <p>
@@ -24,7 +24,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Uso de la Plataforma
     </h2>
     <p>
@@ -56,7 +56,7 @@
     </ul>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Cuenta de Usuario
     </h2>
     <p>
@@ -73,7 +73,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Propiedad Intelectual
     </h2>
     <p>
@@ -84,7 +84,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Contenido de Terceros
     </h2>
     <p>
@@ -96,7 +96,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Protección de Datos y Privacidad
     </h2>
     <p>
@@ -107,7 +107,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Modificaciones del Servicio
     </h2>
     <p>
@@ -118,7 +118,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Limitación de Responsabilidad
     </h2>
     <p>
@@ -132,7 +132,7 @@
     </ul>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Comunicaciones y Notificaciones
     </h2>
     <p>
@@ -143,7 +143,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Jurisdicción y Ley Aplicable
     </h2>
     <p>
@@ -154,7 +154,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Consentimiento para el Uso de Cookies
     </h2>
     <p>
@@ -165,7 +165,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Renuncia de Responsabilidad
     </h2>
     <p>
@@ -176,7 +176,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="../assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
       Contacto
     </h2>
     <p>
@@ -187,7 +187,7 @@
     <hr />
 
     <h2 class="flex">
-      <img src="../assets/img/ico/pencil.svg" alt="Icono de firma" /> Firma del
+      <img src="/src/assets/img/ico/pencil.svg" alt="Icono de firma" /> Firma del
       Usuario
     </h2>
     <p>
@@ -215,7 +215,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* Aquí puedes mantener los estilos tal como están o migrarlos a este componente */
-</style>

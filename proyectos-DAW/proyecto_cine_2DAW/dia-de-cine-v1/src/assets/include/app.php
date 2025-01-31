@@ -14,7 +14,12 @@ function elegirContenido($mostrar = "login")
         include 'src/assets/include/templates/form-registro.php';
     } elseif ($mostrar == "terminos") {
         include 'src/assets/include/templates/terminos.php';
-    } else {
+    }elseif ($mostrar == "privacidad") {
+        include 'src/assets/include/templates/privacidad.php';
+    }elseif ($mostrar == "cookies") {
+        include 'src/assets/include/templates/cookies.php';
+    }
+     else {
         // En caso de que el parámetro no sea válido, se carga el formulario de login por defecto
         include 'src/assets/include/templates/form-login.php';
     }

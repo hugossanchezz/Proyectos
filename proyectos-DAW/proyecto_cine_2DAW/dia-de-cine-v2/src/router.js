@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+
 import TemporalView from './views/TemporalView.vue';
 import IndexView from './views/IndexView.vue';
 import NosotrosView from './views/NosotrosView.vue';
