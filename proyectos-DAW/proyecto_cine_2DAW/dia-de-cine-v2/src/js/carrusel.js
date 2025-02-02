@@ -60,10 +60,8 @@ async function obtenerLogoFranquicia(franquicia) {
  * Carga el carrusel de franquicias en el contenedor que se pasa como parámetro.
  * El carrusel se llena con los logos de las franquicias que se encuentran en la lista
  * y se repite dos veces, para el efecto inifinito con css.
- * 
- * @param {HTMLElement} carruselContainer - El contenedor que debe contener el carrusel.
  */
-export async function cargarCarrusel(carruselContainer) {
+export async function mostrarCarrusel() {
     // Lista de franquicias que se mostrarán en el carrusel
     const franquicias = [
         'los juegos del hambre',
@@ -93,6 +91,8 @@ export async function cargarCarrusel(carruselContainer) {
         'misión imposible',
         'el planeta de los simios',
     ];
+
+    const carruselContainer = document.getElementById('carrusel__items');
 
     // Repetir el carrusel dos veces (esto es para hacer que el carrusel sea más largo)
     for (let i = 0; i < 2; i++) {

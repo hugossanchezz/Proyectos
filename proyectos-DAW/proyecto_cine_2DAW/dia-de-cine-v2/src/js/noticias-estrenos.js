@@ -46,11 +46,11 @@ async function obtenerNoticias() {
  */
 function barajarArray(noticias) {
   for (let i = noticias.length - 1; i > 0; i--) {
-      // Elegir un índice aleatorio entre 0 y i
-      const j = Math.floor(Math.random() * (i + 1));
+    // Elegir un índice aleatorio entre 0 y i
+    const j = Math.floor(Math.random() * (i + 1));
 
-      // Intercambiar elementos en las posiciones i y j
-      [noticias[i], noticias[j]] = [noticias[j], noticias[i]];
+    // Intercambiar elementos en las posiciones i y j
+    [noticias[i], noticias[j]] = [noticias[j], noticias[i]];
   }
   return noticias;
 }
@@ -71,7 +71,17 @@ export async function mostrarNoticias() {
   // Barajamos el array para que no salgan las noticias en el mismo orden
   const noticias = barajarArray(noticiasOriginal);
 
-  const NUM_NOTICIAS = 36; // Número de noticias a mostrar
+  // Array que almacena los tamaños de pantalla y el número de noticias a mostrar
+  const tamaños = [
+    { ancho: 1440, noticias: 36 },
+    { ancho: 1024, noticias: 24 },
+    { ancho: 425, noticias: 18 },
+    { ancho: 375, noticias: 12 },
+    { ancho: 320, noticias: 6 },
+  ];
+
+  // Número de noticias a mostrar según el tamaño de la pantalla del usuario
+  let NUM_NOTICIAS = tamaños.find(t => window.innerWidth > t.ancho)?.noticias || 6;
 
   // Seleccionamos el contenedor donde se mostrarán las noticias
   const contenedorNoticias = document.getElementById('noticias-container');

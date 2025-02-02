@@ -3,14 +3,14 @@
 
 // Estilos para .contenedor-inicio-sesion
 .contenedor-inicio-sesion {
-  width: 40%;
+  width: 50%;
   min-height: 30rem;
   margin: 0 auto;
 }
 
 // Estilos para .form
 .form {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   padding: 30px 30px 0 30px ;
 
@@ -47,7 +47,6 @@
   margin-left: 10px;
   border-radius: 10px;
   border: none;
-  padding-left: 5px;
 
   align-items: center;
 
@@ -115,7 +114,7 @@
   border: 1px solid map-get($colores, "gris_claro");
   background-color: map-get($colores, "blanco");
   font-weight: 500;
-  width: 100%;
+  width: 70%;
   height: 50px;
   border-radius: 10px;
   margin-top: 15px;
@@ -202,7 +201,7 @@
 /* slider */
 .slider {
   background-color: map-get($colores, "blanco");
-  border: 1px solid map-get($colores, "gris_claro");
+  border: 1px solid map-get($colores, "gris");
   border-radius: 30px;
 
   position: absolute;
@@ -215,7 +214,7 @@
 }
 
 .slider:before {
-  background-color: map-get($colores, "gris_claro");
+  background-color: map-get($colores, "gris");
   width: 0.75em;
   height: 0.75em;
   left: 0.27em;

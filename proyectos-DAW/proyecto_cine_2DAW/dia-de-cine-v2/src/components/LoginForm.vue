@@ -53,7 +53,7 @@
     <p class="p line">o entra con</p>
 
   </form>
-  <div class="flex-row">
+  <div class="centrado-flex">
     <button class="btn google flex">
       <img src="../assets/img/ico/google.svg" alt="Icono de Google" />
       Google

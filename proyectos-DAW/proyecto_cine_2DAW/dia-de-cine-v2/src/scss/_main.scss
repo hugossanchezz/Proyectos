@@ -103,7 +103,7 @@
   height: 500px;
 }
 
-// Estilos para el aside del index.php
+// Estilos para el aside 
 aside{
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   margin-right: 5rem;
@@ -113,5 +113,12 @@ aside{
   
     padding: 1rem;
     gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  aside{
+    margin-right: 2.5rem;
+    padding: 0;
   }
 }

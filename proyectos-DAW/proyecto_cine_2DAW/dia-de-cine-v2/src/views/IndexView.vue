@@ -38,7 +38,7 @@
 
     <!-- Estrenos -->
     <aside>
-      <section id="estrenos-container" class="estrenos-container flex">
+      <section id="estrenos-container" class="estrenos-container flex-column">
         <!-- Espacio de los estrenos de 2025 -->
       </section>
     </aside>
@@ -54,10 +54,12 @@ import {
   mostrarNoticias,
   recargarNoticias,
   mostrarEstrenos,
-} from "../js/noticias-estrenos";
+} from "/src/js/noticias-estrenos";
+import { mostrarCarrusel } from "/src/js/carrusel.js";
 
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer.vue";
+// Importar los componentes de Vue
+import Header from "/src/components/Header.vue";
+import Footer from "/src/components/Footer.vue";
 
 export default {
   name: "IndexView",
@@ -71,6 +73,9 @@ export default {
     };
   },
   async mounted() {
+    // Cargar el carrusel
+    mostrarCarrusel();
+
     // Mostrar las noticias mediante la función asíncrona
     await mostrarNoticias();
 
@@ -83,26 +88,12 @@ export default {
 
     // Llamar a la función para ocultar el loader y mostrar el contenido
     this.mostrarContenido();
-
-    this.forzarRecarga();
   },
   methods: {
     mostrarContenido() {
       setTimeout(() => {
         this.loading = false; // Después de un tiempo, ocultamos el loader y mostramos el contenido
       }, 300); // 300 ms de retraso
-    },
-    /**
-     * Fuerza una recarga de la página Index
-     * Esto se debe a que la Api del carrusel a veces no carga bien el contenido
-     * @return {void}
-     */
-    forzarRecarga() {
-      const logo = document.getElementById('logo');
-      
-      logo.addEventListener('click', () => {
-        location.reload();
-      });
     },
   },
 };

@@ -2,35 +2,53 @@
   <header class="flex">
     <section class="section-logo centrado-flex">
       <router-link to="/">
-        <img id="logo" class="logo" src="../assets/img/logo-no-cd.png" alt="Logo" />
+        <img
+          id="logo"
+          class="logo"
+          src="../assets/img/logo-no-cd.png"
+          alt="Logo"
+        />
       </router-link>
     </section>
 
-    <nav class="flex">
-      <div class="nav__item">
-        <router-link to="/nosotros" class="font-size-pequenio"
-          >Nosotros</router-link
-        >
+    <nav class="">
+      <!-- Botón menú hamburguesa (solo en móviles/tablets) -->
+      <div v-if="esMovil" class=" menu-hamburguesa flex" @click="toggleMenu">
+        <img
+          class="nav__menu__icono"
+          src="/src/assets/img/ico/menu-hamburguesa.svg"
+          alt="Icono de menu"
+        />
       </div>
-      <div class="nav__item">
-        <router-link to="/temporal" class="font-size-pequenio"
-          >Películas</router-link
-        >
-      </div>
-      <div class="nav__item">
-        <router-link to="/temporal" class="font-size-pequenio"
-          >Series</router-link
-        >
-      </div>
-      <div class="nav__item">
-        <router-link to="/temporal" class="font-size-pequenio flex">
-          Mi espacio
-          <img src="../assets/img/ico/bookmark.svg" alt="Icono de guardado" />
-        </router-link>
-      </div>
+
+      <!-- Menú de navegación -->
+      <section
+        class="container-nav-items centrado-flex"
+        :class="{ 'menu-abierto': menuAbierto }"
+      >
+        <div class="nav__item">
+          <router-link to="/nosotros" class="centrado-flex font-size-pequenio">Nosotros</router-link>
+        </div>
+        <div class="nav__item">
+          <router-link to="/temporal" class="centrado-flex font-size-pequenio">Películas</router-link>
+        </div>
+        <div class="nav__item">
+          <router-link to="/temporal" class="centrado-flex font-size-pequenio">Series</router-link>
+        </div>
+        <div class="nav__item">
+          <router-link to="/temporal" class="centrado-flex font-size-pequenio">
+            Mi lista
+            <img
+              class="item__bookmark"
+              src="../assets/img/ico/bookmark.svg"
+              alt="Icono de guardado"
+            />
+          </router-link>
+        </div>
+      </section>
     </nav>
 
-    <section class="acciones flex">
+    <section id="acciones" class="acciones flex">
       <div class="acciones__busqueda">
         <img
           class="busqueda__icono"
@@ -54,5 +72,28 @@
 <script>
 export default {
   name: "Header",
+  data() {
+    return {
+      menuAbierto: false,
+      esMovil: window.innerWidth <= 1024, // Detecta si es móvil/tablet
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.menuAbierto = !this.menuAbierto;
+    },
+    actualizarTamano() {
+      this.esMovil = window.innerWidth <= 1024;
+      if (!this.esMovil) {
+        this.menuAbierto = false; // Asegura que el menú siempre esté visible en escritorio
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener("resize", this.actualizarTamano);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.actualizarTamano);
+  }
 };
 </script>

@@ -1,4 +1,3 @@
-//Variables
 @use "_variables.scss" as *;
 
 header {
@@ -6,10 +5,12 @@ header {
   background-color: map-get($colores, "gris_oscuro");
 
   width: 100%;
-  height: 10vh;
+  min-height: 10vh;
+  height: auto;
   padding: 0 2rem;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .section-logo {
@@ -22,12 +23,14 @@ header {
 }
 
 nav {
-  min-width: 30rem;
+  height: 10vh;
+}
+
+.container-nav-items {
   height: 100%;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
-  justify-content: space-between;
+  display: flex;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  overflow: hidden;
 
   div {
     border-top: 2px solid map-get($colores, "gris");
@@ -43,19 +46,18 @@ nav {
 }
 
 .nav__item {
-  min-width: 15vh;
-  max-width: 15vh;
+  min-width: 17.5vh;
   height: 100%;
 
   a {
     height: 100%;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     text-decoration: none;
     color: map-get($colores, "blanco");
+
+    img {
+      margin-left: 5px;
+    }
   }
 
   &:hover {
@@ -63,13 +65,17 @@ nav {
   }
 }
 
+.menu-hamburguesa {
+  display: none;
+}
+
 .acciones {
   gap: 1rem;
 
-  .acciones__busqueda{
+  .acciones__busqueda {
     height: 100%;
 
-    a{
+    a {
       height: 100%;
     }
   }
@@ -83,5 +89,120 @@ nav {
     scale: 1.2;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
+  }
+}
+
+// Estilos para tabletas (≤ 1024px)
+@media (max-width: 1024px) {
+  header {
+    min-height: auto;
+    max-height: none;
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  .section-logo {
+    width: 100%;
+  }
+
+  nav {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .container-nav-items {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+    div {
+      border: 0;
+    }
+  }
+  
+  .menu-abierto {
+    max-height: 500px;
+    opacity: 1;
+  }
+  
+
+  .menu-hamburguesa {
+    display: block;
+    z-index: -1;
+    cursor: pointer;
+  }
+
+  .nav__menu__icono {
+    display: block;
+  }
+
+  .item__bookmark {
+    display: none;
+  }
+
+  .nav__item {
+    width: 100%;
+    text-align: center;
+
+    a {
+      display: block;
+      padding: 0.5rem 0;
+    }
+
+    &:hover {
+      background-position: 0 0;
+    }
+  }
+
+  .acciones {
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+
+  [class$="__icono"] {
+    &:hover {
+      scale: 1;
+    }
+  }
+}
+
+// Estilos para móviles (≤ 768px)
+@media (max-width: 768px) {
+  header {
+    padding: 0.5rem;
+  }
+
+  nav {
+    gap: 0.25rem;
+  }
+
+  .nav__item {
+    a {
+      font-size: map-get($tamanios, "medio");
+    }
+  }
+
+  .acciones {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .acciones__busqueda,
+  .acciones__login {
+    width: 2rem;
+    height: 2rem;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 }
