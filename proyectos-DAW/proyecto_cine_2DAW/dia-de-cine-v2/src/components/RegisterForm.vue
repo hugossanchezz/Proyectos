@@ -14,6 +14,7 @@
         required
       />
     </div>
+    <div id="error-usuario" class="error-message">{{ errores.usuario }}</div>
 
     <div class="flex-column">
       <label for="correo">Correo</label>
@@ -29,6 +30,7 @@
         required
       />
     </div>
+    <div id="error-correo" class="error-message">{{ errores.correo }}</div>
 
     <div class="flex-column">
       <label for="contrasenia">Contraseña</label>
@@ -43,6 +45,9 @@
         placeholder="Contraseña"
         required
       />
+    </div>
+    <div id="error-contrasenia" class="error-message">
+      {{ errores.contrasenia }}
     </div>
 
     <div class="flex-column">
@@ -59,6 +64,9 @@
         required
       />
     </div>
+    <div id="error-confirmarContrasenia" class="error-message">
+      {{ errores.confirmarContrasenia }}
+    </div>
 
     <div class="flex-column">
       <label for="fechaNacimiento">Fecha de Nacimiento</label>
@@ -72,6 +80,9 @@
         type="date"
         required
       />
+    </div>
+    <div id="error-fechaNacimiento" class="error-message">
+      {{ errores.fechaNacimiento }}
     </div>
 
     <div class="flex-column">
@@ -94,6 +105,9 @@
         <option value="documental">Documental</option>
       </select>
     </div>
+    <div id="error-generoFavorito" class="error-message">
+      {{ errores.generoFavorito }}
+    </div>
 
     <div class="flex-row flex">
       <label class="switch">
@@ -110,12 +124,8 @@
         <a class="span" href="?mostrar=terminos">términos y condiciones</a>
       </label>
     </div>
-
-    <!-- Campo para mostrar errores -->
-    <div v-if="errores.length" class="error-message" style="color: red">
-      <ul>
-        <li v-for="error in errores" :key="error">{{ error }}</li>
-      </ul>
+    <div id="error-aceptarTerminos" class="error-message">
+      {{ errores.aceptarTerminos }}
     </div>
 
     <button class="button-submit" type="submit">Registrarse</button>
@@ -156,7 +166,7 @@ export default {
         !this.aceptarTerminos
       ) {
         this.errores.push("Todos los campos son obligatorios.");
-      }
+      } 
       if (this.contrasenia !== this.confirmarContrasenia) {
         this.errores.push("Las contraseñas no coinciden.");
       }
@@ -177,7 +187,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* Puedes mantener los estilos tal como están o migrarlos aquí */
-</style>

@@ -1,4 +1,6 @@
 <!-- template del formulario de registro -->
+<div id="barraProgreso" class="barraProgreso"></div>
+
 <form class="form flex" id="formRegistro">
     <div class="flex-column">
         <label for="usuario">Nombre de usuario</label>
@@ -7,6 +9,7 @@
         <img src="src/assets/img/ico/user.svg" alt="Icono de usuario">
         <input id="usuario" class="input" type="text" placeholder="Sin caracteres especiales" required>
     </div>
+    <div id="error-usuario" class="error-message"></div>
 
     <div class="flex-column">
         <label for="correo">Correo </label>
@@ -15,6 +18,7 @@
         <img src="src/assets/img/ico/arroba.svg" alt="Icono de correo">
         <input id="correo" class="input" type="email" placeholder="Correo electrónico" required>
     </div>
+    <div id="error-correo" class="error-message"></div>
 
     <div class="flex-column">
         <label for="contrasenia">Contraseña </label>
@@ -23,6 +27,7 @@
         <img src="src/assets/img/ico/candado.svg" alt="Icono de contraseña">
         <input id="contrasenia" class="input" type="password" placeholder="Contraseña" required>
     </div>
+    <div id="error-contrasenia" class="error-message"></div>
 
     <div class="flex-column">
         <label for="confirmarContrasenia">Confirma tu Contraseña</label>
@@ -31,6 +36,7 @@
         <img src="src/assets/img/ico/candado.svg" alt="Icono de contraseña">
         <input id="confirmarContrasenia" class="input" type="password" placeholder="Confirma tu contraseña" name="confirmarContrasenia" required>
     </div>
+    <div id="error-confirmarContrasenia" class="error-message"></div>
 
     <div class="flex-column">
         <label for="fechaNacimiento">Fecha de Nacimiento</label>
@@ -39,6 +45,7 @@
         <img src="src/assets/img/ico/calendario.svg" alt="Icono de calendario">
         <input id="fechaNacimiento" class="input" type="date" name="fechaNacimiento" required>
     </div>
+    <div id="error-fechaNacimiento" class="error-message"></div>
 
     <div class="flex-column">
         <label for="generoFavorito">Género favorito</label>
@@ -54,6 +61,7 @@
             <option value="documental">Documental</option>
         </select>
     </div>
+    <div id="error-generoFavorito" class="error-message"></div>
 
     <div class="flex-row flex">
         <label class="switch">
@@ -64,9 +72,7 @@
             <a class="span" href="?mostrar=terminos">términos y condiciones</a>
         </label>
     </div>
-
-    <!-- Campo para mostrar errores -->
-    <div id="errorMensaje" class="error-message" style="display: none; color: red;"></div>
+    <div id="error-aceptarTerminos" class="error-message"></div>
 
     <button class="button-submit" type="submit">Registrarse</button>
 

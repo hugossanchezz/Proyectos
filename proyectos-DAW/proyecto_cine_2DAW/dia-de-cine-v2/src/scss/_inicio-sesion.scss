@@ -237,3 +237,17 @@ input:checked + .slider:before {
   transform: translateX(1.1em);
   background-color: map-get($colores, "blanco");
 }
+
+.errorMensaje {
+  color: map-get($tamanios, "parrafo");
+  color: map-get($colores, "rojo");
+  margin-bottom: 1rem;
+
+  li{
+    color: map-get($tamanios, "parrafo");
+  }
+}
+
+.correcto {
+  color: map-get($colores, "verde");
+}

@@ -4,7 +4,7 @@
       <label for="correo">Correo</label>
     </div>
     <div class="inputForm flex">
-      <img src="../assets/img/ico/arroba.svg" alt="Icono de arroba" />
+      <img src="/src/assets/img/ico/arroba.svg" alt="Icono de arroba" />
       <input
         v-model="correo"
         id="correo"
@@ -14,12 +14,14 @@
         required
       />
     </div>
+    <!-- Error específico para el correo -->
+    <div v-if="errorCorreo" class="errorMensaje">{{ errorCorreo }}</div>
 
     <div class="flex-column">
       <label for="contrasenia">Contraseña</label>
     </div>
     <div class="inputForm flex">
-      <img src="../assets/img/ico/candado.svg" alt="Icono de candado" />
+      <img src="/src/assets/img/ico/candado.svg" alt="Icono de candado" />
       <input
         v-model="contrasenia"
         id="contrasenia"
@@ -29,6 +31,22 @@
         required
       />
     </div>
+    <!-- Lista de requisitos para la contraseña -->
+    <ul v-if="contrasenia.length" class="errorMensaje">
+      <li :class="{ correcto: tieneMinuscula }">
+        Debe tener al menos una letra minúscula
+      </li>
+      <li :class="{ correcto: tieneMayuscula }">
+        Debe tener al menos una letra mayúscula
+      </li>
+      <li :class="{ correcto: tieneNumero }">Debe tener al menos un número</li>
+      <li :class="{ correcto: tieneCaracterEspecial }">
+        Debe tener al menos un carácter especial (!@#$%^&*)
+      </li>
+      <li :class="{ correcto: tieneLongitudMinima }">
+        Debe tener al menos 8 caracteres
+      </li>
+    </ul>
 
     <div class="flex-row flex">
       <label class="switch">
@@ -38,20 +56,14 @@
       <label for="recordarme">Recordarme</label>
     </div>
 
-    <!-- Contenedor para mostrar errores -->
-    <div v-if="errores.length" class="errorMensaje">
-      <ul>
-        <li v-for="error in errores" :key="error">{{ error }}</li>
-      </ul>
-    </div>
-
-    <button class="button-submit" type="submit">Iniciar Sesión</button>
+    <button class="button-submit" type="submit" :disabled="tieneErrores">
+      Iniciar Sesión
+    </button>
     <p class="p">
       ¿No tienes una cuenta?
       <a class="span" href="?mostrar=registro">Regístrate</a>
     </p>
     <p class="p line">o entra con</p>
-
   </form>
   <div class="centrado-flex">
     <button class="btn google flex">
@@ -68,32 +80,67 @@ export default {
       correo: "",
       contrasenia: "",
       recordarme: false,
-      errores: [],
+      errorCorreo: "", // Error específico para correo
+      correoPattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, // Patron correo
     };
+  },
+  computed: {
+    // Propiedades computadas para verificar las características de la contraseña
+    tieneMinuscula() {
+      return /[a-z]/.test(this.contrasenia);
+    },
+    tieneMayuscula() {
+      return /[A-Z]/.test(this.contrasenia);
+    },
+    tieneNumero() {
+      return /\d/.test(this.contrasenia);
+    },
+    tieneCaracterEspecial() {
+      return /[!@#$%^&*]/.test(this.contrasenia);
+    },
+    tieneLongitudMinima() {
+      return this.contrasenia.length >= 8;
+    },
+    // Propiedad computada para comprobar si hay errores
+    tieneErrores() {
+      return this.errorCorreo || !this.contraseniaValida;
+    },
+    contraseniaValida() {
+      return (
+        this.tieneMinuscula &&
+        this.tieneMayuscula &&
+        this.tieneNumero &&
+        this.tieneCaracterEspecial &&
+        this.tieneLongitudMinima
+      );
+    },
+  },
+  watch: {
+    // Watcher para validar el correo en tiempo real
+    correo() {
+      if (this.correoPattern.test(this.correo)) {
+        // Si el correo es válido no se muestra nada
+        this.errorCorreo = "";
+      } else {
+        // Si el correo no es válido se muestra un mensaje de error
+        this.errorCorreo = "Correo electrónico inválido";
+      }
+    },
+    // Watcher para validar la contraseña en tiempo real
+    contrasenia() {
+      this.tieneErrores;
+    },
   },
   methods: {
     submitForm() {
-      this.errores = [];
-
-      // Validaciones simples
-      if (!this.correo || !this.contrasenia) {
-        this.errores.push("Todos los campos son obligatorios.");
-      }
-
-      // Aquí puedes agregar más validaciones o enviar el formulario al backend
-      if (this.errores.length === 0) {
-        // Lógica para enviar los datos (por ejemplo, usando axios o fetch)
-        console.log("Formulario enviado:", {
-          correo: this.correo,
-          contrasenia: this.contrasenia,
-          recordarme: this.recordarme,
-        });
+      // Validación antes de enviar el formulario
+      if (this.contraseniaValida && !this.errorCorreo) {
+        console.log("Formulario enviado correctamente");
+        location.reload();
+      } else {
+        console.log("Formulario con errores");
       }
     },
   },
 };
 </script>
-
-<style scoped>
-/* Puedes mantener los estilos tal como están o migrarlos aquí */
-</style>

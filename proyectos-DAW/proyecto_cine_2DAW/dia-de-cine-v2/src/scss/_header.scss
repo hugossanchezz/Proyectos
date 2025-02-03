@@ -19,7 +19,7 @@ header {
   justify-content: start;
 
   img {
-    width: 12.5rem;
+    width: 80%;
   }
 }
 
@@ -90,11 +90,20 @@ nav {
   }
 }
 
+//Ajuster para portátiles o pantallas mas pequeñas
+@media screen and (max-width: 1440px) {
+  .section-logo {
+    img {
+      width: 9rem;
+    }
+  }
+}
+
 // Estilos para tabletas (≤ 1024px)
 @media (max-width: 1024px) {
   header {
-    min-height: auto;
-    max-height: none;
+    // min-height: auto;
+    // max-height: none;
     padding: 1rem;
     flex-direction: column;
   }
@@ -174,8 +183,12 @@ nav {
     gap: 0.5rem;
 
     .input-busqueda {
-      width: 100%;
+      width: 80%;
     }
+  }
+
+  .noticias-boton-container{
+    padding: 1rem;
   }
 
   [class$="__icono"] {

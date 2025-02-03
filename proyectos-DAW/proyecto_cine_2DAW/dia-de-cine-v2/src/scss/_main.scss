@@ -54,7 +54,7 @@
 // Estilos del apartado de noticias del index.php
 .noticias-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
   padding: 20px;
 }
@@ -127,6 +127,10 @@ aside{
 @media (max-width: 1024px) {
   .main-grid {
     margin-left: 0;
+  }
+
+  .noticias-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 
   aside{

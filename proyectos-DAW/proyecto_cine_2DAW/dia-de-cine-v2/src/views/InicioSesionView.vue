@@ -54,6 +54,8 @@ import Terminos from "@/components/Terminos.vue";
 import Privacidad from "@/components/Privacidad.vue";
 import Cookies from "@/components/Cookies.vue";
 
+// import { validarForm } from "/src/js/validar-form.js";
+
 export default {
   components: {
     Header,
@@ -87,6 +89,7 @@ export default {
       const mostrar = urlParams.get("mostrar") || "login"; // Obtiene el parámetro 'mostrar' de la URL
       this.formulario = mostrar;
     },
+    
   },
 };
 </script>
