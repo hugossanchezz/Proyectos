@@ -54,7 +54,7 @@
 // Estilos del apartado de noticias del index.php
 .noticias-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 2rem;
   padding: 20px;
 }
@@ -116,9 +116,22 @@ aside{
   }
 }
 
+//Ajuster para portátiles o pantallas mas pequeñas
 @media screen and (max-width: 1440px) {
   aside{
     margin-right: 2.5rem;
     padding: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-grid {
+    margin-left: 0;
+  }
+
+  aside{
+    background-color: map-get($colores, "gris_oscuro");
+    margin-top: 1rem;
+    width: 100%;
   }
 }

@@ -24,8 +24,6 @@ html {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-
-
 .body-grid {
   display: grid;
   grid:
@@ -110,4 +108,16 @@ hr {
   margin-bottom: 30px;
   border: 0;
   border-top: 1px solid map-get($colores, "gris_claro");
+}
+
+@media (max-width: 1024px) {
+  .body-grid-index {
+    display: grid;
+    grid:
+      "header"
+      "carrusel"
+      "main"
+      "aside"
+      "footer";
+  }
 }

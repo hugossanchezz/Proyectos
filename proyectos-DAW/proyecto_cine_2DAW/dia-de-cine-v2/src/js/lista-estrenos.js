@@ -21,7 +21,7 @@ export const estrenos2025 = [
         cartelera: '/src/assets/img/estrenos/aun-estoy-aqui.jpg',
         titulo: 'Aún estoy aquí',
         fechaEstreno: '21 de febrero de 2025',
-        descripcion: 'Drama protagonizado por Javier Bardem, con tres nominaciones a los Premios Oscar.',
+        descripcion: 'Una historia de resistencia y valentía: el viaje de una madre que convirtió el dolor en lucha tras la desaparición de su esposo durante la dictadura brasileña',
     },
     {
         cartelera: '/src/assets/img/estrenos/the-monkey.webp',

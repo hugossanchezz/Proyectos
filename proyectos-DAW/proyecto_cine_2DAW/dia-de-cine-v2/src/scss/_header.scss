@@ -14,76 +14,74 @@ header {
 }
 
 .section-logo {
-  width: 7rem;
-  height: 90%;
-}
+  width: 33.33%;
+  height: 10vh;
+  justify-content: start;
 
-.logo {
-  width: 100%;
+  img {
+    width: 12.5rem;
+  }
 }
 
 nav {
+  width: 33.33%;
   height: 10vh;
-}
-
-.container-nav-items {
-  height: 100%;
-  display: flex;
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  overflow: hidden;
-
-  div {
-    border-top: 2px solid map-get($colores, "gris");
-
-    background: linear-gradient(
-      to bottom,
-      transparent 50%,
-      map-get($colores, "gris") 50%
-    );
-    background-size: 100% 200%;
-    transition: background-position 0.3s ease-in-out;
-  }
-}
-
-.nav__item {
-  min-width: 17.5vh;
-  height: 100%;
-
-  a {
+  .container-nav-items {
     height: 100%;
-    width: 100%;
-    text-decoration: none;
-    color: map-get($colores, "blanco");
+    display: flex;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    overflow: hidden;
 
-    img {
-      margin-left: 5px;
+    div {
+      border-top: 2px solid map-get($colores, "gris");
+
+      background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        map-get($colores, "gris") 50%
+      );
+      background-size: 100% 200%;
+      transition: background-position 0.3s ease-in-out;
     }
   }
-
-  &:hover {
-    background-position: 0 -100%;
-  }
-}
-
-.menu-hamburguesa {
-  display: none;
-}
-
-.acciones {
-  gap: 1rem;
-
-  .acciones__busqueda {
+  .nav__item {
+    min-width: 17.5vh;
     height: 100%;
 
     a {
       height: 100%;
+      width: 100%;
+      text-decoration: none;
+      color: map-get($colores, "blanco");
+
+      img {
+        margin-left: 5px;
+      }
     }
+
+    &:hover {
+      background-position: 0 -100%;
+    }
+  }
+
+  .menu-hamburguesa {
+    display: none;
+  }
+}
+
+.acciones {
+  width: 33.33%;
+  gap: 1rem;
+  justify-content: end;
+
+  .input-busqueda {
+    width: 50%;
   }
 }
 
 // Estilos comunes para los iconos
 [class$="__icono"] {
-  width: map-get($tamanios, "grande");
+  width: map-get($tamanios, "gigante");
 
   &:hover {
     scale: 1.2;
@@ -102,69 +100,82 @@ nav {
   }
 
   .section-logo {
-    width: 100%;
+    height: 20vh;
+    width: 80%;
+    img{
+      width: 100%;
+    }
   }
 
   nav {
     flex-direction: column;
     width: 100%;
     height: auto;
-  }
 
-  .container-nav-items {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    .container-nav-items {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
-    div {
-      border: 0;
+      div {
+        border: 0;
+      }
     }
-  }
-  
-  .menu-abierto {
-    max-height: 500px;
-    opacity: 1;
-  }
-  
 
-  .menu-hamburguesa {
-    display: block;
-    z-index: -1;
-    cursor: pointer;
-  }
+    .menu-abierto {
+      max-height: 500px;
+      opacity: 1;
+    }
 
-  .nav__menu__icono {
-    display: block;
-  }
+    .acciones {
+      width: 100%;
+      justify-content: space-between;
+    }
 
-  .item__bookmark {
-    display: none;
-  }
-
-  .nav__item {
-    width: 100%;
-    text-align: center;
-
-    a {
+    .menu-hamburguesa {
       display: block;
-      padding: 0.5rem 0;
+      z-index: -1;
+      cursor: pointer;
     }
 
-    &:hover {
-      background-position: 0 0;
+    .nav__menu__icono {
+      display: block;
+    }
+
+    .item__bookmark {
+      display: none;
+    }
+
+    .nav__item {
+      width: 100%;
+      text-align: center;
+
+      a {
+        display: block;
+        padding: 0.5rem 0;
+      }
+
+      &:hover {
+        background-position: 0 0;
+      }
     }
   }
 
   .acciones {
+    width: 100%;
     margin-top: 1rem;
     gap: 0.5rem;
+
+    .input-busqueda {
+      width: 100%;
+    }
   }
 
   [class$="__icono"] {
@@ -190,15 +201,8 @@ nav {
     }
   }
 
-  .acciones {
-    width: 100%;
-    justify-content: space-between;
-  }
-
   .acciones__busqueda,
   .acciones__login {
-    width: 2rem;
-    height: 2rem;
 
     img {
       width: 100%;

@@ -29,7 +29,7 @@
 // Estilos para .inputForm y .input
 .inputForm {
   border: 1.5px solid map-get($colores, "gris_claro");
-  height: 50px;
+  height: 100%;
   padding: 10px;
   border-radius: 10px;
 
@@ -43,9 +43,7 @@
 
 .input {
   width: 100%;
-  height: 100%;
   margin-left: 10px;
-  border-radius: 10px;
   border: none;
 
   align-items: center;
