@@ -241,7 +241,6 @@ input:checked + .slider:before {
 .errorMensaje {
   color: map-get($tamanios, "parrafo");
   color: map-get($colores, "rojo");
-  margin-bottom: 1rem;
 
   li{
     color: map-get($tamanios, "parrafo");

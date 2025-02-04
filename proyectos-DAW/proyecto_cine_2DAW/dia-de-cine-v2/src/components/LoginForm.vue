@@ -80,8 +80,8 @@ export default {
       correo: "",
       contrasenia: "",
       recordarme: false,
-      errorCorreo: "", // Error específico para correo
-      correoPattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, // Patron correo
+      errorCorreo: "",
+      correoPattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, // Patron correo
     };
   },
   computed: {
@@ -119,24 +119,18 @@ export default {
     // Watcher para validar el correo en tiempo real
     correo() {
       if (this.correoPattern.test(this.correo)) {
-        // Si el correo es válido no se muestra nada
         this.errorCorreo = "";
       } else {
-        // Si el correo no es válido se muestra un mensaje de error
         this.errorCorreo = "Correo electrónico inválido";
       }
-    },
-    // Watcher para validar la contraseña en tiempo real
-    contrasenia() {
-      this.tieneErrores;
     },
   },
   methods: {
     submitForm() {
       // Validación antes de enviar el formulario
       if (this.contraseniaValida && !this.errorCorreo) {
-        console.log("Formulario enviado correctamente");
-        location.reload();
+        console.log("Inicio de sesión correcto");
+        // Aquí puedes redirigir o mostrar un mensaje de éxito
       } else {
         console.log("Formulario con errores");
       }

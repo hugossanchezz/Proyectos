@@ -14,7 +14,7 @@
         required
       />
     </div>
-    <div id="error-usuario" class="error-message">{{ errores.usuario }}</div>
+    <div id="error-usuario" class="errorMensaje">{{ errores.usuario }}</div>
 
     <div class="flex-column">
       <label for="correo">Correo</label>
@@ -30,7 +30,7 @@
         required
       />
     </div>
-    <div id="error-correo" class="error-message">{{ errores.correo }}</div>
+    <div id="error-correo" class="errorMensaje">{{ errores.correo }}</div>
 
     <div class="flex-column">
       <label for="contrasenia">Contraseña</label>
@@ -46,9 +46,22 @@
         required
       />
     </div>
-    <div id="error-contrasenia" class="error-message">
-      {{ errores.contrasenia }}
-    </div>
+    <!-- Lista de requisitos para la contraseña -->
+    <ul v-if="contrasenia.length" class="errorMensaje">
+      <li :class="{ correcto: tieneMinuscula }">
+        Debe tener al menos una letra minúscula
+      </li>
+      <li :class="{ correcto: tieneMayuscula }">
+        Debe tener al menos una letra mayúscula
+      </li>
+      <li :class="{ correcto: tieneNumero }">Debe tener al menos un número</li>
+      <li :class="{ correcto: tieneCaracterEspecial }">
+        Debe tener al menos un carácter especial (!@#$%^&*)
+      </li>
+      <li :class="{ correcto: tieneLongitudMinima }">
+        Debe tener al menos 8 caracteres
+      </li>
+    </ul>
 
     <div class="flex-column">
       <label for="confirmarContrasenia">Confirma tu Contraseña</label>
@@ -64,7 +77,7 @@
         required
       />
     </div>
-    <div id="error-confirmarContrasenia" class="error-message">
+    <div id="error-confirmarContrasenia" class="errorMensaje">
       {{ errores.confirmarContrasenia }}
     </div>
 
@@ -81,7 +94,7 @@
         required
       />
     </div>
-    <div id="error-fechaNacimiento" class="error-message">
+    <div id="error-fechaNacimiento" class="errorMensaje">
       {{ errores.fechaNacimiento }}
     </div>
 
@@ -105,7 +118,7 @@
         <option value="documental">Documental</option>
       </select>
     </div>
-    <div id="error-generoFavorito" class="error-message">
+    <div id="error-generoFavorito" class="errorMensaje">
       {{ errores.generoFavorito }}
     </div>
 
@@ -124,7 +137,7 @@
         <a class="span" href="?mostrar=terminos">términos y condiciones</a>
       </label>
     </div>
-    <div id="error-aceptarTerminos" class="error-message">
+    <div id="error-aceptarTerminos" class="errorMensaje">
       {{ errores.aceptarTerminos }}
     </div>
 
@@ -142,46 +155,125 @@ export default {
   data() {
     return {
       usuario: "",
+      correoPattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, // Patron correo
       correo: "",
       contrasenia: "",
       confirmarContrasenia: "",
       fechaNacimiento: "",
       generoFavorito: "",
       aceptarTerminos: false,
-      errores: [],
+      errores: {
+        usuario: "",
+        correo: "",
+        contrasenia: "",
+        confirmarContrasenia: "",
+        fechaNacimiento: "",
+        generoFavorito: "",
+        aceptarTerminos: "",
+      },
     };
   },
+  watch: {
+    // Validar el usuario en tiempo real
+    usuario() {
+      if (!this.usuario) {
+        this.errores.usuario = "El nombre de usuario es requerido";
+      } else if (/[^a-zA-Z0-9]/.test(this.usuario)) {
+        this.errores.usuario = "No se permiten caracteres especiales";
+      } else {
+        this.errores.usuario = "";
+      }
+    },
+    // Validar el correo en tiempo real
+    correo() {
+      if (!this.correo) {
+        this.errores.correo = "El correo es requerido";
+      } else if (!this.correoPattern.test(this.correo)) {
+        this.errores.correo = "Correo no válido";
+      } else {
+        this.errores.correo = "";
+      }
+    },
+    // Validar la contraseña en tiempo real
+    watch: {
+      contrasenia() {
+        if (!this.contrasenia) {
+          this.errores.contrasenia = "La contraseña es requerida";
+        } else if (
+          !this.tieneMinuscula ||
+          !this.tieneMayuscula ||
+          !this.tieneNumero ||
+          !this.tieneCaracterEspecial ||
+          !this.tieneLongitudMinima
+        ) {
+          this.errores.contrasenia =
+            "La contraseña no cumple con los requisitos";
+        } else {
+          this.errores.contrasenia = "";
+        }
+      },
+    },
+
+    // Verificar las contraseñas coincidentes
+    confirmarContrasenia() {
+      if (this.confirmarContrasenia !== this.contrasenia) {
+        this.errores.confirmarContrasenia = "Las contraseñas no coinciden";
+      } else {
+        this.errores.confirmarContrasenia = "";
+      }
+    },
+    // Verificar la fecha de nacimiento
+    fechaNacimiento() {
+      if (!this.esMayorDe13) {
+        this.errores.fechaNacimiento = "Debes tener al menos 13 años";
+      } else {
+        this.errores.fechaNacimiento = "";
+      }
+    },
+    // Verificar los términos y condiciones
+    aceptarTerminos() {
+      if (!this.aceptarTerminos) {
+        this.errores.aceptarTerminos =
+          "Debes aceptar los términos y condiciones";
+      } else {
+        this.errores.aceptarTerminos = "";
+      }
+    },
+  },
+  computed: {
+    // Propiedades computadas para la contraseña
+    tieneMinuscula() {
+      return /[a-z]/.test(this.contrasenia);
+    },
+    tieneMayuscula() {
+      return /[A-Z]/.test(this.contrasenia);
+    },
+    tieneNumero() {
+      return /\d/.test(this.contrasenia);
+    },
+    tieneCaracterEspecial() {
+      return /[!@#$%^&*]/.test(this.contrasenia);
+    },
+    tieneLongitudMinima() {
+      return this.contrasenia.length >= 8;
+    },
+  },
+
   methods: {
     submitForm() {
-      this.errores = [];
-
-      // Validaciones simples
       if (
-        !this.usuario ||
-        !this.correo ||
-        !this.contrasenia ||
-        !this.confirmarContrasenia ||
-        !this.fechaNacimiento ||
-        !this.generoFavorito ||
-        !this.aceptarTerminos
+        !this.errores.usuario &&
+        !this.errores.correo &&
+        !this.errores.contrasenia &&
+        !this.errores.confirmarContrasenia &&
+        !this.errores.fechaNacimiento &&
+        !this.errores.generoFavorito &&
+        this.aceptarTerminos
       ) {
-        this.errores.push("Todos los campos son obligatorios.");
-      } 
-      if (this.contrasenia !== this.confirmarContrasenia) {
-        this.errores.push("Las contraseñas no coinciden.");
-      }
-
-      // Aquí puedes agregar más validaciones o enviar el formulario al backend
-      if (this.errores.length === 0) {
-        // Lógica para enviar los datos (por ejemplo, usando axios o fetch)
-        console.log("Formulario enviado:", {
-          usuario: this.usuario,
-          correo: this.correo,
-          contrasenia: this.contrasenia,
-          fechaNacimiento: this.fechaNacimiento,
-          generoFavorito: this.generoFavorito,
-          aceptarTerminos: this.aceptarTerminos,
-        });
+        console.log("Usuario registrado");
+        // Redirigir o procesar el formulario
+      } else {
+        console.log("Formulario con errores");
       }
     },
   },
