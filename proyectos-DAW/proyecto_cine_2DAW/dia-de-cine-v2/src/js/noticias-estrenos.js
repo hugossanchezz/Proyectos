@@ -66,7 +66,7 @@ function barajarArray(noticias) {
  */
 export async function mostrarNoticias() {
   // Obtener las noticias en un array
-  const noticiasOriginal = await obtenerNoticias(); // Usar await aquí
+  const noticiasOriginal = await obtenerNoticias(); // Usar await aquí ya que no sabemos cuanto tardará en obtener todas las noticias
 
   // Barajamos el array para que no salgan las noticias en el mismo orden
   const noticias = barajarArray(noticiasOriginal);

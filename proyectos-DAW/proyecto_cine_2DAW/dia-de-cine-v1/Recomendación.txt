@@ -1,0 +1,5 @@
+A la galería de noticias del index le cuesta cargar la primera 
+vez que se ejecuta el proyecto.
+
+Para evitar que se quede cargando indefinidamente navega a otro
+apartado, como por ejemplo "Nosotros", y luego vuelve al index

@@ -6,7 +6,7 @@
       </router-link>
     </section>
 
-    <nav class="">
+    <nav>
       <!-- Botón menú hamburguesa (solo en móviles/tablets) -->
       <div v-if="esMovil" class="menu-hamburguesa flex" @click="toggleMenu">
         <img
