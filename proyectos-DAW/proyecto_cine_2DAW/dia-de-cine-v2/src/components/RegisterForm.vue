@@ -1,5 +1,12 @@
 <template>
+  <!-- Formulario de registro -->
   <form class="form flex" @submit.prevent="submitForm">
+    <h1 class="centrado-flex">Crea tu cuenta</h1>
+    <hr />
+    <div id="progress-container">
+      <div id="progress-bar" :style="{ width: progreso + '%' }"></div>
+    </div>
+
     <div class="flex-column">
       <label for="usuario">Nombre de usuario</label>
     </div>
@@ -188,6 +195,17 @@ export default {
       },
       visibilidadContrasenia: false,
       visibilidadConfirmarContrasenia: false,
+      progreso: 0,
+      incremento: 100 / 6, // 1/6 del 100%
+      validado: {
+        // Objeto de validación para que el decremento o incremento de la barra de progreso del formulario no sea acumulativa en cada campo
+        usuario: false,
+        correo: false,
+        contrasenia: false,
+        confirmarContrasenia: false,
+        fechaNacimiento: false,
+        aceptarTerminos: false,
+      },
     };
   },
   computed: {
@@ -239,30 +257,75 @@ export default {
     },
   },
   watch: {
-    // Validar el usuario en tiempo realConfirmarContrasenia
+    // Observa el cambio en el campo 'usuario'
     usuario() {
+      // Si el campo 'usuario' está vacío, asigna un mensaje de error
       if (!this.usuario) {
         this.errores.usuario = "El nombre de usuario es requerido";
+        // Si ya se había validado previamente, se decrementa la barra de progreso
+        if (this.validado.usuario) {
+          this.decrementarBarraProgreso();
+          this.validado.usuario = false; // Se marca como no validado
+        }
+        // Si el campo 'usuario' contiene caracteres especiales (no alfanuméricos), muestra un error
       } else if (/[^a-zA-Z0-9]/.test(this.usuario)) {
         this.errores.usuario = "No se permiten caracteres especiales";
+        // Si ya se había validado previamente, se decrementa la barra de progreso
+        if (this.validado.usuario) {
+          this.decrementarBarraProgreso();
+          this.validado.usuario = false; // Se marca como no validado
+        }
+        // Si el campo 'usuario' es válido (no está vacío y no tiene caracteres especiales)
       } else {
-        this.errores.usuario = "";
+        this.errores.usuario = ""; // Se limpia el mensaje de error
+        // Si no estaba validado antes, se incrementa la barra de progreso
+        if (!this.validado.usuario) {
+          this.incrementarBarraProgreso();
+          this.validado.usuario = true; // Se marca como validado
+        }
       }
     },
-    // Validar el correo en tiempo real
+
+    // Observa el cambio en el campo 'correo'
     correo() {
+      // Si el campo 'correo' está vacío, asigna un mensaje de error
       if (!this.correo) {
         this.errores.correo = "El correo es requerido";
+        // Si ya se había validado previamente, se decrementa la barra de progreso
+        if (this.validado.correo) {
+          this.decrementarBarraProgreso();
+          this.validado.correo = false; // Se marca como no validado
+        }
+        // Si el correo no coincide con el patrón definido (expresión regular), muestra un error
       } else if (!this.correoPattern.test(this.correo)) {
         this.errores.correo = "Correo no válido";
+        // Si ya se había validado previamente, se decrementa la barra de progreso
+        if (this.validado.correo) {
+          this.decrementarBarraProgreso();
+          this.validado.correo = false; // Se marca como no validado
+        }
+        // Si el correo es válido (no está vacío y coincide con el patrón)
       } else {
-        this.errores.correo = "";
+        this.errores.correo = ""; // Se limpia el mensaje de error
+        // Si no estaba validado antes, se incrementa la barra de progreso
+        if (!this.validado.correo) {
+          this.incrementarBarraProgreso();
+          this.validado.correo = true; // Se marca como validado
+        }
       }
     },
-    // Validar la contraseña en tiempo real
+
+    // Observa el cambio en el campo 'contrasenia'
     contrasenia() {
+      // Si la contraseña está vacía, asigna un mensaje de error
       if (!this.contrasenia) {
         this.errores.contrasenia = "La contraseña es requerida";
+        // Si ya se había validado previamente, se decrementa la barra de progreso
+        if (this.validado.contrasenia) {
+          this.decrementarBarraProgreso();
+          this.validado.contrasenia = false; // Se marca como no validado
+        }
+        // Si la contraseña no cumple con los requisitos de seguridad (minúsculas, mayúsculas, número, etc.)
       } else if (
         !this.tieneMinuscula ||
         !this.tieneMayuscula ||
@@ -271,35 +334,85 @@ export default {
         !this.tieneLongitudMinima
       ) {
         this.errores.contrasenia = "La contraseña no cumple con los requisitos";
+        // Si ya se había validado previamente, se decrementa la barra de progreso
+        if (this.validado.contrasenia) {
+          this.decrementarBarraProgreso();
+          this.validado.contrasenia = false; // Se marca como no validado
+        }
+        // Si la contraseña es válida (cumple con los requisitos)
       } else {
-        this.errores.contrasenia = "";
+        this.errores.contrasenia = ""; // Se limpia el mensaje de error
+        // Si no estaba validado antes, se incrementa la barra de progreso
+        if (!this.validado.contrasenia) {
+          this.incrementarBarraProgreso();
+          this.validado.contrasenia = true; // Se marca como validado
+        }
       }
     },
-  },
 
-  // Verificar las contraseñas coincidentes
-  confirmarContrasenia() {
-    if (this.confirmarContrasenia !== this.contrasenia) {
-      this.errores.confirmarContrasenia = "Las contraseñas no coinciden";
-    } else {
-      this.errores.confirmarContrasenia = "";
-    }
-  },
-  // Verificar la fecha de nacimiento
-  fechaNacimiento() {
-    if (!this.esMayorDe13) {
-      this.errores.fechaNacimiento = "Debes tener al menos 13 años";
-    } else {
-      this.errores.fechaNacimiento = "";
-    }
-  },
-  // Verificar los términos y condiciones
-  aceptarTerminos() {
-    if (!this.aceptarTerminos) {
-      this.errores.aceptarTerminos = "Debes aceptar los términos y condiciones";
-    } else {
-      this.errores.aceptarTerminos = "";
-    }
+    // Observa el cambio en el campo 'confirmarContrasenia'
+    confirmarContrasenia() {
+      // Si las contraseñas no coinciden, muestra un error
+      if (this.confirmarContrasenia !== this.contrasenia) {
+        this.errores.confirmarContrasenia = "Las contraseñas no coinciden";
+        // Si ya se había validado previamente, se decrementa la barra de progreso
+        if (this.validado.confirmarContrasenia) {
+          this.decrementarBarraProgreso();
+          this.validado.confirmarContrasenia = false; // Se marca como no validado
+        }
+        // Si las contraseñas coinciden
+      } else {
+        this.errores.confirmarContrasenia = ""; // Se limpia el mensaje de error
+        // Si no estaba validado antes, se incrementa la barra de progreso
+        if (!this.validado.confirmarContrasenia) {
+          this.incrementarBarraProgreso();
+          this.validado.confirmarContrasenia = true; // Se marca como validado
+        }
+      }
+    },
+
+    // Observa el cambio en el campo 'fechaNacimiento'
+    fechaNacimiento() {
+      // Si la persona no tiene al menos 13 años, muestra un error
+      if (!this.esMayorDe13) {
+        this.errores.fechaNacimiento = "Debes tener al menos 13 años";
+        // Si ya se había validado previamente, se decrementa la barra de progreso
+        if (this.validado.fechaNacimiento) {
+          this.decrementarBarraProgreso();
+          this.validado.fechaNacimiento = false; // Se marca como no validado
+        }
+        // Si la persona tiene al menos 13 años
+      } else {
+        this.errores.fechaNacimiento = ""; // Se limpia el mensaje de error
+        // Si no estaba validado antes, se incrementa la barra de progreso
+        if (!this.validado.fechaNacimiento) {
+          this.incrementarBarraProgreso();
+          this.validado.fechaNacimiento = true; // Se marca como validado
+        }
+      }
+    },
+
+    // Observa el cambio en el campo 'aceptarTerminos'
+    aceptarTerminos() {
+      // Si no se han aceptado los términos y condiciones, muestra un error
+      if (!this.aceptarTerminos) {
+        this.errores.aceptarTerminos =
+          "Debes aceptar los términos y condiciones";
+        // Si ya se había validado previamente, se decrementa la barra de progreso
+        if (this.validado.aceptarTerminos) {
+          this.decrementarBarraProgreso();
+          this.validado.aceptarTerminos = false; // Se marca como no validado
+        }
+        // Si se han aceptado los términos y condiciones
+      } else {
+        this.errores.aceptarTerminos = ""; // Se limpia el mensaje de error
+        // Si no estaba validado antes, se incrementa la barra de progreso
+        if (!this.validado.aceptarTerminos) {
+          this.incrementarBarraProgreso();
+          this.validado.aceptarTerminos = true; // Se marca como validado
+        }
+      }
+    },
   },
 
   methods: {
@@ -317,6 +430,18 @@ export default {
         // Redirigir o procesar el formulario
       } else {
         console.log("Formulario con errores");
+      }
+    },
+    incrementarBarraProgreso() {
+      if (this.progreso < 100) {
+        this.progreso += this.incremento;
+        console.log(this.progreso);
+      }
+    },
+    decrementarBarraProgreso() {
+      if (this.progreso < 100) {
+        this.progreso -= this.incremento;
+        console.log(this.progreso);
       }
     },
   },

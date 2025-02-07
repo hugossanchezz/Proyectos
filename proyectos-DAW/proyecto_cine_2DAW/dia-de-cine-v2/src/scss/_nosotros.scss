@@ -13,4 +13,9 @@
   p{
     color: map-get($colores, "gris_oscuro");
   }
+
+  hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 }

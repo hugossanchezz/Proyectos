@@ -75,6 +75,10 @@ footer {
   color: map-get($colores, "gris");
 }
 
+h1 {
+  color: map-get($colores, "gris_oscuro");
+}
+
 h2 {
   font-size: map-get($tamanios, "medio");
   margin-top: 1rem;
@@ -105,8 +109,7 @@ ul {
 
 hr {
   width: 100%;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   border: 0;
   border-top: 1px solid map-get($colores, "gris_claro");
 }

@@ -18,6 +18,23 @@
   gap: 10px;
   border-radius: 20px;
 
+  // Estilos de la barra de progreso
+  #progress-container {
+    background-color: map-get($colores, "gris_claro");
+    width: 100%;
+    height: 1rem;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  
+  #progress-bar {
+    background-color: map-get($colores, "naranja");
+    width: 0%;
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+  }
+
 }
 
 // Estilos para .flex-column y sus elementos hijos
