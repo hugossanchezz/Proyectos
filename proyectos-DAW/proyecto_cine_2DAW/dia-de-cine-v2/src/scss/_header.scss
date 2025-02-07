@@ -14,17 +14,15 @@ header {
 }
 
 .section-logo {
-  width: 33.33%;
   height: 10vh;
   justify-content: start;
 
   img {
-    width: 80%;
+    width: 15rem;
   }
 }
 
 nav {
-  width: 33.33%;
   height: 10vh;
   .container-nav-items {
     height: 100%;
@@ -70,12 +68,20 @@ nav {
 }
 
 .acciones {
-  width: 33.33%;
   gap: 1rem;
   justify-content: end;
 
+  .acciones__container {
+    width: 5.5rem;
+
+    div {
+      width: 50%;
+      padding: 5px;
+    }
+  }
+
   .input-busqueda {
-    width: 50%;
+    width: 60%;
   }
 }
 
@@ -102,21 +108,25 @@ nav {
 // Estilos para tabletas (≤ 1024px)
 @media (max-width: 1024px) {
   header {
-    // min-height: auto;
-    // max-height: none;
-    padding: 1rem;
     flex-direction: column;
+    align-items: center;
+    height: auto;
   }
 
   .section-logo {
-    height: 20vh;
-    width: 80%;
-    img{
+    height: auto;
+    width: 100%;
+    text-align: center;
+    a {
       width: 100%;
+      img {
+        width: 80%;
+      }
     }
   }
 
   nav {
+    display: flex;
     flex-direction: column;
     width: 100%;
     height: auto;
@@ -130,8 +140,9 @@ nav {
       opacity: 0;
       overflow: hidden;
       display: flex;
-      flex-direction: column;
-      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      visibility: hidden; // Oculta sin interrumpir la animación
+      transition: max-height 0.3s ease-in-out, opacity 0.5s ease-in-out,
+        visibility 0.5s ease-in-out, padding 0.5s ease-in-out;
 
       div {
         border: 0;
@@ -141,25 +152,8 @@ nav {
     .menu-abierto {
       max-height: 500px;
       opacity: 1;
-    }
-
-    .acciones {
-      width: 100%;
-      justify-content: space-between;
-    }
-
-    .menu-hamburguesa {
-      display: block;
-      z-index: -1;
-      cursor: pointer;
-    }
-
-    .nav__menu__icono {
-      display: block;
-    }
-
-    .item__bookmark {
-      display: none;
+      visibility: visible; // Hace visible gradualmente
+      padding: 10px;
     }
 
     .nav__item {
@@ -175,19 +169,42 @@ nav {
         background-position: 0 0;
       }
     }
-  }
 
-  .acciones {
-    width: 100%;
-    margin-top: 1rem;
-    gap: 0.5rem;
-
-    .input-busqueda {
-      width: 80%;
+    .item__bookmark {
+      display: none;
     }
   }
 
-  .noticias-boton-container{
+  .menu-hamburguesa {
+    width: 36px;
+    cursor: pointer;
+    .menu-icono {
+      display: block;
+    }
+  }
+
+  .acciones__container {
+    width: 5rem;
+
+    div {
+      width: 50%;
+      padding: 5px;
+    }
+  }
+
+  .acciones {
+    height: 2.25rem;
+    width: 100%;
+    gap: 1rem;
+
+    justify-content: space-between;
+
+    .input-busqueda {
+      width: 60%;
+    }
+  }
+
+  .noticias-boton-container {
     padding: 1rem;
   }
 
@@ -214,12 +231,11 @@ nav {
     }
   }
 
-  .acciones__busqueda,
-  .acciones__login {
-
+  .container__busqueda,
+  .container__login {
     img {
       width: 100%;
-      height: auto;
+      height: 100%;
     }
   }
 }

@@ -67,7 +67,7 @@
           />
         </div>
         <button @click="cerrarModal" class="btn-cerrar centrado-flex">
-          <img src="/src/assets/img/ico/menu-close.svg" alt="Cerrar tarjeta" />
+          <img src="/src/assets/img/ico/close.svg" alt="Cerrar tarjeta" />
         </button>
       </div>
     </div>

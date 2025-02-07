@@ -21,14 +21,23 @@
       <label for="contrasenia">Contraseña</label>
     </div>
     <div class="inputForm flex">
-      <img src="/src/assets/img/ico/candado.svg" alt="Icono de candado" />
+      <img
+        src="/src/assets/img/ico/candado.svg"
+        alt="Icono de candado de contraseña"
+      />
       <input
         v-model="contrasenia"
         id="contrasenia"
         class="input"
-        type="password"
+        :type="tipoInput"
         placeholder="Contraseña"
         required
+      />
+      <img
+        class="input-visibilidad"
+        :src="iconoVisibilidad"
+        alt="Mostrar y ocultar contraseña"
+        @click="visibilidadContrasenia = !visibilidadContrasenia"
       />
     </div>
     <!-- Lista de requisitos para la contraseña -->
@@ -82,6 +91,7 @@ export default {
       recordarme: false,
       errorCorreo: "",
       correoPattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, // Patron correo
+      visibilidadContrasenia: false,
     };
   },
   computed: {
@@ -114,6 +124,20 @@ export default {
         this.tieneLongitudMinima
       );
     },
+    iconoVisibilidad() {
+      if (this.visibilidadContrasenia) {
+        return "/src/assets/img/ico/visibilidad-off.svg";
+      } else {
+        return "/src/assets/img/ico/visibilidad-on.svg";
+      }
+    },
+    tipoInput() {
+      if (this.visibilidadContrasenia) {
+        return "text";
+      } else {
+        return "password";
+      }
+    }
   },
   watch: {
     // Watcher para validar el correo en tiempo real

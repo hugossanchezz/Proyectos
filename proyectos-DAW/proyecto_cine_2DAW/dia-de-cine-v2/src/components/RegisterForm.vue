@@ -4,7 +4,7 @@
       <label for="usuario">Nombre de usuario</label>
     </div>
     <div class="inputForm flex">
-      <img src="../assets/img/ico/user.svg" alt="Icono de usuario" />
+      <img src="/src/assets/img/ico/user.svg" alt="Icono de usuario" />
       <input
         v-model="usuario"
         id="usuario"
@@ -20,7 +20,7 @@
       <label for="correo">Correo</label>
     </div>
     <div class="inputForm flex">
-      <img src="../assets/img/ico/arroba.svg" alt="Icono de correo" />
+      <img src="/src/assets/img/ico/arroba.svg" alt="Icono de correo" />
       <input
         v-model="correo"
         id="correo"
@@ -36,14 +36,20 @@
       <label for="contrasenia">Contraseña</label>
     </div>
     <div class="inputForm flex">
-      <img src="../assets/img/ico/candado.svg" alt="Icono de contraseña" />
+      <img src="/src/assets/img/ico/candado.svg" alt="Icono de contraseña" />
       <input
         v-model="contrasenia"
         id="contrasenia"
         class="input"
-        type="password"
+        :type="tipoInputContrasenia"
         placeholder="Contraseña"
         required
+      />
+      <img
+        class="input-visibilidad"
+        :src="iconoVisibilidadContrasenia"
+        alt="Mostrar y ocultar contraseña"
+        @click="visibilidadContrasenia = !visibilidadContrasenia"
       />
     </div>
     <!-- Lista de requisitos para la contraseña -->
@@ -67,14 +73,23 @@
       <label for="confirmarContrasenia">Confirma tu Contraseña</label>
     </div>
     <div class="inputForm flex">
-      <img src="../assets/img/ico/candado.svg" alt="Icono de contraseña" />
+      <img src="/src/assets/img/ico/candado.svg" alt="Icono de contraseña" />
+
       <input
         v-model="confirmarContrasenia"
         id="confirmarContrasenia"
         class="input"
-        type="password"
+        :type="tipoInputConfirmarContrasenia"
         placeholder="Confirma tu contraseña"
         required
+      />
+      <img
+        class="input-visibilidad"
+        :src="iconoVisibilidadConfirmarContrasenia"
+        alt="Mostrar y ocultar contraseña"
+        @click="
+          visibilidadConfirmarContrasenia = !visibilidadConfirmarContrasenia
+        "
       />
     </div>
     <div id="error-confirmarContrasenia" class="errorMensaje">
@@ -85,7 +100,7 @@
       <label for="fechaNacimiento">Fecha de Nacimiento</label>
     </div>
     <div class="inputForm flex">
-      <img src="../assets/img/ico/calendario.svg" alt="Icono de calendario" />
+      <img src="/src/assets/img/ico/calendario.svg" alt="Icono de calendario" />
       <input
         v-model="fechaNacimiento"
         id="fechaNacimiento"
@@ -171,10 +186,60 @@ export default {
         generoFavorito: "",
         aceptarTerminos: "",
       },
+      visibilidadContrasenia: false,
+      visibilidadConfirmarContrasenia: false,
     };
   },
+  computed: {
+    // Propiedades computadas para la contraseña
+    tieneMinuscula() {
+      return /[a-z]/.test(this.contrasenia);
+    },
+    tieneMayuscula() {
+      return /[A-Z]/.test(this.contrasenia);
+    },
+    tieneNumero() {
+      return /\d/.test(this.contrasenia);
+    },
+    tieneCaracterEspecial() {
+      return /[!@#$%^&*]/.test(this.contrasenia);
+    },
+    tieneLongitudMinima() {
+      return this.contrasenia.length >= 8;
+    },
+    // Visibilidad del campo contraseña
+    iconoVisibilidadContrasenia() {
+      if (this.visibilidadContrasenia) {
+        return "/src/assets/img/ico/visibilidad-off.svg";
+      } else {
+        return "/src/assets/img/ico/visibilidad-on.svg";
+      }
+    },
+    tipoInputContrasenia() {
+      if (this.visibilidadContrasenia) {
+        return "text";
+      } else {
+        return "password";
+      }
+    },
+    // Visibilidad del campo confirmar contraseña
+    iconoVisibilidadConfirmarContrasenia() {
+      if (this.visibilidadConfirmarContrasenia) {
+        return "/src/assets/img/ico/visibilidad-off.svg";
+      } else {
+        return "/src/assets/img/ico/visibilidad-on.svg";
+      }
+    },
+    tipoInputConfirmarContrasenia() {
+      if (this.visibilidadConfirmarContrasenia) {
+        return "text";
+      } else {
+        return "password";
+      }
+    },
+  },
   watch: {
-    // Validar el usuario en tiempo real
+    // Validar el usuario en tiempo realConfirmarContrasenia
     usuario() {
       if (!this.usuario) {
         this.errores.usuario = "El nombre de usuario es requerido";
@@ -195,68 +260,46 @@ export default {
       }
     },
     // Validar la contraseña en tiempo real
-    watch: {
-      contrasenia() {
-        if (!this.contrasenia) {
-          this.errores.contrasenia = "La contraseña es requerida";
-        } else if (
-          !this.tieneMinuscula ||
-          !this.tieneMayuscula ||
-          !this.tieneNumero ||
-          !this.tieneCaracterEspecial ||
-          !this.tieneLongitudMinima
-        ) {
-          this.errores.contrasenia =
-            "La contraseña no cumple con los requisitos";
-        } else {
-          this.errores.contrasenia = "";
-        }
-      },
-    },
-
-    // Verificar las contraseñas coincidentes
-    confirmarContrasenia() {
-      if (this.confirmarContrasenia !== this.contrasenia) {
-        this.errores.confirmarContrasenia = "Las contraseñas no coinciden";
+    contrasenia() {
+      if (!this.contrasenia) {
+        this.errores.contrasenia = "La contraseña es requerida";
+      } else if (
+        !this.tieneMinuscula ||
+        !this.tieneMayuscula ||
+        !this.tieneNumero ||
+        !this.tieneCaracterEspecial ||
+        !this.tieneLongitudMinima
+      ) {
+        this.errores.contrasenia = "La contraseña no cumple con los requisitos";
       } else {
-        this.errores.confirmarContrasenia = "";
-      }
-    },
-    // Verificar la fecha de nacimiento
-    fechaNacimiento() {
-      if (!this.esMayorDe13) {
-        this.errores.fechaNacimiento = "Debes tener al menos 13 años";
-      } else {
-        this.errores.fechaNacimiento = "";
-      }
-    },
-    // Verificar los términos y condiciones
-    aceptarTerminos() {
-      if (!this.aceptarTerminos) {
-        this.errores.aceptarTerminos =
-          "Debes aceptar los términos y condiciones";
-      } else {
-        this.errores.aceptarTerminos = "";
+        this.errores.contrasenia = "";
       }
     },
   },
-  computed: {
-    // Propiedades computadas para la contraseña
-    tieneMinuscula() {
-      return /[a-z]/.test(this.contrasenia);
-    },
-    tieneMayuscula() {
-      return /[A-Z]/.test(this.contrasenia);
-    },
-    tieneNumero() {
-      return /\d/.test(this.contrasenia);
-    },
-    tieneCaracterEspecial() {
-      return /[!@#$%^&*]/.test(this.contrasenia);
-    },
-    tieneLongitudMinima() {
-      return this.contrasenia.length >= 8;
-    },
+
+  // Verificar las contraseñas coincidentes
+  confirmarContrasenia() {
+    if (this.confirmarContrasenia !== this.contrasenia) {
+      this.errores.confirmarContrasenia = "Las contraseñas no coinciden";
+    } else {
+      this.errores.confirmarContrasenia = "";
+    }
+  },
+  // Verificar la fecha de nacimiento
+  fechaNacimiento() {
+    if (!this.esMayorDe13) {
+      this.errores.fechaNacimiento = "Debes tener al menos 13 años";
+    } else {
+      this.errores.fechaNacimiento = "";
+    }
+  },
+  // Verificar los términos y condiciones
+  aceptarTerminos() {
+    if (!this.aceptarTerminos) {
+      this.errores.aceptarTerminos = "Debes aceptar los términos y condiciones";
+    } else {
+      this.errores.aceptarTerminos = "";
+    }
   },
 
   methods: {

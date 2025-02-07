@@ -247,6 +247,18 @@ input:checked + .slider:before {
   }
 }
 
+// Estilos para cuando una caracteristica de la contraseña es correcta
 .correcto {
   color: map-get($colores, "verde");
+}
+
+.input-visibilidad{
+  cursor: pointer;
+}
+
+// Estilos para tabletas (≤ 1024px)
+@media (max-width: 1024px) {
+  .input{
+    margin-left: 0;
+  }
 }

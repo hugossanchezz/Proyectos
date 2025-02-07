@@ -1,21 +1,12 @@
 <template>
   <header class="flex">
-    <section class="section-logo centrado-flex flex">
+    <section class="section-logo centrado-flex">
       <router-link to="/">
-        <img id="logo" src="../assets/img/logo-no-cd.png" alt="Logo" />
+        <img id="logo" src="/src/assets/img/logo-no-cd.png" alt="Logo" />
       </router-link>
     </section>
 
     <nav>
-      <!-- Botón menú hamburguesa (solo en móviles/tablets) -->
-      <div v-if="esMovil" class="menu-hamburguesa flex" @click="toggleMenu">
-        <img
-          class="nav__menu__icono"
-          src="/src/assets/img/ico/menu-hamburguesa.svg"
-          alt="Icono de menu"
-        />
-      </div>
-
       <!-- Menú de navegación -->
       <section
         class="container-nav-items centrado-flex"
@@ -41,7 +32,7 @@
             Mi lista
             <img
               class="item__bookmark"
-              src="../assets/img/ico/bookmark.svg"
+              src="/src/assets/img/ico/bookmark.svg"
               alt="Icono de guardado"
             />
           </router-link>
@@ -49,31 +40,37 @@
       </section>
     </nav>
 
-    <section id="acciones" class="acciones centrado-flex flex">
-      <div class="acciones__busqueda">
-        <img
-          class="busqueda__icono"
-          src="../assets/img/ico/lupa.svg"
-          alt="Icono de búsqueda"
-          @click="buscar = !buscar"
-        />
+    <section id="acciones" class="acciones flex">
+      <!-- Botón menú hamburguesa (solo en móviles/tablets) -->
+      <div v-if="esMovil" class="menu-hamburguesa flex" @click="toggleMenu">
+        <img class="menu-icono" :src="iconoMenu" alt="Icono de menú" />
       </div>
       <input
-        v-show="buscar"
+        v-if="buscar"
         id="input-busqueda"
         class="input-busqueda inputForm input"
         type="text"
         placeholder="Buscar..."
       />
-
-      <div class="acciones__login">
-        <router-link to="/inicio-sesion">
+      <div class="acciones__container flex">
+        <div class="container__busqueda">
           <img
-            class="login__icono"
-            src="../assets/img/ico/user-naranja.svg"
-            alt="Icono de inicio de sesión"
+            class="busqueda__icono"
+            :src="iconoLupa"
+            alt="Icono de búsqueda"
+            @click="buscar = !buscar"
           />
-        </router-link>
+        </div>
+
+        <div class="container__login">
+          <router-link to="/inicio-sesion">
+            <img
+              class="login__icono"
+              src="/src/assets/img/ico/user-naranja.svg"
+              alt="Icono de inicio de sesión"
+            />
+          </router-link>
+        </div>
       </div>
     </section>
   </header>
@@ -88,6 +85,22 @@ export default {
       esMovil: window.innerWidth <= 1024, // Detecta si es móvil/tablet
       buscar: false,
     };
+  },
+  computed: {
+    iconoMenu() {
+      if (this.menuAbierto) {
+        return "/src/assets/img/ico/close.svg";
+      } else {
+        return "/src/assets/img/ico/menu-hamburguesa.svg";
+      }
+    },
+    iconoLupa() {
+      if (this.buscar) {
+        return "/src/assets/img/ico/close.svg";
+      } else {
+        return "/src/assets/img/ico/lupa.svg";
+      }
+    },
   },
   methods: {
     toggleMenu() {
