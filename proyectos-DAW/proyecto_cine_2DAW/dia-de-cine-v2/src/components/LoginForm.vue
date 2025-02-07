@@ -76,7 +76,7 @@
   </form>
   <div class="centrado-flex">
     <button class="btn google flex">
-      <img src="../assets/img/ico/google.svg" alt="Icono de Google" />
+      <img src="/src/assets/img/ico/google.svg" alt="Icono de Google" />
       Google
     </button>
   </div>

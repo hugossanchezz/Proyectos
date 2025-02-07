@@ -14,6 +14,7 @@ header {
 }
 
 .section-logo {
+  width: 30%;
   height: 10vh;
   justify-content: start;
 
@@ -24,9 +25,10 @@ header {
 
 nav {
   height: 10vh;
+  width: 30%;
   .container-nav-items {
+    width: 100%;
     height: 100%;
-    display: flex;
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     overflow: hidden;
 
@@ -43,7 +45,7 @@ nav {
     }
   }
   .nav__item {
-    min-width: 17.5vh;
+    width: 25%;
     height: 100%;
 
     a {
@@ -68,6 +70,7 @@ nav {
 }
 
 .acciones {
+  width: 30%;
   gap: 1rem;
   justify-content: end;
 
@@ -200,7 +203,7 @@ nav {
     justify-content: space-between;
 
     .input-busqueda {
-      width: 60%;
+      width: auto;
     }
   }
 

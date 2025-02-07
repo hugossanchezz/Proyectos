@@ -94,30 +94,32 @@ export async function mostrarNoticias() {
 
   noticiasLimitadas.forEach(noticia => {
     const card = document.createElement('div');
-    card.classList.add('card');
-    card.classList.add('card-hover');
-
-    // Crear el contenido de la card
+    card.classList.add('card', 'card-hover');
+  
+    // Redirigir a la notica completa al hacer clic en la card
+    card.addEventListener('click', () => {
+      window.open(noticia.url, '_blank'); // Abrir en nueva pestaña
+    });
+  
     const titulo = document.createElement('h3');
     titulo.textContent = noticia.title || 'Título de la noticia';
-
+  
     const descripcion = document.createElement('p');
     descripcion.textContent = noticia.description || 'Descripción no disponible';
-
-    // Creamos la imagen de la card (si está disponible)
+  
     const imagen = document.createElement('img');
-    imagen.src = noticia.urlToImage || 'https://via.placeholder.com/150'; // URL de la imagen
+    imagen.src = noticia.urlToImage || 'https://via.placeholder.com/150';
     imagen.alt = noticia.title || 'Imagen de la noticia';
     imagen.classList.add('img-noticia');
-
-    // Agregamos los elementos a la card
+  
     card.appendChild(imagen);
     card.appendChild(titulo);
     card.appendChild(descripcion);
-
-    // Agregamos la card al contenedor
+  
     contenedorNoticias.appendChild(card);
   });
+  
+  
 }
 
 export function recargarNoticias() {

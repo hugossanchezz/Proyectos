@@ -6,10 +6,10 @@
       </router-link>
     </section>
 
-    <nav>
+    <nav class="centrado-flex">
       <!-- Menú de navegación -->
       <section
-        class="container-nav-items centrado-flex"
+        class="container-nav-items flex"
         :class="{ 'menu-abierto': menuAbierto }"
       >
         <div class="nav__item">
