@@ -13,7 +13,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />¿Qué son las cookies?
     </h2>
@@ -26,7 +26,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Tipos de cookies que utilizamos
     </h2>
@@ -58,7 +58,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />¿Cómo utilizamos las cookies?
     </h2>
@@ -75,7 +75,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Control de cookies
     </h2>
@@ -109,7 +109,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Cookies de terceros
     </h2>
@@ -122,7 +122,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Cambios en la Política de Cookies
     </h2>
@@ -136,7 +136,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Contacto
     </h2>
@@ -153,7 +153,7 @@
       </p>
     </div>
     <div class="btn-accept centrado-flex">
-      <a href="?mostrar=terminos">Volver</a>
+      <router-link to="/inicio-sesion/terminos">Volver</router-link>
     </div>
   </section>
 </template>

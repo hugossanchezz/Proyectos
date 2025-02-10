@@ -2,7 +2,7 @@
     <div class="body-desarrollo centrado-flex">
       <section class="borde-naranja">
         <div class="en-desarrollo flex">
-          <img class="warning" src="@/assets/img/ico/warning.svg" alt="Warning En Desarrollo" />
+          <img class="warning" src="/img/ico/warning.svg" alt="Warning En Desarrollo" />
           <h1>Este apartado se encuentra en desarrollo, pero pronto estará disponible.</h1>
         </div>
         <button @click="goBack">

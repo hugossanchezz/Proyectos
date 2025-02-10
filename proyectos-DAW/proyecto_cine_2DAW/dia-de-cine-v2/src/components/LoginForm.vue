@@ -4,7 +4,7 @@
       <label for="correo">Correo</label>
     </div>
     <div class="inputForm flex">
-      <img src="/src/assets/img/ico/arroba.svg" alt="Icono de arroba" />
+      <img src="/img/ico/arroba.svg" alt="Icono de arroba" />
       <input
         v-model="correo"
         id="correo"
@@ -21,10 +21,7 @@
       <label for="contrasenia">Contraseña</label>
     </div>
     <div class="inputForm flex">
-      <img
-        src="/src/assets/img/ico/candado.svg"
-        alt="Icono de candado de contraseña"
-      />
+      <img src="/img/ico/candado.svg" alt="Icono de candado de contraseña" />
       <input
         v-model="contrasenia"
         id="contrasenia"
@@ -70,13 +67,16 @@
     </button>
     <p class="p">
       ¿No tienes una cuenta?
-      <a class="span" href="?mostrar=registro">Regístrate</a>
+      <router-link to="/inicio-sesion/registro" class="span"
+        >Regístrate</router-link
+      >
     </p>
+
     <p class="p line">o entra con</p>
   </form>
   <div class="centrado-flex">
     <button class="btn google flex">
-      <img src="/src/assets/img/ico/google.svg" alt="Icono de Google" />
+      <img src="/img/ico/google.svg" alt="Icono de Google" />
       Google
     </button>
   </div>
@@ -126,18 +126,14 @@ export default {
     },
     iconoVisibilidad() {
       if (this.visibilidadContrasenia) {
-        return "/src/assets/img/ico/visibilidad-off.svg";
+        return "/img/ico/visibilidad-off.svg";
       } else {
-        return "/src/assets/img/ico/visibilidad-on.svg";
+        return "/img/ico/visibilidad-on.svg";
       }
     },
     tipoInput() {
-      if (this.visibilidadContrasenia) {
-        return "text";
-      } else {
-        return "password";
-      }
-    }
+      return this.visibilidadContrasenia ? "text" : "password";
+    },
   },
   watch: {
     // Watcher para validar el correo en tiempo real
@@ -154,7 +150,6 @@ export default {
       // Validación antes de enviar el formulario
       if (this.contraseniaValida && !this.errorCorreo) {
         console.log("Inicio de sesión correcto");
-        // Aquí puedes redirigir o mostrar un mensaje de éxito
       } else {
         console.log("Formulario con errores");
       }

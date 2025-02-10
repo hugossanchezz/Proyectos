@@ -14,7 +14,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Información que Recopilamos
     </h2>
@@ -42,8 +42,10 @@
     </ul>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />Uso
-      de la Información
+      <img
+        src="/img/ico/categoria.svg"
+        alt="Icono de categoría"
+      />Uso de la Información
     </h2>
     <p>Utilizamos la información recopilada para:</p>
     <ul>
@@ -62,7 +64,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Compartición de Información
     </h2>
@@ -89,7 +91,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Protección de Datos
     </h2>
@@ -101,8 +103,10 @@
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />Tus
-      Derechos
+      <img
+        src="/img/ico/categoria.svg"
+        alt="Icono de categoría"
+      />Tus Derechos
     </h2>
     <p>Tienes derecho a:</p>
     <ul>
@@ -118,7 +122,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Cookies y Tecnologías Similares
     </h2>
@@ -131,7 +135,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Enlaces a Terceros
     </h2>
@@ -144,7 +148,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Cambios en la Política de Privacidad
     </h2>
@@ -158,7 +162,7 @@
 
     <h2 class="flex">
       <img
-        src="/src/assets/img/ico/categoria.svg"
+        src="/img/ico/categoria.svg"
         alt="Icono de categoría"
       />Contacto
     </h2>
@@ -175,7 +179,7 @@
       </p>
     </div>
     <div class="btn-accept centrado-flex">
-      <a href="?mostrar=terminos">Volver</a>
+      <router-link to="/inicio-sesion/terminos">Volver</router-link>
     </div>
   </section>
 </template>

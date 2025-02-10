@@ -5,6 +5,12 @@ import IndexView from './views/IndexView.vue';
 import NosotrosView from './views/NosotrosView.vue';
 import InicioSesionView from './views/InicioSesionView.vue';
 
+import LoginForm from './components/LoginForm.vue';
+import RegisterForm from './components/RegisterForm.vue';
+import Terminos from './components/Terminos.vue';
+import Privacidad from './components/Privacidad.vue';
+import Cookies from './components/Cookies.vue';
+
 const routes = [
     {
         path: '/',
@@ -18,8 +24,34 @@ const routes = [
     },
     {
         path: '/inicio-sesion',
-        name: 'InicioSesion',
-        component: InicioSesionView
+        component: InicioSesionView, // Contenedor de login y registro(terminos, privacidad y cookies)
+        children: [
+            {
+                path: 'login',
+                name: 'login',
+                component: LoginForm,
+            },
+            {
+                path: 'registro',
+                name: 'registro',
+                component: RegisterForm,
+            },
+            {
+                path: 'terminos',
+                name: 'terminos',
+                component: Terminos,
+            },
+            {
+                path: 'privacidad',
+                name: 'privacidad',
+                component: Privacidad,
+            },
+            {
+                path: 'cookies',
+                name: 'cookies',
+                component: Cookies,
+            },
+        ],
     },
     {
         path: '/temporal',

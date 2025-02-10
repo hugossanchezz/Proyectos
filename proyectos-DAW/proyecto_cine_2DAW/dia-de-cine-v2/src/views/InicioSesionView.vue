@@ -9,32 +9,11 @@
         <!-- Animación de carga -->
         <div id="loader" class="loader" v-if="loading"></div>
 
-        <!-- Contenido del formulario -->
-        <div
-          id="contenido-mostrar"
-          class="contenido-mostrar flex"
-          v-show="!loading"
-        >
-          <!-- Mostrar el formulario de login, registro o terminos y condiciones -->
-          <div v-if="formulario === 'login'" class="form-container">
-            <LoginForm />
-            <!-- Se renderiza el componente LoginForm -->
-          </div>
-          <div v-if="formulario === 'registro'" class="form-container">
-            <RegisterForm />
-            <!-- Se renderiza el componente RegisterForm -->
-          </div>
-          <div v-if="formulario === 'terminos'" class="form-container">
-            <Terminos />
-            <!-- Se renderiza el componente Terminos -->
-          </div>
-          <div v-if="formulario === 'privacidad'" class="form-container">
-            <Privacidad />
-            <!-- Se renderiza el componente Privacidad -->
-          </div>
-          <div v-if="formulario === 'cookies'" class="form-container">
-            <Cookies />
-            <!-- Se renderiza el componente Cookies -->
+        <!-- Contenido dinámico según la ruta -->
+        <div id="contenido-mostrar" class="contenido-mostrar flex" v-show="!loading">
+          <div class="form-container">
+
+            <router-view />
           </div>
         </div>
       </section>
@@ -48,48 +27,31 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import LoginForm from "@/components/LoginForm.vue";
-import RegisterForm from "@/components/RegisterForm.vue";
-import Terminos from "@/components/Terminos.vue";
-import Privacidad from "@/components/Privacidad.vue";
-import Cookies from "@/components/Cookies.vue";
-
-// import { validarForm } from "/src/js/validar-form.js";
 
 export default {
   components: {
     Header,
     Footer,
-    LoginForm,
-    RegisterForm,
-    Terminos,
-    Privacidad,
-    Cookies,
   },
   data() {
     return {
       loading: true, // Para controlar la animación de carga
-      formulario: "login", // Se carga el formulario de login por defecto
-      email: "",
-      password: "",
     };
   },
   mounted() {
-    this.cargarContenido(); // Simula el retraso de carga
-    this.elegirFormulario(); // Escoge el formulario a mostrar
+    this.cargarContenido();
+
+    // Redirige a /inicio-sesion/login si la ruta actual es /inicio-sesion
+    if (this.$route.path === "/inicio-sesion") {
+      this.$router.replace("/inicio-sesion/login");
+    }
   },
   methods: {
     cargarContenido() {
       setTimeout(() => {
-        this.loading = false; // Después del tiempo de carga, ocultamos el loader y mostramos el contenido
+        this.loading = false;
       }, 300);
     },
-    elegirFormulario() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const mostrar = urlParams.get("mostrar") || "login"; // Obtiene el parámetro 'mostrar' de la URL
-      this.formulario = mostrar;
-    },
-    
   },
 };
 </script>

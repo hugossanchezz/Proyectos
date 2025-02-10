@@ -11,7 +11,7 @@
       <label for="usuario">Nombre de usuario</label>
     </div>
     <div class="inputForm flex">
-      <img src="/src/assets/img/ico/user.svg" alt="Icono de usuario" />
+      <img src="/img/ico/user.svg" alt="Icono de usuario" />
       <input
         v-model="usuario"
         id="usuario"
@@ -27,7 +27,7 @@
       <label for="correo">Correo</label>
     </div>
     <div class="inputForm flex">
-      <img src="/src/assets/img/ico/arroba.svg" alt="Icono de correo" />
+      <img src="/img/ico/arroba.svg" alt="Icono de correo" />
       <input
         v-model="correo"
         id="correo"
@@ -43,7 +43,7 @@
       <label for="contrasenia">Contraseña</label>
     </div>
     <div class="inputForm flex">
-      <img src="/src/assets/img/ico/candado.svg" alt="Icono de contraseña" />
+      <img src="/img/ico/candado.svg" alt="Icono de contraseña" />
       <input
         v-model="contrasenia"
         id="contrasenia"
@@ -80,7 +80,7 @@
       <label for="confirmarContrasenia">Confirma tu Contraseña</label>
     </div>
     <div class="inputForm flex">
-      <img src="/src/assets/img/ico/candado.svg" alt="Icono de contraseña" />
+      <img src="/img/ico/candado.svg" alt="Icono de contraseña" />
 
       <input
         v-model="confirmarContrasenia"
@@ -107,7 +107,7 @@
       <label for="fechaNacimiento">Fecha de Nacimiento</label>
     </div>
     <div class="inputForm flex">
-      <img src="/src/assets/img/ico/calendario.svg" alt="Icono de calendario" />
+      <img src="/img/ico/calendario.svg" alt="Icono de calendario" />
       <input
         v-model="fechaNacimiento"
         id="fechaNacimiento"
@@ -156,7 +156,9 @@
       </label>
       <label for="aceptarTerminos">
         Acepto los
-        <a class="span" href="?mostrar=terminos">términos y condiciones</a>
+        <router-link to="/inicio-sesion/terminos" class="span"
+          >términos y condiciones</router-link
+        >
       </label>
     </div>
     <div id="error-aceptarTerminos" class="errorMensaje">
@@ -167,7 +169,9 @@
 
     <p class="p">
       ¿Ya tienes una cuenta?
-      <a class="span" href="?mostrar=login">Inicia sesión</a>
+      <router-link to="/inicio-sesion/login" class="span"
+        >Inicia sesión</router-link
+      >
     </p>
   </form>
 </template>
@@ -228,32 +232,24 @@ export default {
     // Visibilidad del campo contraseña
     iconoVisibilidadContrasenia() {
       if (this.visibilidadContrasenia) {
-        return "/src/assets/img/ico/visibilidad-off.svg";
+        return "/img/ico/visibilidad-off.svg";
       } else {
-        return "/src/assets/img/ico/visibilidad-on.svg";
+        return "/img/ico/visibilidad-on.svg";
       }
     },
     tipoInputContrasenia() {
-      if (this.visibilidadContrasenia) {
-        return "text";
-      } else {
-        return "password";
-      }
+      return this.visibilidadContrasenia ? "text" : "password";
     },
     // Visibilidad del campo confirmar contraseña
     iconoVisibilidadConfirmarContrasenia() {
       if (this.visibilidadConfirmarContrasenia) {
-        return "/src/assets/img/ico/visibilidad-off.svg";
+        return "/img/ico/visibilidad-off.svg";
       } else {
-        return "/src/assets/img/ico/visibilidad-on.svg";
+        return "/img/ico/visibilidad-on.svg";
       }
     },
     tipoInputConfirmarContrasenia() {
-      if (this.visibilidadConfirmarContrasenia) {
-        return "text";
-      } else {
-        return "password";
-      }
+      return this.visibilidadConfirmarContrasenia ? "text" : "password";
     },
   },
   watch: {

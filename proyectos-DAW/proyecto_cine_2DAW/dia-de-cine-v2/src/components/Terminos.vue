@@ -13,7 +13,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Aceptación de los Términos
     </h2>
     <p>
@@ -24,7 +24,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Uso de la Plataforma
     </h2>
     <p>
@@ -56,7 +56,7 @@
     </ul>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Cuenta de Usuario
     </h2>
     <p>
@@ -73,7 +73,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Propiedad Intelectual
     </h2>
     <p>
@@ -84,7 +84,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Contenido de Terceros
     </h2>
     <p>
@@ -96,18 +96,19 @@
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Protección de Datos y Privacidad
     </h2>
     <p>
       La protección de tu privacidad es importante para nosotros. Al crear una
       cuenta en <strong>Dia de Cine</strong>, aceptas nuestra
-      <a href="?mostrar=privacidad">Política de Privacidad</a>, que explica cómo
-      recopilamos, usamos y protegemos tu información personal.
+      <router-link to="/inicio-sesion/privacidad">Política de Privacidad</router-link
+      >, que explica cómo recopilamos, usamos y protegemos tu información
+      personal.
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Modificaciones del Servicio
     </h2>
     <p>
@@ -118,7 +119,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Limitación de Responsabilidad
     </h2>
     <p>
@@ -132,7 +133,7 @@
     </ul>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Comunicaciones y Notificaciones
     </h2>
     <p>
@@ -143,7 +144,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Jurisdicción y Ley Aplicable
     </h2>
     <p>
@@ -154,18 +155,18 @@
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Consentimiento para el Uso de Cookies
     </h2>
     <p>
       Al utilizar este sitio web, aceptas el uso de cookies. Las cookies se
       utilizan para mejorar tu experiencia en el sitio y analizar su uso. Para
       obtener más información, consulta nuestra
-      <a href="?mostrar=cookies">Política de Cookies</a>.
+      <router-link to="/inicio-sesion/cookies">Política de Cookies</router-link>.
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Renuncia de Responsabilidad
     </h2>
     <p>
@@ -176,7 +177,7 @@
     </p>
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/categoria.svg" alt="Icono de categoría" />
+      <img src="/img/ico/categoria.svg" alt="Icono de categoría" />
       Contacto
     </h2>
     <p>
@@ -187,8 +188,8 @@
     <hr />
 
     <h2 class="flex">
-      <img src="/src/assets/img/ico/pencil.svg" alt="Icono de firma" /> Firma del
-      Usuario
+      <img src="/img/ico/pencil.svg" alt="Icono de firma" /> Firma
+      del Usuario
     </h2>
     <p>
       Al crear una cuenta en <strong>Dia de Cine</strong>, confirmas que has
@@ -201,7 +202,7 @@
       </p>
     </div>
     <div class="btn-accept centrado-flex">
-      <a href="?mostrar=registro">Aceptar</a>
+      <router-link to="/inicio-sesion/registro">Aceptar</router-link>
     </div>
   </section>
 </template>

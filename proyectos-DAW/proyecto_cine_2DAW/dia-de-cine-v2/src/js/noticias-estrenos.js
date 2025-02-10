@@ -118,8 +118,6 @@ export async function mostrarNoticias() {
   
     contenedorNoticias.appendChild(card);
   });
-  
-  
 }
 
 export function recargarNoticias() {

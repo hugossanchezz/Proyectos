@@ -8,7 +8,7 @@
         aria-label="Mostrar dirección de correo"
       >
         <img
-          src="/src/assets/img/ico/mail.svg"
+          src="/img/ico/mail.svg"
           alt="Icono de correo electrónico"
           class="socialSvg"
         />
@@ -21,7 +21,7 @@
           aria-label="Ir al perfil de LinkedIn (se abre en nueva ventana)"
         >
           <img
-            src="/src/assets/img/ico/linkedin.svg"
+            src="/img/ico/linkedin.svg"
             alt="LinkedIn Icon"
             class="socialSvg"
           />
@@ -51,7 +51,7 @@
         <div class="email-container flex">
           <!-- Icono del email -->
           <div class="icon-container">
-            <img src="/src/assets/img/ico/mail.svg" alt="Icono de email" />
+            <img src="/img/ico/mail.svg" alt="Icono de email" />
           </div>
           <!-- Correo electrónico -->
 
@@ -62,12 +62,12 @@
         <!-- Botón de copiar -->
         <div class="copy-container centrado-flex" @click="copiarEmail">
           <img
-            src="/src/assets/img/ico/copy.svg"
+            src="/img/ico/copy.svg"
             alt="Copiar dirección de correo"
           />
         </div>
         <button @click="cerrarModal" class="btn-cerrar centrado-flex">
-          <img src="/src/assets/img/ico/close.svg" alt="Cerrar tarjeta" />
+          <img src="/img/ico/close.svg" alt="Cerrar tarjeta" />
         </button>
       </div>
     </div>

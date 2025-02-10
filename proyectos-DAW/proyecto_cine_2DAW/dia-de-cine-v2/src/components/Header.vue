@@ -2,12 +2,11 @@
   <header class="flex">
     <section class="section-logo centrado-flex">
       <router-link to="/">
-        <img id="logo" src="/src/assets/img/logo-no-cd.png" alt="Logo" />
+        <img id="logo" src="/img/logo-no-cd.png" alt="Logo" />
       </router-link>
     </section>
 
     <nav class="centrado-flex">
-      <!-- Menú de navegación -->
       <section
         class="container-nav-items flex"
         :class="{ 'menu-abierto': menuAbierto }"
@@ -32,7 +31,7 @@
             Mi lista
             <img
               class="item__bookmark"
-              src="/src/assets/img/ico/bookmark.svg"
+              src="/img/ico/bookmark.svg"
               alt="Icono de guardado"
             />
           </router-link>
@@ -41,7 +40,6 @@
     </nav>
 
     <section id="acciones" class="acciones flex">
-      <!-- Botón menú hamburguesa (solo en móviles/tablets) -->
       <div v-if="esMovil" class="menu-hamburguesa flex" @click="toggleMenu">
         <img class="menu-icono" :src="iconoMenu" alt="Icono de menú" />
       </div>
@@ -66,7 +64,7 @@
           <router-link to="/inicio-sesion">
             <img
               class="login__icono"
-              src="/src/assets/img/ico/user-naranja.svg"
+              src="/img/ico/user-naranja.svg"
               alt="Icono de inicio de sesión"
             />
           </router-link>
@@ -82,23 +80,23 @@ export default {
   data() {
     return {
       menuAbierto: false,
-      esMovil: window.innerWidth <= 1024, // Detecta si es móvil/tablet
+      esMovil: window.innerWidth <= 1024,
       buscar: false,
     };
   },
   computed: {
     iconoMenu() {
       if (this.menuAbierto) {
-        return "/src/assets/img/ico/close.svg";
+        return "/img/ico/close.svg";
       } else {
-        return "/src/assets/img/ico/menu-hamburguesa.svg";
+        return "/img/ico/menu-hamburguesa.svg";
       }
     },
     iconoLupa() {
       if (this.buscar) {
-        return "/src/assets/img/ico/close.svg";
+        return "/img/ico/close.svg";
       } else {
-        return "/src/assets/img/ico/lupa.svg";
+        return "/img/ico/lupa.svg";
       }
     },
   },
@@ -109,7 +107,7 @@ export default {
     actualizarTamano() {
       this.esMovil = window.innerWidth <= 1024;
       if (!this.esMovil) {
-        this.menuAbierto = false; // Asegura que el menú siempre esté visible en escritorio
+        this.menuAbierto = false;
       }
     },
   },
