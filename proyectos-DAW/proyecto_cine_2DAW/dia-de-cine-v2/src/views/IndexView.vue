@@ -44,7 +44,7 @@
 
     <!-- Estrenos -->
     <aside>
-      <div class="centrado-flex">
+      <div class="titulo-estrenos centrado-flex">
         <h1>Próximos estrenos <span class="fecha">{{ fechaEstrenos }}</span></h1>
       </div>
       <hr>

@@ -25,7 +25,8 @@ header {
 
 nav {
   height: 10vh;
-  width: 30%;
+  min-width: 35%;
+  width: auto;
   .container-nav-items {
     width: 100%;
     height: 100%;

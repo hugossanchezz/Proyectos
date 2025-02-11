@@ -126,6 +126,7 @@ aside {
   .main-content {
     width: 100%;
   }
+
   .noticias-container {
     margin: 1rem;
   }
@@ -138,6 +139,7 @@ aside {
   .titulo-noticias {
     padding: 1rem;
   }
+  
 }
 
 @media (max-width: 1024px) {
@@ -147,6 +149,12 @@ aside {
 
   .noticias-container {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .titulo-estrenos{
+    h1{
+      color: map-get($colores, "blanco");
+    }
   }
 
   aside {
