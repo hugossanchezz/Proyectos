@@ -2,7 +2,7 @@
   <header class="flex">
     <section class="section-logo centrado-flex">
       <router-link to="/">
-        <img id="logo" src="/img/logo-no-cd.png" alt="Logo" />
+        <img id="logo" :src="iconoLogo" alt="Logo" />
       </router-link>
     </section>
 
@@ -55,7 +55,7 @@
         type="text"
         placeholder="Buscar..."
       />
-      <div class="acciones__container flex">
+      <div class="acciones__container centrado-flex">
         <div class="container__busqueda">
           <img
             class="busqueda__icono"
@@ -65,8 +65,11 @@
           />
         </div>
 
-        <div class="container__login">
-          <router-link to="/inicio-sesion">
+        <div v-if="!(esMovil && buscar)" class="container__login">
+          <div v-show="!registrado" class="boton-registrarse">
+            <router-link to="/inicio-sesion"> Registrarse </router-link>
+          </div>
+          <router-link v-show="registrado" to="/inicio-sesion">
             <img
               class="login__icono"
               src="/img/ico/user-naranja.svg"
@@ -87,9 +90,17 @@ export default {
       menuAbierto: false,
       esMovil: window.innerWidth <= 1024,
       buscar: false,
+      registrado: false,
     };
   },
   computed: {
+    iconoLogo() {
+      if (this.esMovil) {
+        return "/img/logo-no-cd.png";
+      } else {
+        return "/img/logo-no-subtitulo.png";
+      }
+    },
     iconoMenu() {
       if (this.menuAbierto) {
         return "/img/ico/close.svg";

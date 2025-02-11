@@ -41,9 +41,9 @@ export default {
   mounted() {
     this.cargarContenido();
 
-    // Redirige a /inicio-sesion/login si la ruta actual es /inicio-sesion
+    // Redirige a /inicio-sesion/registro por defecto
     if (this.$route.path === "/inicio-sesion") {
-      this.$router.replace("/inicio-sesion/login");
+      this.$router.replace("/inicio-sesion/registro");
     }
   },
   methods: {

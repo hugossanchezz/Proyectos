@@ -72,15 +72,31 @@ nav {
 
 .acciones {
   width: 30%;
-  gap: 1rem;
   justify-content: end;
 
   .acciones__container {
-    width: 5.5rem;
+    margin-left: 5px;
 
-    div {
-      width: 50%;
+    .container__busqueda {
+      .busqueda__icono {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    gap: 0.5rem;
+
+    .boton-registrarse {
+      background-color: map-get($colores, "naranja");
+      border-radius: 10px;
       padding: 5px;
+      cursor: pointer;
+
+      a {
+        color: map-get($colores, "blanco");
+        text-decoration: none;
+        font-weight: 600;
+      }
     }
   }
 
@@ -188,12 +204,7 @@ nav {
   }
 
   .acciones__container {
-    width: 5rem;
-
-    div {
-      width: 50%;
-      padding: 5px;
-    }
+    margin-left: 0;
   }
 
   .acciones {
@@ -204,7 +215,7 @@ nav {
     justify-content: space-between;
 
     .input-busqueda {
-      width: auto;
+      width: 70%;
     }
   }
 
