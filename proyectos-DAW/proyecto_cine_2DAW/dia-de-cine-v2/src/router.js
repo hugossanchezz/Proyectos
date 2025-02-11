@@ -4,7 +4,7 @@ import TemporalView from './views/TemporalView.vue';
 import IndexView from './views/IndexView.vue';
 import NosotrosView from './views/NosotrosView.vue';
 import InicioSesionView from './views/InicioSesionView.vue';
-
+// dentro de inicio-sesion 
 import LoginForm from './components/LoginForm.vue';
 import RegisterForm from './components/RegisterForm.vue';
 import Terminos from './components/Terminos.vue';
@@ -13,7 +13,7 @@ import Cookies from './components/Cookies.vue';
 
 const routes = [
     {
-        path: '/',
+        path: '/',  
         name: 'Index',
         component: IndexView
     },

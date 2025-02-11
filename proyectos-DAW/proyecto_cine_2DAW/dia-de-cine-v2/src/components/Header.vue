@@ -12,6 +12,11 @@
         :class="{ 'menu-abierto': menuAbierto }"
       >
         <div class="nav__item">
+          <router-link to="/temporal" class="centrado-flex font-size-pequenio"
+            >Comunidad</router-link
+          >
+        </div>
+        <div class="nav__item">
           <router-link to="/nosotros" class="centrado-flex font-size-pequenio"
             >Nosotros</router-link
           >

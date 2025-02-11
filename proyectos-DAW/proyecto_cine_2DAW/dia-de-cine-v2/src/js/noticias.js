@@ -3,8 +3,10 @@
 // Clave de la API de NewsAPI 
 const NEWS_API_KEY = '12d3de27068f4d33bf495c62d24a5fc8';
 //const url = `https://newsapi.org/v2/everything?q=cine%20estrenos%20actores&apiKey=${NEWS_API_KEY}&language=es`;
+
 let url;
 
+// el objeto import.meta.env.MODE de Vite nos indica en qué modo está corriendo la aplicación (development o production)
 if (import.meta.env.MODE === 'development') {
   // En desarrollo, usa el proxy de Vite
   url = `/api/v2/everything?q=cine%20estrenos%20actores&apiKey=${NEWS_API_KEY}&language=es`;
@@ -12,8 +14,6 @@ if (import.meta.env.MODE === 'development') {
   // En producción, usa la URL de la API real
   url = `/api/v2/everything?q=cine%20estrenos%20actores&apiKey=${NEWS_API_KEY}&language=es`;
 }
-
-
 
 /**
  * Realiza una solicitud a la API de NewsAPI para obtener noticias sobre cine,estrenos...,

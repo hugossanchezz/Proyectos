@@ -1,5 +1,7 @@
 <template>
   <form class="form flex" @submit.prevent="submitForm">
+    <h1 class="centrado-flex">Inicia sesión en tu cuenta</h1>
+    <hr />
     <div class="flex-column">
       <label for="correo">Correo</label>
     </div>

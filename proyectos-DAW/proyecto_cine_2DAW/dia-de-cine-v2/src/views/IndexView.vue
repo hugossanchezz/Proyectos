@@ -21,6 +21,11 @@
         class="contenido-mostrar flex-column"
         v-show="!loading"
       >
+      <div class="titulo-noticias centrado-flex">
+        <h1>Sección de Noticias <span class="fecha">{{ fechaNoticias }}</span></h1>
+      </div>
+      <hr>
+
         <div id="noticias-container" class="noticias-container">
           <!-- Espacio de las noticias con el Api NewsAPI -->
         </div>
@@ -39,6 +44,10 @@
 
     <!-- Estrenos -->
     <aside>
+      <div class="centrado-flex">
+        <h1>Próximos estrenos <span class="fecha">{{ fechaEstrenos }}</span></h1>
+      </div>
+      <hr>
       <section id="estrenos-container" class="estrenos-container flex-column">
         <!-- Espacio de los estrenos de 2025 -->
       </section>
@@ -68,9 +77,14 @@ export default {
   data() {
     return {
       loading: true, // Esta propiedad controla si mostramos el loader o el contenido
+      fechaNoticias: '',
+      fechaEstrenos: '',
     };
   },
   async mounted() {
+    this.fechaNoticias = new Date().toLocaleDateString();
+    this.fechaEstrenos = new Date().getFullYear();
+
     // Cargar el carrusel
     mostrarCarrusel();
 

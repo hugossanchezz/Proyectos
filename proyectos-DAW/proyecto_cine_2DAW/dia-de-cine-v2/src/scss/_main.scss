@@ -52,11 +52,16 @@
 }
 
 // Estilos del apartado de noticias del index.php
+.fecha {
+  color: map-get($colores, "naranja");
+  font-size: map-get($tamanios, "pequenio");
+}
+
 .noticias-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 20px;
+  margin-top: 1rem;
 }
 
 /* Estilos para cada card */
@@ -86,31 +91,31 @@
   }
 }
 
-.card-hover{
+.card-hover {
   cursor: pointer;
   transition: all 0.3s ease;
 
-  &:hover{
+  &:hover {
     transform: scale(1.05);
   }
 }
 
-.img-noticia{
+.img-noticia {
   height: 200px;
 }
 
-.img-estreno{
+.img-estreno {
   height: 500px;
 }
 
-// Estilos para el aside 
-aside{
+// Estilos para el aside
+aside {
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   margin-right: 5rem;
   padding: 2rem;
-  .estrenos-container{
+  .estrenos-container {
     flex-direction: column;
-  
+
     padding: 1rem;
     gap: 1rem;
   }
@@ -118,9 +123,20 @@ aside{
 
 //Ajuster para portátiles o pantallas mas pequeñas
 @media screen and (max-width: 1440px) {
-  aside{
+  .main-content {
+    width: 100%;
+  }
+  .noticias-container {
+    margin: 1rem;
+  }
+
+  aside {
     margin-right: 2.5rem;
     padding: 0;
+  }
+
+  .titulo-noticias {
+    padding: 1rem;
   }
 }
 
@@ -133,7 +149,7 @@ aside{
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 
-  aside{
+  aside {
     background-color: map-get($colores, "gris_oscuro");
     margin-top: 1rem;
     width: 100%;
