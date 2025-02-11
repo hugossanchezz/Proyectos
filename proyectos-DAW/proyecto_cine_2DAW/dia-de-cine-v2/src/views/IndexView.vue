@@ -29,6 +29,7 @@
           <button
             id="recargar-noticias"
             class="button-submit button-submit-pequenio"
+            @click="recargarNoticias"
           >
             Recargar noticias
           </button>
@@ -50,12 +51,9 @@
 
 <script>
 // Importar los scripts JavaScript con la lógica
-import {
-  mostrarNoticias,
-  recargarNoticias,
-  mostrarEstrenos,
-} from "/src/js/noticias-estrenos";
 import { mostrarCarrusel } from "/src/js/carrusel.js";
+import { mostrarEstrenos } from "/src/js/estrenos.js";
+import { mostrarNoticias } from "/src/js/noticias.js";
 
 // Importar los componentes de Vue
 import Header from "/src/components/Header.vue";
@@ -76,15 +74,11 @@ export default {
     // Cargar el carrusel
     mostrarCarrusel();
 
-    // Mostrar las noticias mediante la función asíncrona
-    await mostrarNoticias();
-
     // Mostrar los estrenos en el aside
     mostrarEstrenos();
 
-    // Configurar el botón de recarga
-    const recargarNoticiasButton = document.getElementById("recargar-noticias");
-    recargarNoticiasButton.addEventListener("click", recargarNoticias);
+    // Mostrar las noticias mediante la función asíncrona
+    await mostrarNoticias();
 
     // Llamar a la función para ocultar el loader y mostrar el contenido
     this.mostrarContenido();
@@ -94,6 +88,9 @@ export default {
       setTimeout(() => {
         this.loading = false; // Después de un tiempo, ocultamos el loader y mostramos el contenido
       }, 300); // 300 ms de retraso
+    },
+    recargarNoticias() {
+      location.reload(); // Recargar la página actual, el array de noticias se reordenará
     },
   },
 };
