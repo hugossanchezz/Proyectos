@@ -124,6 +124,8 @@ export function recargarNoticias() {
   location.reload();  // Recargar la página actual, el array de noticias se reordenará
 }
 
+// Estrenos del aside
+
 import { estrenos2025 } from "./lista-estrenos";
 
 // Mostrar los estrenos de 2025

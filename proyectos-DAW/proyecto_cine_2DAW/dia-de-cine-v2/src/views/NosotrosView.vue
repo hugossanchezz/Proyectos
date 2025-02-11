@@ -31,7 +31,7 @@
 
           <h2 class="flex">
             <img
-              src="../assets/img/ico/categoria.svg"
+              src="/img/ico/categoria.svg"
               alt="Icono de categoría"
             />Nuestra misión
           </h2>
@@ -46,7 +46,7 @@
 
           <h2 class="flex">
             <img
-              src="../assets/img/ico/categoria.svg"
+              src="/img/ico/categoria.svg"
               alt="Icono de categoría"
             />Nuestro Equipo
           </h2>
@@ -60,7 +60,7 @@
 
           <h2 class="flex">
             <img
-              src="../assets/img/ico/categoria.svg"
+              src="/img/ico/categoria.svg"
               alt="Icono de categoría"
             />Contacto
           </h2>

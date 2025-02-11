@@ -19,7 +19,7 @@
     <div class="flex-row flex">
         <label class="switch">
             <input type="checkbox" id="recordarme">
-            <span class="slider"></span>
+            <span class="slider">.</span>
         </label>
         <label for="recordarme">Recordarme</label>
     </div>

@@ -25,6 +25,7 @@ const routes = [
     {
         path: '/inicio-sesion',
         component: InicioSesionView, // Contenedor de login y registro(terminos, privacidad y cookies)
+        // en los path de los hijo no se pone "/nombre-path" porque se pone automaticamente
         children: [
             {
                 path: 'login',

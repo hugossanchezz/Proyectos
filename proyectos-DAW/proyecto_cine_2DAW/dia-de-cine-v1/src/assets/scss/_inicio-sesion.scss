@@ -198,9 +198,10 @@
   height: 0;
 }
 
-/* slider */
+/* slider recordarme */
 .slider {
   background-color: map-get($colores, "blanco");
+  color: transparent;
   border: 1px solid map-get($colores, "gris_claro");
   border-radius: 30px;
 

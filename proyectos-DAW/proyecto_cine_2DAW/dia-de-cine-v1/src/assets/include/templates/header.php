@@ -1,7 +1,7 @@
 <header class="flex">
     <section class="section-logo centrado-flex">
         <a href="index.php">
-            <img class="logo" src="src/assets/img/logo-no-cd.png" alt="Logo" />
+            <img class="logo" src="src/assets/img/logo-no-cd.png" alt="Logo de Dia de Cine" />
         </a>
     </section>
 
