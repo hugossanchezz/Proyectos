@@ -2,7 +2,7 @@
   <div class="body-grid-index">
     <!-- Header común -->
     <Header />
-
+    
     <!-- Carrusel -->
     <section class="carrusel flex">
       <div id="carrusel__items" class="carrusel__items flex">
@@ -18,13 +18,15 @@
       <!-- Contenido principal -->
       <div
         id="contenido-mostrar"
-        class="contenido-mostrar flex-column"
+        class="contenido-mostrar margin-contenedor-noticias flex-column"
         v-show="!loading"
       >
-      <div class="titulo-noticias centrado-flex">
-        <h1>Sección de Noticias <span class="fecha">{{ fechaNoticias }}</span></h1>
-      </div>
-      <hr>
+        <div class="titulo-noticias centrado-flex">
+          <h1>
+            Sección de Noticias <span class="fecha">{{ fechaNoticias }}</span>
+          </h1>
+        </div>
+        <hr />
 
         <div id="noticias-container" class="noticias-container">
           <!-- Espacio de las noticias con el Api NewsAPI -->
@@ -34,9 +36,9 @@
           <button
             id="recargar-noticias"
             class="button-submit button-submit-pequenio"
-            @click="recargarNoticias"
+            @click="mostrarMasNoticias"
           >
-            Recargar noticias
+            Mostrar más noticias
           </button>
         </div>
       </div>
@@ -45,10 +47,12 @@
     <!-- Estrenos -->
     <aside>
       <div class="titulo-estrenos centrado-flex">
-        <h1>Próximos estrenos <span class="fecha">{{ fechaEstrenos }}</span></h1>
+        <h1>
+          Próximos estrenos <span class="fecha">{{ fechaEstrenos }}</span>
+        </h1>
       </div>
-      <hr>
-      <section id="estrenos-container" class="estrenos-container flex-column">
+      <hr />
+      <section id="estrenos-container" class="estrenos-container grid">
         <!-- Espacio de los estrenos de 2025 -->
       </section>
     </aside>
@@ -77,8 +81,10 @@ export default {
   data() {
     return {
       loading: true, // Esta propiedad controla si mostramos el loader o el contenido
-      fechaNoticias: '',
-      fechaEstrenos: '',
+      fechaNoticias: "",
+      fechaEstrenos: "",
+      numNoticas: 8,
+      numEstrenos: 15,
     };
   },
   async mounted() {
@@ -89,10 +95,10 @@ export default {
     mostrarCarrusel();
 
     // Mostrar los estrenos en el aside
-    mostrarEstrenos();
+    mostrarEstrenos(this.numEstrenos);
 
     // Mostrar las noticias mediante la función asíncrona
-    await mostrarNoticias();
+    await mostrarNoticias(this.numNoticas);
 
     // Llamar a la función para ocultar el loader y mostrar el contenido
     this.mostrarContenido();
@@ -103,8 +109,9 @@ export default {
         this.loading = false; // Después de un tiempo, ocultamos el loader y mostramos el contenido
       }, 300); // 300 ms de retraso
     },
-    recargarNoticias() {
-      location.reload(); // Recargar la página actual, el array de noticias se reordenará
+    async mostrarMasNoticias() {
+      this.numNoticas += 8; // mostramos 8 nuevas noticias
+      await mostrarNoticias(this.numNoticas);
     },
   },
 };

@@ -4,12 +4,12 @@ import { estrenos2025 } from "./lista-estrenos";
 import { barajarArray } from "./noticias.js";
 
 // Mostrar los estrenos de 2025
-export function mostrarEstrenos() {
+export function mostrarEstrenos(numEstrenos) {
   const contenedorEstrenos = document.getElementById('estrenos-container');
 
   //Barajamos el array de estrenos y seleccionamos los 9 primeros
   const estrenos2025Barajados = barajarArray(estrenos2025);
-  const estrenos2025Limitados = estrenos2025Barajados.slice(0, 9);
+  const estrenos2025Limitados = estrenos2025Barajados.slice(0, numEstrenos);
 
   estrenos2025Limitados.forEach(pelicula => {
     const card = document.createElement('div');

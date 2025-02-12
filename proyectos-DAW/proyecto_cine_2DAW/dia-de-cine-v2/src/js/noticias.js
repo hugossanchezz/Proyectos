@@ -73,24 +73,12 @@ export function barajarArray(array) {
  * Se utiliza la función barajarArray para barajar las noticias y
  * mostrarlas en orden aleatorio.
  */
-export async function mostrarNoticias() {
+export async function mostrarNoticias(numNoticias) {
   // Obtener las noticias en un array
   const noticiasOriginal = await obtenerNoticias(); // Usar await aquí ya que no sabemos cuanto tardará en obtener todas las noticias
 
   // Barajamos el array para que no salgan las noticias en el mismo orden
   const noticias = barajarArray(noticiasOriginal);
-
-  // Array que almacena los tamaños de pantalla y el número de noticias a mostrar
-  const tamaños = [
-    { ancho: 1440, noticias: 36 },
-    { ancho: 1024, noticias: 24 },
-    { ancho: 425, noticias: 18 },
-    { ancho: 375, noticias: 12 },
-    { ancho: 320, noticias: 6 },
-  ];
-
-  // Número de noticias a mostrar según el tamaño de la pantalla del usuario
-  let NUM_NOTICIAS = tamaños.find(t => window.innerWidth > t.ancho)?.noticias || 6;
 
   // Seleccionamos el contenedor donde se mostrarán las noticias
   const contenedorNoticias = document.getElementById('noticias-container');
@@ -99,7 +87,7 @@ export async function mostrarNoticias() {
   contenedorNoticias.innerHTML = '';
 
   // Limitamos el número de noticias que se mostrarán 
-  const noticiasLimitadas = noticias.slice(0, NUM_NOTICIAS);
+  const noticiasLimitadas = noticias.slice(0, numNoticias);
 
   noticiasLimitadas.forEach(noticia => {
     const card = document.createElement('div');
@@ -113,13 +101,20 @@ export async function mostrarNoticias() {
     const titulo = document.createElement('h3');
     titulo.textContent = noticia.title || 'Título de la noticia';
 
-    const descripcion = document.createElement('p');
-    descripcion.textContent = noticia.description || 'Descripción no disponible';
 
     const imagen = document.createElement('img');
-    imagen.src = noticia.urlToImage || 'https://via.placeholder.com/150';
+    imagen.src = noticia.urlToImage || '/img/noticias/noticia-stock.jpg';
+
+    // Si la imagen no carga, usar la de stock
+    imagen.onerror = () => {
+      imagen.src = '/img/noticias/noticia-stock.jpg';
+    };
+
     imagen.alt = noticia.title || 'Imagen de la noticia';
     imagen.classList.add('img-noticia');
+
+    const descripcion = document.createElement('p');
+    descripcion.textContent = noticia.description || 'Descripción no disponible';
 
     card.appendChild(imagen);
     card.appendChild(titulo);

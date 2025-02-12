@@ -24,7 +24,7 @@ header {
 }
 
 nav {
-  height: 10vh;
+  height: 15vh;
   min-width: 35%;
   width: auto;
   .container-nav-items {
@@ -86,18 +86,29 @@ nav {
 
     gap: 0.5rem;
 
-    .boton-registrarse {
-      background-color: map-get($colores, "naranja");
-      border-radius: 10px;
-      padding: 5px;
-      cursor: pointer;
-
-      a {
-        color: map-get($colores, "blanco");
-        text-decoration: none;
-        font-weight: 600;
+    .container__login {
+      width: 6.5rem;
+      .boton-registrarse {
+        background-color: map-get($colores, "naranja");
+        height: 36px;
+        padding: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+  
+        &:active {
+          transform: scale(0.95);
+          transition: all 0.2s ease;
+        }
+        a {
+          color: map-get($colores, "blanco");
+          text-decoration: none;
+          font-weight: 600;
+        }
       }
     }
+
+    
   }
 
   .input-busqueda {
@@ -208,13 +219,13 @@ nav {
   }
 
   .acciones {
-    height: 2.25rem;
     width: 100%;
     gap: 1rem;
 
     justify-content: space-between;
 
     .input-busqueda {
+      height: 36px;
       width: 70%;
     }
   }

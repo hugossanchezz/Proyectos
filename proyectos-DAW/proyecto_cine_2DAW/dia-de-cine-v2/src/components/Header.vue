@@ -1,9 +1,12 @@
 <template>
-  <header class="flex">
-    <section class="section-logo centrado-flex">
+
+  
+  <header class="header-movil flex">
+    <section class="section-logo flex-column">
       <router-link to="/">
         <img id="logo" :src="iconoLogo" alt="Logo" />
       </router-link>
+      <Breadcrumb />
     </section>
 
     <nav class="centrado-flex">
@@ -12,7 +15,17 @@
         :class="{ 'menu-abierto': menuAbierto }"
       >
         <div class="nav__item">
-          <router-link to="/temporal" class="centrado-flex font-size-pequenio"
+          <router-link to="/peliculas" class="centrado-flex font-size-pequenio"
+            >Películas</router-link
+          >
+        </div>
+        <div class="nav__item">
+          <router-link to="/series" class="centrado-flex font-size-pequenio"
+            >Series</router-link
+          >
+        </div>
+        <div class="nav__item">
+          <router-link to="/comunidad" class="centrado-flex font-size-pequenio"
             >Comunidad</router-link
           >
         </div>
@@ -22,18 +35,8 @@
           >
         </div>
         <div class="nav__item">
-          <router-link to="/temporal" class="centrado-flex font-size-pequenio"
-            >Películas</router-link
-          >
-        </div>
-        <div class="nav__item">
-          <router-link to="/temporal" class="centrado-flex font-size-pequenio"
-            >Series</router-link
-          >
-        </div>
-        <div class="nav__item">
-          <router-link to="/temporal" class="centrado-flex font-size-pequenio">
-            Mi lista
+          <router-link to="/mi-espacio" class="centrado-flex font-size-pequenio">
+            Mi espacio
             <img
               class="item__bookmark"
               src="/img/ico/bookmark.svg"
@@ -66,8 +69,10 @@
         </div>
 
         <div v-if="!(esMovil && buscar)" class="container__login">
-          <div v-show="!registrado" class="boton-registrarse">
-            <router-link to="/inicio-sesion"> Registrarse </router-link>
+          <div v-show="!registrado" class="boton-registrarse centrado-flex">
+            <router-link to="/inicio-sesion/registro">
+              Registrarse
+            </router-link>
           </div>
           <router-link v-show="registrado" to="/inicio-sesion">
             <img
@@ -80,11 +85,17 @@
       </div>
     </section>
   </header>
+  
 </template>
 
 <script>
+import Breadcrumb from "/src/components/Breadcrumb.vue";
+
 export default {
   name: "Header",
+  components: {
+    Breadcrumb,
+  },
   data() {
     return {
       menuAbierto: false,

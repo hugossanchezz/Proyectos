@@ -3,6 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 import TemporalView from './views/TemporalView.vue';
 import IndexView from './views/IndexView.vue';
 import NosotrosView from './views/NosotrosView.vue';
+import ComunidadView from './views/ComunidadView.vue';
+import PeliculasView from './views/PeliculasView.vue';
+import SeriesView from './views/SeriesView.vue';
+import MiEspacioView from './views/MiEspacioView.vue';
 import InicioSesionView from './views/InicioSesionView.vue';
 // dentro de inicio-sesion 
 import LoginForm from './components/LoginForm.vue';
@@ -21,6 +25,26 @@ const routes = [
         path: '/nosotros',
         name: 'Nosotros',
         component: NosotrosView
+    },
+    {
+        path: '/comunidad',
+        name: 'Comunidad',
+        component: ComunidadView
+    },
+    {
+        path: '/peliculas',
+        name: 'Peliculas',
+        component: PeliculasView
+    },
+    {
+        path: '/series',
+        name: 'Series',
+        component: SeriesView
+    },
+    {
+        path: '/mi-espacio',
+        name: 'MiEspacio',
+        component: MiEspacioView
     },
     {
         path: '/inicio-sesion',
