@@ -156,7 +156,7 @@
       </label>
       <label for="aceptarTerminos">
         Acepto los
-        <router-link to="/inicio-sesion/terminos" class="span"
+        <router-link to="/perfil/registro/terminos" class="span"
           >términos y condiciones</router-link
         >
       </label>
@@ -169,7 +169,7 @@
 
     <p class="p">
       ¿Ya tienes una cuenta?
-      <router-link to="/inicio-sesion/login" class="span"
+      <router-link to="/perfil/iniciar-sesion" class="span"
         >Inicia sesión</router-link
       >
     </p>

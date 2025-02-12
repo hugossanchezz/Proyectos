@@ -69,7 +69,7 @@
     </button>
     <p class="p">
       ¿No tienes una cuenta?
-      <router-link to="/inicio-sesion/registro" class="span"
+      <router-link to="/perfil/registro" class="span"
         >Regístrate</router-link
       >
     </p>

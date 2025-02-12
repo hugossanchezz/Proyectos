@@ -102,7 +102,7 @@
     <p>
       La protección de tu privacidad es importante para nosotros. Al crear una
       cuenta en <strong>Dia de Cine</strong>, aceptas nuestra
-      <router-link to="/inicio-sesion/privacidad">Política de Privacidad</router-link
+      <router-link to="/perfil/registro/privacidad">Política de Privacidad</router-link
       >, que explica cómo recopilamos, usamos y protegemos tu información
       personal.
     </p>
@@ -162,7 +162,7 @@
       Al utilizar este sitio web, aceptas el uso de cookies. Las cookies se
       utilizan para mejorar tu experiencia en el sitio y analizar su uso. Para
       obtener más información, consulta nuestra
-      <router-link to="/inicio-sesion/cookies">Política de Cookies</router-link>.
+      <router-link to="/perfil/registro/cookies">Política de Cookies</router-link>.
     </p>
 
     <h2 class="flex">
@@ -202,7 +202,7 @@
       </p>
     </div>
     <div class="btn-accept centrado-flex">
-      <router-link to="/inicio-sesion/registro">Aceptar</router-link>
+      <router-link to="/perfil/registro">Aceptar</router-link>
     </div>
   </section>
 </template>

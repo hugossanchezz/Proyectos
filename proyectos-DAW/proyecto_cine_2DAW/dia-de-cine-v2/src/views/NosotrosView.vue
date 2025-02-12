@@ -11,7 +11,7 @@
       <!-- Contenido principal -->
       <div
         id="contenido-mostrar"
-        class="contenido-mostrar flex"
+        class="contenido-mostrar centrado-flex"
         v-show="!loading"
       >
         <section class="sobreNosotros">

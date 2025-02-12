@@ -23,6 +23,12 @@ export default {
         "/comunidad": "Comunidad",
         "/nosotros": "Nosotros",
         "/mi-espacio": "Mi Espacio",
+        "/perfil": "Perfil",
+        "/perfil/registro": "Registro",
+        "/perfil/registro/terminos": "Terminos",
+        "/perfil/registro/privacidad": "Política de Privacidad",
+        "/perfil/registro/cookies": "Política de Cookies",
+        "/perfil/iniciar-sesion": "Iniciar Sesión",
       };
 
       const pathArray = this.$route.path.split("/").filter(Boolean);

@@ -179,7 +179,7 @@
       </p>
     </div>
     <div class="btn-accept centrado-flex">
-      <router-link to="/inicio-sesion/terminos">Volver</router-link>
+      <router-link to="/perfil/registro/terminos">Volver</router-link>
     </div>
   </section>
 </template>

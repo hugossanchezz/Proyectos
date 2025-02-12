@@ -40,11 +40,6 @@ export default {
   },
   mounted() {
     this.cargarContenido();
-
-    // Redirige a /inicio-sesion/registro por defecto
-    if (this.$route.path === "/inicio-sesion") {
-      this.$router.replace("/inicio-sesion/registro");
-    }
   },
   methods: {
     cargarContenido() {

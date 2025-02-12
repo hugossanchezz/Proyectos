@@ -69,12 +69,12 @@
         </div>
 
         <div v-if="!(esMovil && buscar)" class="container__login">
-          <div v-show="!registrado" class="boton-registrarse centrado-flex">
-            <router-link to="/inicio-sesion/registro">
+          <div v-show="!registrado" class="boton-registrarse">
+            <router-link to="/perfil/registro" class="centrado-flex">
               Registrarse
             </router-link>
           </div>
-          <router-link v-show="registrado" to="/inicio-sesion">
+          <router-link v-show="registrado" to="/perfil">
             <img
               class="login__icono"
               src="/img/ico/user-naranja.svg"

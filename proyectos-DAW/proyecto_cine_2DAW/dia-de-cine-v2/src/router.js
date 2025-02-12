@@ -7,7 +7,8 @@ import ComunidadView from './views/ComunidadView.vue';
 import PeliculasView from './views/PeliculasView.vue';
 import SeriesView from './views/SeriesView.vue';
 import MiEspacioView from './views/MiEspacioView.vue';
-import InicioSesionView from './views/InicioSesionView.vue';
+import PerfilView from './views/PerfilView.vue';
+import RegistroView from './views/RegistroView.vue';
 // dentro de inicio-sesion 
 import LoginForm from './components/LoginForm.vue';
 import RegisterForm from './components/RegisterForm.vue';
@@ -47,17 +48,24 @@ const routes = [
         component: MiEspacioView
     },
     {
-        path: '/inicio-sesion',
-        component: InicioSesionView, // Contenedor de login y registro(terminos, privacidad y cookies)
+        path: '/perfil',
+        redirect: '/perfil/registro',  // Redirige automáticamente a login
+        component: PerfilView, // Contenedor de login y registro(terminos, privacidad y cookies)
         // en los path de los hijo no se pone "/nombre-path" porque se pone automaticamente
         children: [
             {
-                path: 'login',
-                name: 'login',
+                path: 'iniciar-sesion',
+                name: 'iniciar-sesion',
                 component: LoginForm,
             },
+        ],
+    },
+    {
+        path: '/perfil/registro',
+        component: RegistroView,
+        children: [
             {
-                path: 'registro',
+                path: '',
                 name: 'registro',
                 component: RegisterForm,
             },
