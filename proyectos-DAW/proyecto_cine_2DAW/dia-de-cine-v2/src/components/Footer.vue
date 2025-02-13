@@ -1,10 +1,11 @@
 <template>
   <footer>
-    <section class="contacto">
-      <div
+    <section class="contacto centrado-flex">
+      <div class="contacto__mail-linkedin flex">
+        <div
         class="socialContainer containerOne"
         tabindex="0"
-        @click="mostrarModal()"
+        @click="mostrarModalCorreo()"
         aria-label="Mostrar dirección de correo"
       >
         <img
@@ -27,6 +28,15 @@
           />
         </a>
       </div>
+      </div>
+      
+      <div @click="mostrarModalDonaciones()">
+        <img
+          src="https://cdn.buymeacoffee.com/buttons/v2/default-white.png"
+          alt="Buy Me a Coffee"
+          style="height: 50px; width: 200px"
+        />
+      </div>
     </section>
 
     <hr />
@@ -40,34 +50,124 @@
       </p>
     </section>
 
-    <!-- Modal -->
+    <!-- Modal de copiar el correo -->
     <div
-      v-if="modalVisible"
+      v-if="modalCorreoVisible || modalDonacionVisible"
       class="overlay centrado-flex"
-      @click="cerrarModal"
+      @click="cerrarModales"
       tabindex="-1"
     >
-      <div class="modal flex" @click.stop>
-        <div class="email-container flex">
-          <!-- Icono del email -->
-          <div class="icon-container">
-            <img src="/img/ico/mail.svg" alt="Icono de email" />
+      <div
+        v-if="modalCorreoVisible"
+        class="modal modal-correo flex-column"
+        @click="copiarEmail"
+        @click.stop
+      >
+        <h2>Haz <strong>click</strong> para copiar mi correo</h2>
+        <hr class="modal__hr" />
+        <div class="modal__div flex">
+          <div class="email-container flex">
+            <!-- Icono del email -->
+            <div class="icon-container">
+              <img src="/img/ico/mail.svg" alt="Icono de email" />
+            </div>
+            <!-- Correo electrónico -->
+
+            <p v-if="!esMovil" class="centrado-flex">
+              hugosanchezciudad23@gmail.com
+            </p>
+            <p v-if="esMovil" class="centrado-flex">Copiar mail</p>
           </div>
-          <!-- Correo electrónico -->
 
-          <p v-if="!esMovil" class="centrado-flex">hugosanchezciudad23@gmail.com</p>
-          <p v-if="esMovil" class="centrado-flex">Copiar mail</p>
+          <!-- Botón de copiar -->
+          <div class="copy-container centrado-flex">
+            <img src="/img/ico/copy.svg" alt="Copiar dirección de correo" />
+          </div>
         </div>
 
-        <!-- Botón de copiar -->
-        <div class="copy-container centrado-flex" @click="copiarEmail">
-          <img
-            src="/img/ico/copy.svg"
-            alt="Copiar dirección de correo"
-          />
-        </div>
-        <button @click="cerrarModal" class="btn-cerrar centrado-flex">
+        <button @click="cerrarModales" class="btn-cerrar centrado-flex">
           <img src="/img/ico/close.svg" alt="Cerrar tarjeta" />
+        </button>
+      </div>
+
+      <!-- Modal de donaciones -->
+      <div
+        v-if="modalDonacionVisible"
+        class="modal modal-donaciones flex-column"
+        @click.stop
+      >
+        <div class="modal-donaciones__titulos flex-column">
+          <h2>¿Quieres apoyar a <strong>Dia de Cine</strong>?</h2>
+          <div class="p">Puedes hacernos un <strong>donativo</strong> para motivarnos a siguir creciendo y ofreciendo nuevos contenidos.</div>
+        </div>
+
+        <hr class="modal__hr" />
+        <div class="modal-donaciones__cantidad flex-column">
+          <label for="cantidad" class="input-label"></label>
+          <input id="cantidad" class="input" type="number" >
+        </div>
+        <div class="modal__div centrado-flex">
+          <div class="visa-card flex-column">
+            <div class="logoContainer">
+              <img
+                class="svgLogo"
+                src="/img/ico/mastercard.svg"
+                alt="Icono de Mastercard"
+              />
+            </div>
+            <div class="number-container">
+              <label class="input-label" for="cardNumber"
+                >NUMERO DE LA TARJETA</label
+              >
+              <input
+                class="inputstyle"
+                id="cardNumber"
+                placeholder="XXXX XXXX XXXX XXXX"
+                name="cardNumber"
+                type="text"
+              />
+            </div>
+
+            <div class="name-date-cvv-container">
+              <div class="name-wrapper">
+                <label class="input-label" for="holderName"
+                  >TITULAR DE LA TARJETA</label
+                >
+                <input
+                  class="inputstyle"
+                  id="holderName"
+                  placeholder="NAME"
+                  type="text"
+                />
+              </div>
+
+              <div class="expiry-wrapper">
+                <label class="input-label" for="expiry"
+                  >FECHA DE CADUCIDAD</label
+                >
+                <input
+                  class="inputstyle"
+                  id="expiry"
+                  placeholder="MM/YY"
+                  type="text"
+                />
+              </div>
+              <div class="cvv-wrapper">
+                <label class="input-label" for="cvv">CVV</label>
+                <input
+                  class="inputstyle"
+                  placeholder="***"
+                  maxlength="3"
+                  id="cvv"
+                  type="password"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button @click="cerrarModales" class="btn-cerrar centrado-flex">
+          <img src="/img/ico/close.svg" alt="Cerrar tarjeta de donaciones" />
         </button>
       </div>
     </div>
@@ -79,7 +179,8 @@ export default {
   name: "Footer",
   data() {
     return {
-      modalVisible: false,
+      modalCorreoVisible: false,
+      modalDonacionVisible: false,
     };
   },
   computed: {
@@ -88,11 +189,16 @@ export default {
     },
   },
   methods: {
-    mostrarModal() {
-      this.modalVisible = true;
+    mostrarModalCorreo() {
+      this.modalCorreoVisible = true;
     },
-    cerrarModal() {
-      this.modalVisible = false;
+
+    mostrarModalDonaciones() {
+      this.modalDonacionVisible = true;
+    },
+    cerrarModales() {
+      this.modalCorreoVisible = false;
+      this.modalDonacionVisible = false;
     },
     copiarEmail() {
       navigator.clipboard

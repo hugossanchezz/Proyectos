@@ -4,7 +4,7 @@
 footer {
   color: map-get($colores, "blanco");
   background-color: map-get($colores, "gris_oscuro");
-  width: 100%;
+  width: 100vw;
   min-height: 5rem;
   padding: 1rem;
 
@@ -20,11 +20,12 @@ footer {
 .contacto {
   width: fit-content;
   height: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 25px 25px;
   gap: 20px;
+
+  .contacto__mail-linkedin{
+    gap: 20px;
+  }
 }
 
 .socialContainer {
@@ -114,7 +115,7 @@ footer {
   color: map-get($colores, "gris_oscuro");
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   position: relative;
-  width: 22.5rem;
+  width: 25rem;
   height: auto;
   padding: 5px;
   border-radius: 10px;
@@ -122,25 +123,31 @@ footer {
 
   align-items: center;
 
+  .modal__div,
+  .modal__hr {
+    width: 100%;
+  }
+
   .btn-cerrar {
     background-color: map-get($colores, "naranja");
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     position: absolute;
     width: 1.1rem;
     height: 1.1rem;
-    top: -7.5px;
-    right: -7.5px;
+    top: -4px;
+    right: -4px;
     border: none;
     cursor: pointer;
 
     border-radius: 5px;
 
-    img{
+    img {
       scale: 0.75;
     }
   }
 
-  .email-container{
+  .email-container {
+    height: 34px;
     width: 90%;
   }
 
@@ -161,6 +168,7 @@ footer {
 
   .copy-container {
     width: 10%;
+    height: 34px;
 
     img {
       width: 34px;
@@ -180,11 +188,116 @@ footer {
   }
 }
 
-//Ajuster para portátiles o pantallas mas pequeñas
+.modal-correo {
+  cursor: pointer;
+}
 
-@media (max-width: 1440px) {
-  .modal{
+.modal-donaciones {
+  width: 35rem;
+  height: fit-content;
+  padding: 1rem;
+
+  .modal-donaciones__titulos{
+    margin-bottom: 0.5rem;
+    align-items: center;
+  }
+}
+
+//estilos para la tarjeta de credito interactiva del modal de donaciones
+.visa-card {
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 22.5rem;
+  height: 12.5rem;
+  background-image: radial-gradient(
+    circle 897px at 9% 80.3%,
+    map-get($colores, 'gris') 0%,
+    map-get($colores, 'naranja') 100.2%
+  );
+  border-radius: 10px;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  gap: 15px;
+}
+.logoContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: fit-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 18px;
+}
+.svgLogo {
+  height: 40px;
+  width: auto;
+}
+.inputstyle::placeholder {
+  color: #ffffff;
+}
+.inputstyle {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  caret-color: red;
+  font-size: 13px;
+  height: 25px;
+  letter-spacing: 1.5px;
+}
+.number-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+#cardNumber {
+  width: 100%;
+  height: 25px;
+}
+.name-date-cvv-container {
+  width: 100%;
+  height: 25px;
+  display: flex;
+  gap: 10px;
+}
+.name-wrapper {
+  width: 60%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+.expiry-wrapper,
+.cvv-wrapper {
+  width: 30%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+.cvv-wrapper {
+  width: 10%;
+}
+#expiry,
+#cvv {
+  width: 100%;
+}
+.input-label {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: #e2e2e2;
+  width: 100%;
+}
+
+//Ajustes para movil
+@media (max-width: 1024px) {
+  .modal {
     margin: 1rem;
-    width: 15rem;
+  }
+
+  .contacto{
+    flex-direction: column;
   }
 }

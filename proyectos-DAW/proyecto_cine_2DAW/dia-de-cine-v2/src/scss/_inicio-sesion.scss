@@ -268,8 +268,23 @@ input:checked + .slider:before {
   color: map-get($colores, "verde");
 }
 
+// icono de ver u ocultar la contraseña
 .input-visibilidad {
   cursor: pointer;
+}
+
+//modal de registro
+.modal-login {
+  height: 10rem;
+  width: 30rem;
+
+  .modal-login__div {
+    width: 100%;
+
+    .button-modal {
+      width: 20rem;
+    }
+  }
 }
 
 //Ajuster para portátiles o pantallas mas pequeñas
@@ -281,7 +296,6 @@ input:checked + .slider:before {
   .form-container {
     margin-bottom: 1rem;
   }
-  
 }
 
 // Estilos para tabletas (≤ 1024px)

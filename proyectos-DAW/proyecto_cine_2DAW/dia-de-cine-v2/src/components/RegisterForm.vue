@@ -165,7 +165,9 @@
       {{ errores.aceptarTerminos }}
     </div>
 
-    <button class="button-submit" type="submit">Registrarse</button>
+    <button class="button-submit" type="submit" @click="mostrarModal()">
+      Registrarse
+    </button>
 
     <p class="p">
       ¿Ya tienes una cuenta?
@@ -174,6 +176,32 @@
       >
     </p>
   </form>
+  <!-- Modal -->
+  <div
+    v-if="modalVisible"
+    class="overlay centrado-flex"
+    @click="cerrarModal"
+    tabindex="-1"
+  >
+    <div class="modal modal-login flex-column" @click.stop>
+      <h2>🎉¡Acabas de crear una cuenta!🎆</h2>
+      <div class="modal-login__div centrado-flex">
+        Ahora puedes iniciar sesión y disfrutar de nuestros servicios.
+      </div>
+      <!-- Botón de ir al login -->
+      <div class="modal-login__div centrado-flex">
+        <router-link to="/perfil/iniciar-sesion" class="span">
+          <button class="button-submit button-modal" type="submit">
+            Entrar en mi cuenta
+          </button>
+        </router-link>
+      </div>
+
+      <button @click="cerrarModal" class="btn-cerrar centrado-flex">
+        <img src="/img/ico/close.svg" alt="Cerrar tarjeta" />
+      </button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -210,6 +238,7 @@ export default {
         fechaNacimiento: false,
         aceptarTerminos: false,
       },
+      modalVisible: false,
     };
   },
   computed: {
@@ -413,6 +442,7 @@ export default {
 
   methods: {
     submitForm() {
+      /*
       if (
         !this.errores.usuario &&
         !this.errores.correo &&
@@ -426,7 +456,8 @@ export default {
         // Redirigir o procesar el formulario
       } else {
         console.log("Formulario con errores");
-      }
+      }*/
+      console.log("Inicio de sesión correcto");
     },
     incrementarBarraProgreso() {
       if (this.progreso < 100) {
@@ -439,6 +470,12 @@ export default {
         this.progreso -= this.incremento;
         console.log(this.progreso);
       }
+    },
+    mostrarModal() {
+      this.modalVisible = true;
+    },
+    cerrarModal() {
+      this.modalVisible = false;
     },
   },
 };
