@@ -30,7 +30,7 @@
       </div>
       </div>
       
-      <div @click="mostrarModalDonaciones()">
+      <div class="contacto__donaciones" @click="mostrarModalDonaciones()">
         <img
           src="https://cdn.buymeacoffee.com/buttons/v2/default-white.png"
           alt="Buy Me a Coffee"
@@ -50,7 +50,7 @@
       </p>
     </section>
 
-    <!-- Modal de copiar el correo -->
+    <!-- Modales del footer -->
     <div
       v-if="modalCorreoVisible || modalDonacionVisible"
       class="overlay centrado-flex"
@@ -102,9 +102,9 @@
         </div>
 
         <hr class="modal__hr" />
-        <div class="modal-donaciones__cantidad flex-column">
-          <label for="cantidad" class="input-label"></label>
-          <input id="cantidad" class="input" type="number" >
+        <div class="modal-donaciones__cantidad flex">
+          <label for="cantidad" class="cantidad-label">Introduce la cantidad que te gustaría donar</label>
+          <input id="cantidad" class="cantidad-input" type="number" placeholder="€">
         </div>
         <div class="modal__div centrado-flex">
           <div class="visa-card flex-column">
@@ -136,7 +136,7 @@
                 <input
                   class="inputstyle"
                   id="holderName"
-                  placeholder="NAME"
+                  placeholder="NOMBRE"
                   type="text"
                 />
               </div>
@@ -148,7 +148,7 @@
                 <input
                   class="inputstyle"
                   id="expiry"
-                  placeholder="MM/YY"
+                  placeholder="MM/AA"
                   type="text"
                 />
               </div>
@@ -165,6 +165,7 @@
             </div>
           </div>
         </div>
+        <button class="button-submit">Hacer donación</button>
 
         <button @click="cerrarModales" class="btn-cerrar centrado-flex">
           <img src="/img/ico/close.svg" alt="Cerrar tarjeta de donaciones" />

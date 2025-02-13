@@ -105,6 +105,19 @@ hr {
   border-top: 1px solid map-get($colores, "gris_claro");
 }
 
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  -webkit-appearance: textfield; /* Safari, Chrome */
+  appearance: textfield; /* Estándar */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 @media (max-width: 1024px) {
   .body-grid-index {
     display: grid;

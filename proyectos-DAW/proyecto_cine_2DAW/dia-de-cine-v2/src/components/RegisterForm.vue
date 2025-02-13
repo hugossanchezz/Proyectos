@@ -442,6 +442,7 @@ export default {
 
   methods: {
     submitForm() {
+      // Descomentar esta seccion para activar la validacion del formulario
       /*
       if (
         !this.errores.usuario &&
@@ -457,7 +458,6 @@ export default {
       } else {
         console.log("Formulario con errores");
       }*/
-      console.log("Inicio de sesión correcto");
     },
     incrementarBarraProgreso() {
       if (this.progreso < 100) {

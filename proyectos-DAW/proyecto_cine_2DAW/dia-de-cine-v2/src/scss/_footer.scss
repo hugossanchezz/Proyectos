@@ -80,6 +80,14 @@ footer {
   }
 }
 
+.contacto__donaciones{
+  cursor: pointer;
+
+  &:active{
+    transform: scale(0.95);
+  }
+}
+
 .copyright {
   margin-top: 1rem;
   font-size: map-get($tamanios, "parrafo");
@@ -181,7 +189,7 @@ footer {
       }
 
       &:active {
-        transform: scale(0.9);
+        transform: scale(0.95);
         transition-duration: 0.1s;
       }
     }
@@ -200,6 +208,19 @@ footer {
   .modal-donaciones__titulos{
     margin-bottom: 0.5rem;
     align-items: center;
+  }
+
+  .modal-donaciones__cantidad{
+    margin: 2rem 1rem;
+
+    .cantidad-label{
+      font-size: map-get($tamanios, "pequenio");
+      width: 35%;
+    }
+    .cantidad-input{
+      width: 65%;
+      padding-left: 15px;
+    }
   }
 }
 
