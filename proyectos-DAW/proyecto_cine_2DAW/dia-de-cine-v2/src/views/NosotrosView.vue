@@ -82,8 +82,8 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue"; // Ajusta la ruta según corresponda
-import Footer from "@/components/Footer.vue"; // Ajusta la ruta según corresponda
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   components: {

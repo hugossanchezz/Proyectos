@@ -91,7 +91,7 @@ export async function mostrarNoticias(numNoticias) {
 
   noticiasLimitadas.forEach(noticia => {
     const card = document.createElement('div');
-    card.classList.add('card', 'card-hover');
+    card.classList.add('card-noticia-estreno', 'card-hover');
 
     // Redirigir a la notica completa al hacer clic en la card
     card.addEventListener('click', () => {

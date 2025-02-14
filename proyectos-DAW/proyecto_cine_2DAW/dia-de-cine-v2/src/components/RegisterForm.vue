@@ -8,7 +8,7 @@
     </div>
 
     <div class="flex-column">
-      <label for="usuario">Nombre de usuario</label>
+      <label class="label-form" for="usuario">Nombre de usuario</label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/user.svg" alt="Icono de usuario" />
@@ -24,7 +24,7 @@
     <div id="error-usuario" class="errorMensaje">{{ errores.usuario }}</div>
 
     <div class="flex-column">
-      <label for="correo">Correo</label>
+      <label class="label-form" for="correo">Correo</label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/arroba.svg" alt="Icono de correo" />
@@ -40,7 +40,7 @@
     <div id="error-correo" class="errorMensaje">{{ errores.correo }}</div>
 
     <div class="flex-column">
-      <label for="contrasenia">Contraseña</label>
+      <label class="label-form" for="contrasenia">Contraseña</label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/candado.svg" alt="Icono de contraseña" />
@@ -77,7 +77,7 @@
     </ul>
 
     <div class="flex-column">
-      <label for="confirmarContrasenia">Confirma tu Contraseña</label>
+      <label class="label-form" for="confirmarContrasenia">Confirma tu Contraseña</label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/candado.svg" alt="Icono de contraseña" />
@@ -104,7 +104,7 @@
     </div>
 
     <div class="flex-column">
-      <label for="fechaNacimiento">Fecha de Nacimiento</label>
+      <label class="label-form" for="fechaNacimiento">Fecha de Nacimiento</label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/calendario.svg" alt="Icono de calendario" />
@@ -121,7 +121,7 @@
     </div>
 
     <div class="flex-column">
-      <label for="generoFavorito">Género favorito</label>
+      <label class="label-form" for="generoFavorito">Género favorito</label>
     </div>
     <div class="inputForm flex">
       <select

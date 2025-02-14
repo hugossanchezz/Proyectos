@@ -13,7 +13,7 @@ export function mostrarEstrenos(numEstrenos) {
 
   estrenos2025Limitados.forEach(pelicula => {
     const card = document.createElement('div');
-    card.classList.add('card');
+    card.classList.add('card-noticia-estreno');
     card.classList.add('estreno');
 
 

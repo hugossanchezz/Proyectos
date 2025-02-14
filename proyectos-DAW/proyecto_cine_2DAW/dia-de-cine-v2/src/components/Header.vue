@@ -9,7 +9,7 @@
       <Breadcrumb />
     </section>
 
-    <nav class="centrado-flex">
+    <nav class=" header__nav centrado-flex">
       <section
         class="container-nav-items flex"
         :class="{ 'menu-abierto': menuAbierto }"

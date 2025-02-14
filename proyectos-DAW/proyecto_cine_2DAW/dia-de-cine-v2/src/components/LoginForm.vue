@@ -3,7 +3,7 @@
     <h1 class="centrado-flex">Inicia sesión en tu cuenta</h1>
     <hr />
     <div class="flex-column">
-      <label for="correo">Correo</label>
+      <label class="label-form" for="correo">Correo</label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/arroba.svg" alt="Icono de arroba" />
@@ -20,7 +20,7 @@
     <div v-if="errorCorreo" class="errorMensaje">{{ errorCorreo }}</div>
 
     <div class="flex-column">
-      <label for="contrasenia">Contraseña</label>
+      <label class="label-form" for="contrasenia">Contraseña</label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/candado.svg" alt="Icono de candado de contraseña" />

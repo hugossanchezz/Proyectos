@@ -3,10 +3,7 @@
 header {
   color: map-get($colores, "blanco");
   background-color: map-get($colores, "gris_oscuro");
-
-  width: 100vw;
-  min-height: 10vh;
-  height: auto;
+  height: 10vh;
   padding: 0 2rem;
   justify-content: space-between;
   align-items: center;
@@ -15,16 +12,16 @@ header {
 
 .section-logo {
   width: 30%;
-  height: 10vh;
-  justify-content: start;
+  min-height: 10vh;
+  justify-content: space-evenly;
 
   img {
     width: 12.5rem;
   }
 }
 
-nav {
-  height: 15vh;
+.header__nav {
+  height: 10vh;
   min-width: 42.5%;
   width: auto;
 
