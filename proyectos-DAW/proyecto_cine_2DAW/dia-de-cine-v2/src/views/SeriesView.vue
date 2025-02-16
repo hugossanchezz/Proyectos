@@ -1,52 +1,188 @@
 <template>
-    <div>
-      <!-- Header común -->
-      <Header />
-  
+  <div>
+    <!-- Header común -->
+    <Header />
+
+    <!-- Contenido principal -->
+    <main class="main-content centrado-flex">
+      <!-- Animación de carga -->
+      <div id="loader" class="loader" v-if="loading"></div>
+
       <!-- Contenido principal -->
-      <main class="main-content centrado-flex">
-        <!-- Animación de carga -->
-        <div id="loader" class="loader" v-if="loading"></div>
-  
-        <!-- Contenido principal -->
-        <div
-          id="contenido-mostrar"
-          class="contenido-mostrar flex"
-          v-show="!loading"
-        >
-          series
+      <div
+        id="contenido-mostrar"
+        class="contenido-mostrar flex"
+        v-show="!loading"
+      >
+        <div class="contenedor-titulos">
+          <nav class="nav__filtros">
+            <form
+              id="filtros-form"
+              class="flex-column"
+              @submit.prevent="filtrarContenido"
+            >
+              <div class="filtros__generos grid">
+                <div
+                  v-for="genero in generos"
+                  :key="genero.id"
+                  class="genero centrado-flex"
+                  :class="{
+                    'genero-seleccionado': generoSeleccionado === genero.id,
+                  }"
+                  @click="cambiarGenero(genero.id)"
+                >
+                  {{ genero.nombre }}
+                </div>
+              </div>
+
+              <div class="filtros__busqueda flex">
+                <div class="filtros__busqueda__nombre flex">
+                  <label for="busqueda-nombre-titulo"
+                    >¿Sabes qué serie buscar?</label
+                  >
+                  <input
+                    type="text"
+                    id="busqueda-nombre-titulo"
+                    class="busqueda__input"
+                    v-model="query"
+                    @input="filtrarContenido"
+                  />
+                </div>
+              </div>
+            </form>
+          </nav>
+
+          <section id="series-catalogo" class="titulos__catalogo grid">
+            <div
+              v-for="serie in series"
+              :key="serie.id"
+              class="catalogo__titulo flex-column"
+            >
+              <img
+                :src="'https://image.tmdb.org/t/p/w500/' + serie.poster_path"
+                alt="Poster de la serie"
+                class="catalogo__titulo__poster"
+              />
+              <p class="catalogo__titulo__nombre">{{ serie.title }}</p>
+              <button @click="guardarTitulo(serie)">Guardar</button>
+            </div>
+            <div class="catalogo__titulo flex-column">
+              <img
+                src="/img/ico/flecha-derecha.svg"
+                alt="Más series"
+                class="catalogo__titulo__poster"
+              />
+              <p class="catalogo__titulo__nombre">
+                Haz click en <strong>siguiente</strong> para ver más.
+              </p>
+            </div>
+          </section>
+
+          <div id="pagina-controles" class="pagina-controles centrado-flex">
+            <button
+              class="button-submit"
+              @click="cambiarPagina(paginaActual - 1)"
+              :disabled="paginaActual <= 1"
+            >
+              < Anterior
+            </button>
+            <div>Página {{ paginaActual }}</div>
+            <button
+              class="button-submit"
+              @click="cambiarPagina(paginaActual + 1)"
+            >
+              Siguiente >
+            </button>
+          </div>
         </div>
-      </main>
-  
-      <!-- Footer común -->
-      <Footer />
-    </div>
-  </template>
-  
-  <script>
-  import Header from "@/components/Header.vue";
-  import Footer from "@/components/Footer.vue";
-  
-  export default {
-    components: {
-      Header,
-      Footer,
+      </div>
+    </main>
+
+    <!-- Footer común -->
+    <Footer />
+  </div>
+</template>
+
+<script>
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+import { obtenerTitulos, guardarTitulo } from "/src/js/peliculas-series.js";
+
+export default {
+  components: { Header, Footer },
+
+  data() {
+    return {
+      loading: true,
+      tipo: "tv",
+      query: "",
+      generoSeleccionado: 0,
+      series: [],
+      paginaActual: 1,
+      generos: [
+        { id: 0, nombre: "Todos" },
+        { id: 10759, nombre: "Acción y Aventura" },
+        { id: 16, nombre: "Animación" },
+        { id: 35, nombre: "Comedia" },
+        { id: 80, nombre: "Crimen" },
+        { id: 18, nombre: "Drama" },
+        { id: 10751, nombre: "Familia" },
+        { id: 10762, nombre: "Infantil" },
+        { id: 9648, nombre: "Misterio" },
+        { id: 10765, nombre: "Ciencia Ficción y Fantasía" },
+        { id: 10766, nombre: "Telenovela" },
+        { id: 10767, nombre: "Talk Show" },
+        { id: 10768, nombre: "Bélica y Política" },
+        { id: 37, nombre: "Western" },
+        { id: 10752, nombre: "Documental" },
+      ],
+    };
+  },
+
+  methods: {
+    async cambiarPagina(pagina) {
+      this.paginaActual = pagina;
+      window.scrollTo(0, 0);
+      await this.cargarContenido();
     },
-    data() {
-      return {
-        loading: true, // controla si mostramos el loader o el contenido
-      };
+
+    async cargarContenido() {
+      try {
+        this.series = await obtenerTitulos(
+          this.tipo,
+          this.generoSeleccionado || null,
+          this.query || null,
+          this.paginaActual,
+          this.generoSeleccionado !== 0 || !!this.query
+        );
+      } catch (error) {
+        console.error("Error al cargar las series", error);
+      } finally {
+        this.loading = false;
+      }
     },
-    mounted() {
-      this.cargarContenido(); // Llamamos a la función para cargar el contenido
+
+    async cambiarGenero(generoId) {
+      this.query = "";
+      this.generoSeleccionado = generoId;
+      this.paginaActual = 1;
+      await this.cargarContenido();
     },
-    methods: {
-      cargarContenido() {
-        setTimeout(() => {
-          this.loading = false; // ocultamos el loader y mostramos el contenido
-        }, 300); // aseguramos que cargue
-      },
+
+    filtrarContenido() {
+      this.paginaActual = 1;
+      this.cargarContenido();
     },
-  };
-  </script>
-  
+
+    guardarTitulo(serie) {
+      console.log(serie); // Añade este log para ver qué datos tiene la serie
+      guardarTitulo(this.tipo, serie);
+      alert('Título guardado en favoritos');
+    }
+  },
+
+  async mounted() {
+    await this.cargarContenido();
+  },
+};
+</script>

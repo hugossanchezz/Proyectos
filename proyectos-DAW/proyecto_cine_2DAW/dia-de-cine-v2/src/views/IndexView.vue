@@ -107,7 +107,7 @@ export default {
     mostrarContenido() {
       setTimeout(() => {
         this.loading = false; // Después de un tiempo, ocultamos el loader y mostramos el contenido
-      }, 300); // 300 ms de retraso
+      }, 100);
     },
     async mostrarMasNoticias() {
       this.numNoticas += 8; // mostramos 8 nuevas noticias

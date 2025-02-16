@@ -75,13 +75,13 @@
     </p>
 
     <p class="p line">o entra con</p>
+    <div class="centrado-flex">
+      <button class="btn google flex">
+        <img src="/img/ico/google.svg" alt="Icono de Google" />
+        Google
+      </button>
+    </div>
   </form>
-  <div class="centrado-flex">
-    <button class="btn google flex">
-      <img src="/img/ico/google.svg" alt="Icono de Google" />
-      Google
-    </button>
-  </div>
 </template>
 
 <script>

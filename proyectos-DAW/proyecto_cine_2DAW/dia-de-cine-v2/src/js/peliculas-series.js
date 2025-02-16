@@ -1,100 +1,68 @@
 const TMDB_API_KEY = 'c365316d4b5cda699202511cd0f0c9fe';
 
-// Función para obtener películas mejor valoradas (top-rated) con filtros (género o nombre)
-export async function obtenerPeliculasConFiltro(generoId, nombre, pagina) {
+export async function obtenerTitulos(tipoTitulo, generoId = null, nombre = null, pagina = 1, filtrar = false) {
   try {
-    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&language=es-ES&page=${pagina}&without_genres=10749`;
-
-    if (generoId) {
-      url += `&with_genres=${generoId}`;
-    }
+    let url;
 
     if (nombre) {
-      url += `&query=${encodeURIComponent(nombre)}`;
+      url = `https://api.themoviedb.org/3/search/${tipoTitulo}?api_key=${TMDB_API_KEY}&language=es&page=${pagina}&include_adult=false&query=${encodeURIComponent(nombre)}`;
+    } else if (filtrar) {
+      url = `https://api.themoviedb.org/3/discover/${tipoTitulo}?api_key=${TMDB_API_KEY}&language=es&page=${pagina}&include_adult=false&without_genres=10749`;
+      if (generoId) url += `&with_genres=${generoId}`;
+    } else {
+      url = `https://api.themoviedb.org/3/${tipoTitulo}/top_rated?api_key=${TMDB_API_KEY}&language=es&page=${pagina}&include_adult=false`;
     }
 
     const response = await fetch(url);
+    if (!response.ok) throw new Error(`Error en la API: ${response.statusText}`);
+
     const data = await response.json();
+    if (!data.results) throw new Error('No se obtuvieron resultados de la API');
 
-    if (data.results) {
-      const peliculas = data.results.map(pelicula => ({
-        id: pelicula.id,
-        title: pelicula.title || pelicula.original_title,
-        vote_average: pelicula.vote_average,
-        poster_path: pelicula.poster_path,
-        overview: pelicula.overview,
-        release_date: pelicula.release_date,
-      }));
-
-      // Ordenar las películas por puntuación (vote_average) de mayor a menor
-      peliculas.sort((a, b) => b.vote_average - a.vote_average);
-
-      return peliculas;
-    } else {
-      throw new Error("No se obtuvieron resultados");
-    }
+    return data.results.map(({ id, title, name, vote_average, poster_path, overview, release_date, first_air_date }) => ({
+      id,
+      title: title || name,
+      vote_average,
+      poster_path,
+      overview,
+      release_date: release_date || first_air_date,
+    }));
   } catch (error) {
-    console.error("Error al obtener películas con filtro:", error);
+    console.error('Error al obtener títulos:', error);
     throw error;
   }
 }
 
-// Función para obtener películas mejor valoradas (top-rated) sin filtro
-export async function obtenerPeliculasSinFiltro(pagina) {
-  try {
-    const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${TMDB_API_KEY}&language=es-ES&page=${pagina}&include_adult=false`;
-    const response = await fetch(url);
-    const data = await response.json();
+export function guardarTitulo(tipo, titulo) {
+  const guardados = JSON.parse(localStorage.getItem('guardados')) || { peliculas: [], series: [] };
+  let lista;
 
-    if (data.results) {
-      const peliculas = data.results.map(pelicula => ({
-        id: pelicula.id,
-        title: pelicula.title || pelicula.original_title,
-        vote_average: pelicula.vote_average,
-        poster_path: pelicula.poster_path,
-        overview: pelicula.overview,
-        release_date: pelicula.release_date,
-      }));
-
-      // Ordenar las películas por puntuación (vote_average) de mayor a menor
-      peliculas.sort((a, b) => b.vote_average - a.vote_average);
-
-      return peliculas;
-    } else {
-      throw new Error("No se obtuvieron resultados");
-    }
-  } catch (error) {
-    console.error("Error al obtener películas mejor valoradas:", error);
-    throw error;
+  if (tipo === 'movie') {
+    lista = guardados.peliculas;
+  } else {
+    lista = guardados.series;
   }
+
+  // Verifica si el título ya está guardado
+  const tituloGuardado = lista.find(item => item.id === titulo.id);
+  if (tituloGuardado) {
+    return console.log('El título ya está en favoritos');
+  }
+
+  // Si no está guardado, lo agregamos
+  const nuevoTitulo = {
+    id: titulo.id,
+    title: titulo.title,
+    vote_average: titulo.vote_average,
+    poster_path: titulo.poster_path,
+    overview: titulo.overview,
+    release_date: titulo.release_date || titulo.first_air_date,
+  };
+
+  lista.push(nuevoTitulo);
+  localStorage.setItem('guardados', JSON.stringify(guardados));
 }
 
-// Función para obtener películas mejor valoradas (top-rated) con paginación
-export async function obtenerPaginacion(pagina) {
-  try {
-    const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${TMDB_API_KEY}&language=es-ES&page=${pagina}&include_adult=false`;
-    const response = await fetch(url);
-    const data = await response.json();
-
-    if (data.results) {
-      const peliculas = data.results.map(pelicula => ({
-        id: pelicula.id,
-        title: pelicula.title || pelicula.original_title,
-        vote_average: pelicula.vote_average,
-        poster_path: pelicula.poster_path,
-        overview: pelicula.overview,
-        release_date: pelicula.release_date,
-      }));
-
-      // Ordenar las películas por puntuación (vote_average) de mayor a menor
-      peliculas.sort((a, b) => b.vote_average - a.vote_average);
-
-      return peliculas;
-    } else {
-      throw new Error("No se obtuvieron resultados");
-    }
-  } catch (error) {
-    console.error("Error al obtener paginación de películas:", error);
-    throw error;
-  }
+export function obtenerTitulosGuardados() {
+  return JSON.parse(localStorage.getItem('guardados')) || { peliculas: [], series: [] };
 }

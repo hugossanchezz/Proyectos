@@ -14,7 +14,7 @@
         class="contenido-mostrar flex"
         v-show="!loading"
       >
-        <div class="contenedor-peliculas">
+        <div class="contenedor-titulos">
           <nav class="nav__filtros">
             <form
               id="filtros-form"
@@ -52,18 +52,30 @@
             </form>
           </nav>
 
-          <section id="peliculas-catalogo" class="peliculas__catalogo grid">
+          <section id="peliculas-catalogo" class="titulos__catalogo grid">
             <div
               v-for="pelicula in peliculas"
               :key="pelicula.id"
-              class="catalogo__pelicula flex-column"
+              class="catalogo__titulo flex-column"
             >
               <img
                 :src="'https://image.tmdb.org/t/p/w500/' + pelicula.poster_path"
                 alt="Poster de la película"
-                class="catalogo__pelicula__poster"
+                class="catalogo__titulo__poster"
               />
-              <p class="catalogo__pelicula__nombre">{{ pelicula.title }}</p>
+              <p class="catalogo__titulo__nombre">{{ pelicula.title }}</p>
+              <button @click="guardarTitulo(pelicula)">Guardar</button>
+            </div>
+            <!-- Elemento final de la pagina del catalogo (estético y hacer que se avance de pagina) -->
+            <div class="catalogo__titulo flex-column">
+              <img
+                src="/img/ico/flecha-derecha.svg"
+                alt="Poster de la película"
+                class="catalogo__titulo__poster"
+              />
+              <p class="catalogo__titulo__nombre">
+                Haz click en <strong>siguiente</strong> para ver más.
+              </p>
             </div>
           </section>
 
@@ -75,7 +87,11 @@
             >
               < Anterior
             </button>
-            <button class="button-submit" @click="cambiarPagina(paginaActual + 1)">
+            <div>Página {{ paginaActual }}</div>
+            <button
+              class="button-submit"
+              @click="cambiarPagina(paginaActual + 1)"
+            >
               Siguiente >
             </button>
           </div>
@@ -91,10 +107,7 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import {
-  obtenerPeliculasConFiltro,
-  obtenerPeliculasSinFiltro,
-} from "/src/js/peliculas-series.js";
+import { obtenerTitulos, guardarTitulo } from "/src/js/peliculas-series.js";
 
 export default {
   components: { Header, Footer },
@@ -102,6 +115,7 @@ export default {
   data() {
     return {
       loading: true,
+      tipo: "movie",
       query: "",
       generoSeleccionado: 0, // "Todos" seleccionado por defecto
       peliculas: [],
@@ -131,15 +145,19 @@ export default {
   methods: {
     async cambiarPagina(pagina) {
       this.paginaActual = pagina;
-      await this.cargarContenido();
-      // Desplazar a la parte superior de la página
       window.scrollTo(0, 0);
+      await this.cargarContenido();
     },
 
     async cargarContenido() {
       try {
-        // Se recarga el contenido dependiendo del filtro activo (género y/o búsqueda)
-        this.peliculas = await this.obtenerPeliculas();
+        this.peliculas = await obtenerTitulos(
+          this.tipo,
+          this.generoSeleccionado || null,
+          this.query || null,
+          this.paginaActual,
+          this.generoSeleccionado !== 0 || !!this.query // Solo filtra si hay género o búsqueda
+        );
       } catch (error) {
         console.error("Error al cargar las películas", error);
       } finally {
@@ -147,31 +165,22 @@ export default {
       }
     },
 
-    async obtenerPeliculas() {
-      // Si hay filtro de género o búsqueda, se obtiene con filtro
-      if (this.generoSeleccionado || this.query) {
-        return await obtenerPeliculasConFiltro(
-          this.generoSeleccionado,
-          this.query,
-          this.paginaActual
-        );
-      } else {
-        // Si no hay filtro, se obtiene sin filtro
-        return await obtenerPeliculasSinFiltro(this.paginaActual);
-      }
-    },
-
     async cambiarGenero(generoId) {
+      this.query = "";
       this.generoSeleccionado = generoId;
       this.paginaActual = 1;
       await this.cargarContenido();
     },
 
     filtrarContenido() {
-      // Al filtrar, siempre se vuelve a la primera página
       this.paginaActual = 1;
       this.cargarContenido();
     },
+
+    guardarTitulo(pelicula) {
+      guardarTitulo(this.tipo,pelicula); 
+      alert('Título guardado en favoritos');
+    }
   },
 
   async mounted() {

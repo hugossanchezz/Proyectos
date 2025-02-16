@@ -1,6 +1,4 @@
 <template>
-
-  
   <header class="header-movil flex">
     <section class="section-logo flex-column">
       <router-link to="/">
@@ -9,7 +7,7 @@
       <Breadcrumb />
     </section>
 
-    <nav class=" header__nav centrado-flex">
+    <nav class="header__nav centrado-flex">
       <section
         class="container-nav-items flex"
         :class="{ 'menu-abierto': menuAbierto }"
@@ -24,6 +22,20 @@
             >Series</router-link
           >
         </div>
+
+        <div class="nav__item">
+          <router-link
+            to="/mi-espacio"
+            class="centrado-flex font-size-pequenio"
+          >
+            Mi espacio
+            <img
+              class="item__bookmark"
+              src="/img/ico/bookmark.svg"
+              alt="Icono de guardado"
+            />
+          </router-link>
+        </div>
         <div class="nav__item">
           <router-link to="/comunidad" class="centrado-flex font-size-pequenio"
             >Comunidad</router-link
@@ -33,16 +45,6 @@
           <router-link to="/nosotros" class="centrado-flex font-size-pequenio"
             >Nosotros</router-link
           >
-        </div>
-        <div class="nav__item">
-          <router-link to="/mi-espacio" class="centrado-flex font-size-pequenio">
-            Mi espacio
-            <img
-              class="item__bookmark"
-              src="/img/ico/bookmark.svg"
-              alt="Icono de guardado"
-            />
-          </router-link>
         </div>
       </section>
     </nav>
@@ -85,7 +87,6 @@
       </div>
     </section>
   </header>
-  
 </template>
 
 <script>

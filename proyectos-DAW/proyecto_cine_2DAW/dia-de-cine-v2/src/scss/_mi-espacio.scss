@@ -1,0 +1,13 @@
+// Variables
+@use "_variables.scss" as *;
+
+.mi-espacio-container {
+  min-height: 100vh;
+  width: 90%;
+  margin: 0 auto;
+}
+.mi-espacio__titulos {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 1rem;
+}
