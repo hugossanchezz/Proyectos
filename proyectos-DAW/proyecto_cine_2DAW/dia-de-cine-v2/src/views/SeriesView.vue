@@ -63,19 +63,33 @@
                 alt="Poster de la serie"
                 class="catalogo__titulo__poster"
               />
-              <p class="catalogo__titulo__nombre">{{ serie.title }}</p>
-              <button @click="guardarTitulo(serie)">Guardar</button>
+              <p class="catalogo__titulo__nombre centrado-flex">
+                {{ serie.title }}
+              </p>
+              <!-- Botón para guardar la serie -->
+              <button class="titulo__boton" @click="guardarTitulo(serie)">
+                <img
+                  :src="
+                    esTituloGuardado(serie)
+                      ? '/img/ico/remove.svg'
+                      : '/img/ico/plus.svg'
+                  "
+                  alt="Añadir o quitar título de guardados"
+                />
+              </button>
             </div>
+
+            <!-- Elemento final de la pagina del catalogo (estético y hacer que se avance de pagina) 
             <div class="catalogo__titulo flex-column">
               <img
                 src="/img/ico/flecha-derecha.svg"
-                alt="Más series"
+                alt="Poster de la película"
                 class="catalogo__titulo__poster"
               />
               <p class="catalogo__titulo__nombre">
                 Haz click en <strong>siguiente</strong> para ver más.
               </p>
-            </div>
+            </div>-->
           </section>
 
           <div id="pagina-controles" class="pagina-controles centrado-flex">
@@ -106,7 +120,11 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import { obtenerTitulos, guardarTitulo } from "/src/js/peliculas-series.js";
+import {
+  obtenerTitulos,
+  guardarTitulo,
+  esTituloGuardado,
+} from "/src/js/peliculas-series.js";
 
 export default {
   components: { Header, Footer },
@@ -131,10 +149,8 @@ export default {
         { id: 9648, nombre: "Misterio" },
         { id: 10765, nombre: "Ciencia Ficción y Fantasía" },
         { id: 10766, nombre: "Telenovela" },
-        { id: 10767, nombre: "Talk Show" },
         { id: 10768, nombre: "Bélica y Política" },
         { id: 37, nombre: "Western" },
-        { id: 10752, nombre: "Documental" },
       ],
     };
   },
@@ -177,8 +193,10 @@ export default {
     guardarTitulo(serie) {
       console.log(serie); // Añade este log para ver qué datos tiene la serie
       guardarTitulo(this.tipo, serie);
-      alert('Título guardado en favoritos');
-    }
+    },
+    esTituloGuardado(serie) {
+      return esTituloGuardado(this.tipo, serie);
+    },
   },
 
   async mounted() {

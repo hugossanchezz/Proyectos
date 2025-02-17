@@ -63,10 +63,24 @@
                 alt="Poster de la película"
                 class="catalogo__titulo__poster"
               />
-              <p class="catalogo__titulo__nombre">{{ pelicula.title }}</p>
-              <button @click="guardarTitulo(pelicula)">Guardar</button>
+              <p class="catalogo__titulo__nombre centrado-flex">
+                {{ pelicula.title }}
+              </p>
+
+              <!-- Botón para guardar la pelicula -->
+              <button class="titulo__boton" @click="guardarTitulo(pelicula)">
+                <img
+                  :src="
+                    esTituloGuardado(pelicula)
+                      ? '/img/ico/remove.svg'
+                      : '/img/ico/plus.svg'
+                  "
+                  alt="Añadir o quitar título de guardados"
+                />
+              </button>
             </div>
-            <!-- Elemento final de la pagina del catalogo (estético y hacer que se avance de pagina) -->
+
+            <!-- Elemento final de la pagina del catalogo (estético y hacer que se avance de pagina) 
             <div class="catalogo__titulo flex-column">
               <img
                 src="/img/ico/flecha-derecha.svg"
@@ -76,7 +90,7 @@
               <p class="catalogo__titulo__nombre">
                 Haz click en <strong>siguiente</strong> para ver más.
               </p>
-            </div>
+            </div>-->
           </section>
 
           <div id="pagina-controles" class="pagina-controles centrado-flex">
@@ -107,7 +121,11 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import { obtenerTitulos, guardarTitulo } from "/src/js/peliculas-series.js";
+import {
+  obtenerTitulos,
+  guardarTitulo,
+  esTituloGuardado,
+} from "/src/js/peliculas-series.js";
 
 export default {
   components: { Header, Footer },
@@ -178,9 +196,12 @@ export default {
     },
 
     guardarTitulo(pelicula) {
-      guardarTitulo(this.tipo,pelicula); 
-      alert('Título guardado en favoritos');
-    }
+      guardarTitulo(this.tipo, pelicula);
+    },
+
+    esTituloGuardado(pelicula) {
+      return esTituloGuardado(this.tipo, pelicula);
+    },
   },
 
   async mounted() {

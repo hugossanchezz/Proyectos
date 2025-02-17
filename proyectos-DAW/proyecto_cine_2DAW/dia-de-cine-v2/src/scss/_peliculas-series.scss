@@ -1,7 +1,7 @@
 // Variables
 @use "_variables.scss" as *;
 
-.contenedor-titulos{
+.contenedor-titulos {
   width: 100%;
 
   .nav__filtros {
@@ -51,14 +51,40 @@
     gap: 20px;
     padding: 20px;
     margin: 0 auto;
-
   }
   .catalogo__titulo {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     border: 1px solid map-get($colores, "gris_claro");
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
     text-align: center;
     border-radius: 10px;
     overflow: hidden;
+
+    .titulo__boton {
+      background-color: map-get($colores, "naranja");
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      top: 5px;
+      right: 5px;
+      border: 0;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
   }
 
   .catalogo__titulo__poster {
@@ -71,10 +97,10 @@
   .catalogo__titulo__nombre {
     color: map-get($colores, "gris_oscuro");
     font-size: map-get($tamanios, "pequenio");
+    min-height: 5rem;
     font-weight: bold;
     padding: 10px 5px;
   }
-
 
   .pagina-controles {
     width: 100%;

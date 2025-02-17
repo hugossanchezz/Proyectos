@@ -34,7 +34,16 @@
                   alt="Poster de la película"
                   class="catalogo__titulo__poster"
                 />
-                <p class="catalogo__titulo__nombre">{{ pelicula.title }}</p>
+                <p class="catalogo__titulo__nombre centrado-flex">
+                  {{ pelicula.title }}
+                </p>
+                <!-- Botón para guardar la serie -->
+                <button class="titulo__boton" @click="guardarTitulo(serie) && (tipo = 'movie')">
+                  <img
+                    src="/img/ico/plus.svg"
+                    alt="Añadir o quitar título de guardados"
+                  />
+                </button>
               </div>
             </div>
           </div>
@@ -56,7 +65,16 @@
                   alt="Poster de la serie"
                   class="catalogo__titulo__poster"
                 />
-                <p class="catalogo__titulo__nombre">{{ serie.name }}</p>
+                <p class="catalogo__titulo__nombre centrado-flex">
+                  {{ serie.title }}
+                </p>
+                <!-- Botón para guardar la serie -->
+                <button class="titulo__boton" @click="guardarTitulo(serie) && (tipo = 'tv')">
+                  <img
+                    src="/img/ico/plus.svg"
+                    alt="Añadir o quitar título de guardados"
+                  />
+                </button>
               </div>
             </div>
           </div>
@@ -73,7 +91,7 @@
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 
-import { obtenerTitulosGuardados } from "/src/js/peliculas-series.js";
+import { obtenerTitulosGuardados,esTituloGuardado, guardarTitulo } from "/src/js/peliculas-series.js";
 
 export default {
   components: {
@@ -85,6 +103,7 @@ export default {
       loading: true, // controla si mostramos el loader o el contenido
       peliculasFavoritas: [],
       seriesFavoritas: [],
+      tipo: "",
     };
   },
   mounted() {
@@ -102,6 +121,13 @@ export default {
       const { peliculas, series } = obtenerTitulosGuardados();
       this.peliculasFavoritas = peliculas;
       this.seriesFavoritas = series;
+    },
+
+    esTituloGuardado(titulo) {
+      return esTituloGuardado(this.tipo, titulo);
+    },
+    guardarTitulo(titulo) {
+      guardarTitulo(this.tipo, titulo);
     },
   },
 };

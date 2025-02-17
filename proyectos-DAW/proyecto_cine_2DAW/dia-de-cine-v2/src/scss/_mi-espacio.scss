@@ -6,8 +6,15 @@
   width: 90%;
   margin: 0 auto;
 }
+
 .mi-espacio__titulos {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+   padding: 0.25rem;
+  .catalogo__titulo {
+    transform: scale(0.9);
+
+    .catalogo__titulo__nombre {
+      font-size: map-get($tamanios, "medio");
+    }
+  }
 }

@@ -22,7 +22,16 @@
             >Series</router-link
           >
         </div>
-
+        <div class="nav__item">
+          <router-link to="/comunidad" class="centrado-flex font-size-pequenio"
+            >Comunidad</router-link
+          >
+        </div>
+        <div class="nav__item">
+          <router-link to="/nosotros" class="centrado-flex font-size-pequenio"
+            >Nosotros</router-link
+          >
+        </div>
         <div class="nav__item">
           <router-link
             to="/mi-espacio"
@@ -36,16 +45,7 @@
             />
           </router-link>
         </div>
-        <div class="nav__item">
-          <router-link to="/comunidad" class="centrado-flex font-size-pequenio"
-            >Comunidad</router-link
-          >
-        </div>
-        <div class="nav__item">
-          <router-link to="/nosotros" class="centrado-flex font-size-pequenio"
-            >Nosotros</router-link
-          >
-        </div>
+        
       </section>
     </nav>
 

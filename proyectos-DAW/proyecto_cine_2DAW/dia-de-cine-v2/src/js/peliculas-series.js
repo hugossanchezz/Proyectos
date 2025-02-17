@@ -33,6 +33,21 @@ export async function obtenerTitulos(tipoTitulo, generoId = null, nombre = null,
   }
 }
 
+// Método para comprobar si el título ya está guardado
+export function esTituloGuardado(tipo, titulo) {
+  const guardados = JSON.parse(localStorage.getItem('guardados')) || { peliculas: [], series: [] };
+  let lista;
+
+  if (tipo === 'movie') {
+    lista = guardados.peliculas;
+  } else {
+    lista = guardados.series;
+  }
+
+  // Verifica si el título ya está guardado (devuelve true o false)
+  return lista.some(item => item.id === titulo.id);
+}
+
 export function guardarTitulo(tipo, titulo) {
   const guardados = JSON.parse(localStorage.getItem('guardados')) || { peliculas: [], series: [] };
   let lista;
@@ -43,9 +58,8 @@ export function guardarTitulo(tipo, titulo) {
     lista = guardados.series;
   }
 
-  // Verifica si el título ya está guardado
-  const tituloGuardado = lista.find(item => item.id === titulo.id);
-  if (tituloGuardado) {
+  // Usa el método independiente para verificar si el título ya está guardado
+  if (esTituloGuardado(tipo, titulo)) {
     return console.log('El título ya está en favoritos');
   }
 
