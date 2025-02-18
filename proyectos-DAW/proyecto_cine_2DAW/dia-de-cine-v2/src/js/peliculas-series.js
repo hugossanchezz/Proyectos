@@ -77,6 +77,23 @@ export function guardarTitulo(tipo, titulo) {
   localStorage.setItem('guardados', JSON.stringify(guardados));
 }
 
+export function eliminarTituloGuardado(tipo, titulo) {
+  const guardados = JSON.parse(localStorage.getItem('guardados')) || { peliculas: [], series: [] };
+  let lista;
+
+  if (tipo === 'movie') {
+    lista = guardados.peliculas;
+  } else {
+    lista = guardados.series;
+  }
+
+  // Filtramos para eliminar el título seleccionado
+  guardados[tipo === 'movie' ? 'peliculas' : 'series'] = lista.filter(item => item.id !== titulo.id);
+
+  localStorage.setItem('guardados', JSON.stringify(guardados));
+}
+
+
 export function obtenerTitulosGuardados() {
   return JSON.parse(localStorage.getItem('guardados')) || { peliculas: [], series: [] };
 }

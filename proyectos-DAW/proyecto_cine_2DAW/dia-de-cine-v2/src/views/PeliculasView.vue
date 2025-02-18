@@ -8,7 +8,7 @@
       <!-- Animación de carga -->
       <div id="loader" class="loader" v-if="loading"></div>
 
-      <!-- Contenido principal -->
+      <!-- Contenido a mostrar despues del tiempo de carga -->
       <div
         id="contenido-mostrar"
         class="contenido-mostrar flex"
@@ -68,29 +68,16 @@
               </p>
 
               <!-- Botón para guardar la pelicula -->
-              <button class="titulo__boton" @click="guardarTitulo(pelicula)">
+              <button
+                class="titulo__boton"
+                @click="toggleGuardarTitulo(pelicula)"
+              >
                 <img
-                  :src="
-                    esTituloGuardado(pelicula)
-                      ? '/img/ico/remove.svg'
-                      : '/img/ico/plus.svg'
-                  "
+                  :src="iconoTituloGuardado(pelicula)"
                   alt="Añadir o quitar título de guardados"
                 />
               </button>
             </div>
-
-            <!-- Elemento final de la pagina del catalogo (estético y hacer que se avance de pagina) 
-            <div class="catalogo__titulo flex-column">
-              <img
-                src="/img/ico/flecha-derecha.svg"
-                alt="Poster de la película"
-                class="catalogo__titulo__poster"
-              />
-              <p class="catalogo__titulo__nombre">
-                Haz click en <strong>siguiente</strong> para ver más.
-              </p>
-            </div>-->
           </section>
 
           <div id="pagina-controles" class="pagina-controles centrado-flex">
@@ -124,6 +111,7 @@ import Footer from "@/components/Footer.vue";
 import {
   obtenerTitulos,
   guardarTitulo,
+  eliminarTituloGuardado,
   esTituloGuardado,
 } from "/src/js/peliculas-series.js";
 
@@ -135,7 +123,7 @@ export default {
       loading: true,
       tipo: "movie",
       query: "",
-      generoSeleccionado: 0, // "Todos" seleccionado por defecto
+      generoSeleccionado: 0,
       peliculas: [],
       paginaActual: 1,
       generos: [
@@ -174,7 +162,7 @@ export default {
           this.generoSeleccionado || null,
           this.query || null,
           this.paginaActual,
-          this.generoSeleccionado !== 0 || !!this.query // Solo filtra si hay género o búsqueda
+          this.generoSeleccionado !== 0 || !!this.query
         );
       } catch (error) {
         console.error("Error al cargar las películas", error);
@@ -195,12 +183,19 @@ export default {
       this.cargarContenido();
     },
 
-    guardarTitulo(pelicula) {
-      guardarTitulo(this.tipo, pelicula);
+    toggleGuardarTitulo(pelicula) {
+      if (esTituloGuardado(this.tipo, pelicula)) {
+        eliminarTituloGuardado(this.tipo, pelicula);
+      } else {
+        guardarTitulo(this.tipo, pelicula);
+      }
+      this.$forceUpdate(); // Fuerza la actualización del icono
     },
 
-    esTituloGuardado(pelicula) {
-      return esTituloGuardado(this.tipo, pelicula);
+    iconoTituloGuardado(pelicula) {
+      return esTituloGuardado(this.tipo, pelicula)
+        ? "/img/ico/remove.svg"
+        : "/img/ico/plus.svg";
     },
   },
 

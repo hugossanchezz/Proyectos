@@ -14,7 +14,11 @@
     transform: scale(0.9);
 
     .catalogo__titulo__nombre {
-      font-size: map-get($tamanios, "medio");
+      font-size: map-get($tamanios, "pequenio");
+    }
+
+    .catalogo__titulo__poster{
+      height: 280px;
     }
   }
 }

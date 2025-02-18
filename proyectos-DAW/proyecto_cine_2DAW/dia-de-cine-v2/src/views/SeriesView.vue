@@ -8,7 +8,7 @@
       <!-- Animación de carga -->
       <div id="loader" class="loader" v-if="loading"></div>
 
-      <!-- Contenido principal -->
+      <!-- Contenido a mostrar despues del tiempo de carga -->
       <div
         id="contenido-mostrar"
         class="contenido-mostrar flex"
@@ -66,32 +66,16 @@
               <p class="catalogo__titulo__nombre centrado-flex">
                 {{ serie.title }}
               </p>
+
               <!-- Botón para guardar la serie -->
-              <button class="titulo__boton" @click="guardarTitulo(serie)">
+              <button class="titulo__boton" @click="toggleGuardarTitulo(serie)">
                 <img
-                  :src="
-                    esTituloGuardado(serie)
-                      ? '/img/ico/remove.svg'
-                      : '/img/ico/plus.svg'
-                  "
+                  :src="iconoTituloGuardado(serie)"
                   alt="Añadir o quitar título de guardados"
                 />
               </button>
             </div>
-
-            <!-- Elemento final de la pagina del catalogo (estético y hacer que se avance de pagina) 
-            <div class="catalogo__titulo flex-column">
-              <img
-                src="/img/ico/flecha-derecha.svg"
-                alt="Poster de la película"
-                class="catalogo__titulo__poster"
-              />
-              <p class="catalogo__titulo__nombre">
-                Haz click en <strong>siguiente</strong> para ver más.
-              </p>
-            </div>-->
           </section>
-
           <div id="pagina-controles" class="pagina-controles centrado-flex">
             <button
               class="button-submit"
@@ -111,7 +95,6 @@
         </div>
       </div>
     </main>
-
     <!-- Footer común -->
     <Footer />
   </div>
@@ -123,12 +106,12 @@ import Footer from "@/components/Footer.vue";
 import {
   obtenerTitulos,
   guardarTitulo,
+  eliminarTituloGuardado,
   esTituloGuardado,
 } from "/src/js/peliculas-series.js";
 
 export default {
   components: { Header, Footer },
-
   data() {
     return {
       loading: true,
@@ -154,14 +137,12 @@ export default {
       ],
     };
   },
-
   methods: {
     async cambiarPagina(pagina) {
       this.paginaActual = pagina;
       window.scrollTo(0, 0);
       await this.cargarContenido();
     },
-
     async cargarContenido() {
       try {
         this.series = await obtenerTitulos(
@@ -190,15 +171,21 @@ export default {
       this.cargarContenido();
     },
 
-    guardarTitulo(serie) {
-      console.log(serie); // Añade este log para ver qué datos tiene la serie
-      guardarTitulo(this.tipo, serie);
+    toggleGuardarTitulo(pelicula) {
+      if (esTituloGuardado(this.tipo, pelicula)) {
+        eliminarTituloGuardado(this.tipo, pelicula);
+      } else {
+        guardarTitulo(this.tipo, pelicula);
+      }
+      this.$forceUpdate(); // Fuerza la actualización del icono
     },
-    esTituloGuardado(serie) {
-      return esTituloGuardado(this.tipo, serie);
+
+    iconoTituloGuardado(serie) {
+      return esTituloGuardado(this.tipo, serie)
+        ? "/img/ico/remove.svg"
+        : "/img/ico/plus.svg";
     },
   },
-
   async mounted() {
     await this.cargarContenido();
   },

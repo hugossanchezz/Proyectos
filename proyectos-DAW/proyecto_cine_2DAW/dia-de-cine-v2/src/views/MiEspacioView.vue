@@ -37,10 +37,13 @@
                 <p class="catalogo__titulo__nombre centrado-flex">
                   {{ pelicula.title }}
                 </p>
-                <!-- Botón para guardar la serie -->
-                <button class="titulo__boton" @click="guardarTitulo(serie) && (tipo = 'movie')">
+                <!-- Botón para guardar la película -->
+                <button
+                  class="titulo__boton"
+                  @click="toggleGuardarTitulo(pelicula, 'movie')"
+                >
                   <img
-                    src="/img/ico/plus.svg"
+                    :src="iconoTituloGuardado(pelicula, 'movie')"
                     alt="Añadir o quitar título de guardados"
                   />
                 </button>
@@ -69,9 +72,12 @@
                   {{ serie.title }}
                 </p>
                 <!-- Botón para guardar la serie -->
-                <button class="titulo__boton" @click="guardarTitulo(serie) && (tipo = 'tv')">
+                <button
+                  class="titulo__boton"
+                  @click="toggleGuardarTitulo(serie, 'tv')"
+                >
                   <img
-                    src="/img/ico/plus.svg"
+                    :src="iconoTituloGuardado(serie, 'tv')"
                     alt="Añadir o quitar título de guardados"
                   />
                 </button>
@@ -91,7 +97,12 @@
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 
-import { obtenerTitulosGuardados,esTituloGuardado, guardarTitulo } from "/src/js/peliculas-series.js";
+import {
+  obtenerTitulosGuardados,
+  esTituloGuardado,
+  guardarTitulo,
+  eliminarTituloGuardado,
+} from "/src/js/peliculas-series.js";
 
 export default {
   components: {
@@ -103,7 +114,6 @@ export default {
       loading: true, // controla si mostramos el loader o el contenido
       peliculasFavoritas: [],
       seriesFavoritas: [],
-      tipo: "",
     };
   },
   mounted() {
@@ -123,11 +133,19 @@ export default {
       this.seriesFavoritas = series;
     },
 
-    esTituloGuardado(titulo) {
-      return esTituloGuardado(this.tipo, titulo);
+    toggleGuardarTitulo(titulo, tipo) {
+      if (esTituloGuardado(tipo, titulo)) {
+        eliminarTituloGuardado(tipo, titulo);
+      } else {
+        guardarTitulo(tipo, titulo);
+      }
+      this.cargarTitulosGuardados(); // Recargar los títulos guardados
     },
-    guardarTitulo(titulo) {
-      guardarTitulo(this.tipo, titulo);
+
+    iconoTituloGuardado(titulo, tipo) {
+      return esTituloGuardado(tipo, titulo)
+        ? "/img/ico/remove.svg"
+        : "/img/ico/plus.svg";
     },
   },
 };
