@@ -10,6 +10,7 @@
     color: map-get($colores, "blanco");
   }
 }
+
 .breadcrumb ul {
   display: flex;
   list-style: none;
@@ -17,13 +18,16 @@
   margin-left: 0;
   align-items: center;
 }
+
 .breadcrumb li {
   margin-right: 10px;
 }
+
 .breadcrumb li::after {
   content: ">";
   margin-left: 10px;
 }
+
 .breadcrumb li:last-child::after {
   content: "";
 }

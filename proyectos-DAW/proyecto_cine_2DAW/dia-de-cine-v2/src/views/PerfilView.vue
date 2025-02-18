@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      loading: true, // Para controlar la animación de carga
+      loading: true, // Controla si mostramos el loader o el contenido
     };
   },
   mounted() {

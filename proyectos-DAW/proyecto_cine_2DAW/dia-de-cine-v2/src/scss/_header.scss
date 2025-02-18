@@ -21,7 +21,7 @@ header {
 }
 
 .header__nav {
-  height: 10vh;
+  height: 100%;
   min-width: 42.5%;
   width: auto;
 
@@ -85,10 +85,10 @@ header {
     gap: 0.5rem;
 
     .container__login {
-      width: 6.5rem;
       .boton-registrarse {
         background-color: map-get($colores, "naranja");
         height: 36px;
+        width: 6.5rem;
         border-radius: 10px;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -106,8 +106,6 @@ header {
         }
       }
     }
-
-    
   }
 
   .input-busqueda {
@@ -155,7 +153,7 @@ header {
     }
   }
 
-  nav {
+  .header__nav {
     display: flex;
     flex-direction: column;
     width: 100%;

@@ -30,7 +30,7 @@ const routes = [
     {
         path: '/comunidad',
         name: 'Comunidad',
-        component: ComunidadView
+        component: TemporalView, //ComunidadView
     },
     {
         path: '/peliculas',
@@ -49,7 +49,7 @@ const routes = [
     },
     {
         path: '/perfil',
-        redirect: '/perfil/registro',  // Redirige automáticamente a login
+        redirect: '/perfil/registro',  // Redirige automáticamente a registro
         component: PerfilView, // Contenedor de login y registro(terminos, privacidad y cookies)
         // en los path de los hijo no se pone "/nombre-path" porque se pone automaticamente
         children: [

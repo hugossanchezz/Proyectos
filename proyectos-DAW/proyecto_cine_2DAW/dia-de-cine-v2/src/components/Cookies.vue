@@ -152,6 +152,7 @@
         &copy; {{ currentYear }} Dia de Cine. Todos los derechos reservados.
       </p>
     </div>
+    <!-- Botón de volver a Terminos y Condiciones -->
     <div class="btn-accept centrado-flex">
       <router-link to="/perfil/registro/terminos">Volver</router-link>
     </div>
@@ -161,6 +162,7 @@
 <script>
 export default {
   data() {
+    // Obtener el año actual
     return {
       currentYear: new Date().getFullYear(),
     };

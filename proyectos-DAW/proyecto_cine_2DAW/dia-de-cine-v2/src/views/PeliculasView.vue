@@ -120,7 +120,7 @@ export default {
 
   data() {
     return {
-      loading: true,
+      loading: true, // Controla si mostramos el loader o el contenido
       tipo: "movie",
       query: "",
       generoSeleccionado: 0,

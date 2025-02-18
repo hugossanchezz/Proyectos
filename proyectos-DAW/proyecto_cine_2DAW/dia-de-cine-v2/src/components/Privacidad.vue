@@ -188,6 +188,7 @@
 export default {
   data() {
     return {
+      // Obtener el año actual
       currentYear: new Date().getFullYear(),
     };
   },

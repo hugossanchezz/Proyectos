@@ -80,7 +80,7 @@ export default {
   },
   data() {
     return {
-      loading: true, // Esta propiedad controla si mostramos el loader o el contenido
+      loading: true, // Controla si mostramos el loader o el contenido
       fechaNoticias: "",
       fechaEstrenos: "",
       numNoticas: 8,

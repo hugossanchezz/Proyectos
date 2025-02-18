@@ -114,7 +114,7 @@ export default {
   components: { Header, Footer },
   data() {
     return {
-      loading: true,
+      loading: true, // Controla si mostramos el loader o el contenido
       tipo: "tv",
       query: "",
       generoSeleccionado: 0,

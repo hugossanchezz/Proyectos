@@ -92,7 +92,7 @@ export default {
   },
   data() {
     return {
-      loading: true, // controla si mostramos el loader o el contenido
+      loading: true, // Controla si mostramos el loader o el contenido
     };
   },
   mounted() {

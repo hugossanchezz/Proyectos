@@ -1,35 +1,38 @@
 <template>
   <footer>
     <section class="contacto centrado-flex">
+      <!-- Botón de contacto email -->
       <div class="contacto__mail-linkedin flex">
         <div
-        class="socialContainer containerOne"
-        tabindex="0"
-        @click="mostrarModalCorreo()"
-        aria-label="Mostrar dirección de correo"
-      >
-        <img
-          src="/img/ico/mail.svg"
-          alt="Icono de correo electrónico"
-          class="socialSvg"
-        />
-      </div>
-
-      <div class="socialContainer containerTwo" tabindex="0">
-        <a
-          href="https://www.linkedin.com/in/hugossanchezz/"
-          target="_blank"
-          aria-label="Ir al perfil de LinkedIn (se abre en nueva ventana)"
+          class="socialContainer containerOne"
+          tabindex="0"
+          @click="mostrarModalCorreo()"
+          aria-label="Mostrar dirección de correo"
         >
           <img
-            src="/img/ico/linkedin.svg"
-            alt="LinkedIn Icon"
+            src="/img/ico/mail.svg"
+            alt="Icono de correo electrónico"
             class="socialSvg"
           />
-        </a>
+        </div>
+
+        <!-- Botón de contacto linkedin -->
+        <div class="socialContainer containerTwo" tabindex="0">
+          <a
+            href="https://www.linkedin.com/in/hugossanchezz/"
+            target="_blank"
+            aria-label="Ir al perfil de LinkedIn (se abre en nueva ventana)"
+          >
+            <img
+              src="/img/ico/linkedin.svg"
+              alt="LinkedIn Icon"
+              class="socialSvg"
+            />
+          </a>
+        </div>
       </div>
-      </div>
-      
+
+      <!-- Botón de donaciones "Buy Me a Coffee" -->
       <div class="contacto__donaciones" @click="mostrarModalDonaciones()">
         <img
           src="https://cdn.buymeacoffee.com/buttons/v2/default-white.png"
@@ -43,7 +46,7 @@
 
     <section class="copyright">
       <p>
-        © 2022 Dia de Cine.
+        © {{ currentYear }} Dia de Cine.
         <a class="autor" href="https://github.com/hugossanchezz" target="_blank"
           >Hugo Sánchez Ciudad</a
         >.
@@ -98,13 +101,23 @@
       >
         <div class="modal-donaciones__titulos flex-column">
           <h2>¿Quieres apoyar a <strong>Dia de Cine</strong>?</h2>
-          <div class="p">Puedes hacernos un <strong>donativo</strong> para motivarnos a siguir creciendo y ofreciendo nuevos contenidos.</div>
+          <div class="p">
+            Puedes hacernos un <strong>donativo</strong> para motivarnos a
+            siguir creciendo y ofreciendo nuevos contenidos.
+          </div>
         </div>
 
         <hr class="modal__hr" />
         <div class="modal-donaciones__cantidad flex">
-          <label for="cantidad" class="cantidad-label">Introduce la cantidad que te gustaría donar</label>
-          <input id="cantidad" class="cantidad-input" type="number" placeholder="€">
+          <label for="cantidad" class="cantidad-label"
+            >Introduce la cantidad que te gustaría donar</label
+          >
+          <input
+            id="cantidad"
+            class="cantidad-input"
+            type="number"
+            placeholder="€"
+          />
         </div>
         <div class="modal__div centrado-flex">
           <div class="visa-card flex-column">
@@ -172,6 +185,7 @@
         </button>
       </div>
     </div>
+    <!-- Fin de la tarjeta donaciones -->
   </footer>
 </template>
 
@@ -182,6 +196,7 @@ export default {
     return {
       modalCorreoVisible: false,
       modalDonacionVisible: false,
+      currentYear: new Date().getFullYear(), // Obtener el año actual
     };
   },
   computed: {
@@ -202,6 +217,7 @@ export default {
       this.modalDonacionVisible = false;
     },
     copiarEmail() {
+      // Copiar el correo al portapapeles
       navigator.clipboard
         .writeText("hugosanchezciudad23@gmail.com")
         .then(console.log("Correo copiado al portapapeles."));
