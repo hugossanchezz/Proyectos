@@ -36,11 +36,16 @@
       width: fit-content;
       padding: 0.5rem;
 
+      align-items: center;
       justify-content: space-between;
       margin-top: 1rem;
+      gap: 1rem;
 
-      .filtros__busqueda__anio {
-        margin-left: 1rem;
+      .busqueda__input {
+        border: 2px solid map-get($colores, "gris_claro");
+        border-radius: 5px;
+        padding: 2px;
+        padding-left: 5px;
       }
     }
   }
@@ -107,6 +112,19 @@
     button {
       margin: 10px;
       width: 10rem;
+    }
+  }
+}
+
+// Estilos para móviles (≤ 768px)
+@media (max-width: 1024px) {
+  .contenedor-titulos {
+
+    .pagina-controles {
+      width: 100%;
+      button {
+        width: 7rem;
+      }
     }
   }
 }

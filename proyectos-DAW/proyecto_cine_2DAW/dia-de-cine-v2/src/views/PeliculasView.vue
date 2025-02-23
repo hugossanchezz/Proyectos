@@ -36,18 +36,16 @@
               </div>
 
               <div class="filtros__busqueda flex">
-                <div class="filtros__busqueda__nombre flex">
-                  <label for="busqueda-nombre-titulo"
-                    >¿Sabes qué película buscar?</label
-                  >
-                  <input
-                    type="text"
-                    id="busqueda-nombre-titulo"
-                    class="busqueda__input"
-                    v-model="query"
-                    @input="filtrarContenido"
-                  />
-                </div>
+                <label for="busqueda-titulo">
+                  <img src="/img/ico/lupa.svg" alt="Buscar película por nombre">
+                </label>
+                <input
+                  type="text"
+                  id="busqueda-titulo"
+                  class="busqueda__input"
+                  v-model="query"
+                  @input="filtrarContenido"
+                />
               </div>
             </form>
           </nav>

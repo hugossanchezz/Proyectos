@@ -39,3 +39,7 @@
 .font-size-grande {
   font-size: map-get($tamanios, "grande");
 }
+
+.oculto{
+  display: none;
+}

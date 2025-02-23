@@ -70,7 +70,7 @@
       <input
         v-if="buscar"
         id="input-busqueda"
-        class="input-busqueda inputForm input"
+        class="oculto input-busqueda inputForm input"
         type="text"
         placeholder="Buscar..."
       />
@@ -98,7 +98,7 @@
         </div>
 
         <!-- Icono de búsqueda -->
-        <div class="container__busqueda">
+        <div class="oculto container__busqueda">
           <!-- Icono de la lupa (cerrar/buscar) -->
           <img
             class="busqueda__icono"
