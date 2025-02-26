@@ -2,14 +2,12 @@
   <!-- Encabezado -->
   <header class="flex">
     <!-- Sección que contiene el logo y la ruta de navegación (breadcrumb) -->
-    <section class="section-logo flex-column">
+    <section class="section-logo">
       <!-- Enlace al inicio con el logo -->
       <router-link to="/">
         <!-- El logo cambia en funcion de la pantalla -->
         <img id="logo" :src="iconoLogo" alt="Logo" />
       </router-link>
-      <!-- Componente Breadcrumb para mostrar la navegación -->
-      <Breadcrumb />
     </section>
 
     <!-- Barra de navegación principal -->
@@ -113,13 +111,9 @@
 </template>
 
 <script>
-import Breadcrumb from "/src/components/Breadcrumb.vue";
 
 export default {
   name: "Header",
-  components: {
-    Breadcrumb,
-  },
   data() {
     return {
       menuAbierto: false, // Menú hamburguesa (abierto/cerrado)
