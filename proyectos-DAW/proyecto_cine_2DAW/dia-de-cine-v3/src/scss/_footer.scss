@@ -1,0 +1,323 @@
+//Variables
+@use "_variables.scss" as *;
+
+footer {
+  color: map-get($colores, "blanco");
+  background-color: map-get($colores, "gris_oscuro");
+  min-height: 5rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  hr {
+    width: 50%;
+  }
+}
+
+.contacto {
+  width: fit-content;
+  height: fit-content;
+  padding: 25px 25px;
+  gap: 20px;
+
+  .contacto__mail-linkedin{
+    gap: 20px;
+  }
+}
+
+.socialContainer {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
+  border: 2px solid map-get($colores, "blanco");
+  padding: 0.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+/* Email */
+.containerOne:hover {
+  background-color: map-get($colores, "rojo_mail");
+  transition-duration: 0.3s;
+}
+
+/* linkdin */
+.containerTwo:hover {
+  background-color: map-get($colores, "azul_linkedin");
+  transition-duration: 0.3s;
+}
+
+.socialContainer:active {
+  transform: scale(0.9);
+  transition-duration: 0.3s;
+}
+
+.socialSvg {
+  width: 17px;
+  height: 17px;
+}
+
+.socialContainer:hover .socialSvg {
+  animation: slide 0.3s both;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.contacto__donaciones{
+  cursor: pointer;
+
+  &:active{
+    transform: scale(0.95);
+  }
+}
+
+.copyright {
+  margin-top: 1rem;
+  font-size: map-get($tamanios, "parrafo");
+}
+
+.autor {
+  font-size: map-get($tamanios, "parrafo");
+  color: map-get($colores, "naranja");
+
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Estilos botones de contacto
+
+/* Fondo oscuro */
+.overlay {
+  background: rgba(0, 0, 0, 0.4); /* Oscurece el fondo */
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Tarjeta modal */
+.modal {
+  background-color: map-get($colores, "blanco");
+  color: map-get($colores, "gris_oscuro");
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  width: 25rem;
+  height: auto;
+  padding: 5px;
+  border-radius: 10px;
+  z-index: 1001; //encima del fondo oscuro
+
+  align-items: center;
+
+  .modal__div,
+  .modal__hr {
+    width: 100%;
+  }
+
+  .btn-cerrar {
+    background-color: map-get($colores, "naranja");
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    width: 1.1rem;
+    height: 1.1rem;
+    top: -4px;
+    right: -4px;
+    border: none;
+    cursor: pointer;
+
+    border-radius: 5px;
+
+    img {
+      scale: 0.75;
+    }
+  }
+
+  .email-container {
+    height: 34px;
+    width: 90%;
+  }
+
+  .icon-container {
+    background-color: map-get($colores, "rojo");
+    padding: 5px;
+    border-radius: 5px;
+    width: 34px;
+    height: 34px;
+  }
+
+  p {
+    // border:1px solid map-get($colores, "gris_claro");
+    font-size: map-get($tamanios, "pequenio");
+    font-weight: bold;
+    width: 100%;
+  }
+
+  .copy-container {
+    width: 10%;
+    height: 34px;
+
+    img {
+      width: 34px;
+      height: 34px;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+        transition-duration: 0.1s;
+      }
+
+      &:active {
+        transform: scale(0.95);
+        transition-duration: 0.1s;
+      }
+    }
+  }
+}
+
+.modal-correo {
+  cursor: pointer;
+}
+
+.modal-donaciones {
+  width: 35rem;
+  height: fit-content;
+  padding: 1rem;
+
+  .modal-donaciones__titulos{
+    margin-bottom: 0.5rem;
+    align-items: center;
+  }
+
+  .modal-donaciones__cantidad{
+    margin: 2rem 1rem;
+
+    .cantidad-label{
+      font-size: map-get($tamanios, "pequenio");
+      width: 35%;
+    }
+    .cantidad-input{
+      width: 65%;
+      padding-left: 15px;
+    }
+  }
+}
+
+//estilos para la tarjeta de credito interactiva del modal de donaciones
+.visa-card {
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 22.5rem;
+  height: 12.5rem;
+  background-image: radial-gradient(
+    circle 897px at 9% 80.3%,
+    map-get($colores, 'gris') 0%,
+    map-get($colores, 'naranja') 100.2%
+  );
+  border-radius: 10px;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  gap: 15px;
+}
+.logoContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: fit-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 18px;
+}
+.svgLogo {
+  height: 40px;
+  width: auto;
+}
+.inputstyle::placeholder {
+  color: #ffffff;
+}
+.inputstyle {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  caret-color: red;
+  font-size: 13px;
+  height: 25px;
+  letter-spacing: 1.5px;
+}
+.number-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+#cardNumber {
+  width: 100%;
+  height: 25px;
+}
+.name-date-cvv-container {
+  width: 100%;
+  height: 25px;
+  display: flex;
+  gap: 10px;
+}
+.name-wrapper {
+  width: 60%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+.expiry-wrapper,
+.cvv-wrapper {
+  width: 30%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+.cvv-wrapper {
+  width: 10%;
+}
+#expiry,
+#cvv {
+  width: 100%;
+}
+.input-label {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: #e2e2e2;
+  width: 100%;
+}
+
+//Ajustes para movil
+@media (max-width: 1024px) {
+  .modal {
+    margin: 1rem;
+  }
+
+  .contacto{
+    flex-direction: column;
+  }
+}

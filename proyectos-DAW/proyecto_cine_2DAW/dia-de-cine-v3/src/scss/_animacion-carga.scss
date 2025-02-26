@@ -1,0 +1,74 @@
+// Variables
+@use "_variables.scss" as *;
+
+// Elemento para usar en la web
+// <div id="loader" class="loader"></div>
+
+.loader {
+  border: 3px dotted map-get($colores, "gris_claro");
+  border-style: solid solid dotted dotted;
+  border-radius: 50%;
+
+  width: 4rem;
+  height: 4rem;
+  margin: 10rem;
+  position: relative;
+  animation: rotation 2s linear infinite;
+}
+.loader::after {
+  content: "";
+  border: 3px dotted map-get($colores, "naranja");
+  border-style: solid solid dotted;
+  border-radius: 50%;
+
+  width: 24px;
+  height: 24px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  animation: rotationBack 1s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.contenido-mostrar {
+  width: 100%;
+  height: 100%;
+}
+
+.form-container {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .contenido-mostrar {
+    height: 100%;
+  
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenido-mostrar{
+    padding: 5px;
+  }
+}
