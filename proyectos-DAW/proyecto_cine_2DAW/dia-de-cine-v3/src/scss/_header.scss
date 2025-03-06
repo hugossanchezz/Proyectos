@@ -13,7 +13,7 @@ header {
 .section-logo {
   width: 30%;
   min-height: 10vh;
-  justify-content: space-evenly;
+  align-items: center;
 
   img {
     width: 12.5rem;
@@ -92,7 +92,7 @@ header {
         border-radius: 10px;
         cursor: pointer;
         transition: all 0.3s ease;
-  
+
         &:active {
           transform: scale(0.95);
           transition: all 0.2s ease;
@@ -103,6 +103,28 @@ header {
           height: 100%;
           text-decoration: none;
           font-weight: 600;
+        }
+      }
+    }
+
+    .acciones__idioma {
+      background-color: map-get($colores, "gris_claro");
+      color: map-get($colores, "gris_oscuro");
+      height: 36px;
+      width: 6.5rem;
+      padding: 5px;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+
+      option {
+        background-color: map-get($colores, "gris_claro");
+        color: map-get($colores, "gris_oscuro");
+        cursor: pointer;
+
+        &:hover {
+          background-color: map-get($colores, "gris_oscuro");
+          color: map-get($colores, "gris_claro");
         }
       }
     }
@@ -123,8 +145,6 @@ header {
     cursor: pointer;
   }
 }
-
-
 
 //Ajuster para portátiles o pantallas mas pequeñas
 @media screen and (max-width: 1440px) {
@@ -267,7 +287,7 @@ header {
 }
 
 @media (max-width: 480px) {
-  header{
+  header {
     width: 100vw;
   }
 }

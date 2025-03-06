@@ -59,6 +59,10 @@
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 2rem;
   margin-top: 1rem;
+
+  .no-noticias{
+    width: 40rem	;
+  }
 }
 
 /* Estilos para cada card */

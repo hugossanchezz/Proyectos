@@ -1,43 +1,36 @@
 <template>
   <!-- Encabezado -->
   <header class="flex">
-    <!-- Sección que contiene el logo y la ruta de navegación (breadcrumb) -->
-    <section class="section-logo">
-      <!-- Enlace al inicio con el logo -->
+    <section class="section-logo flex">
       <router-link to="/">
-        <!-- El logo cambia en funcion de la pantalla -->
         <img id="logo" :src="iconoLogo" alt="Logo" />
       </router-link>
     </section>
 
-    <!-- Barra de navegación principal -->
     <nav class="header__nav centrado-flex">
-      <!-- Contenedor de los elementos del menú, cambia de clase si el menú está abierto 
-       (en modo tablet o móvil) -->
       <section
         class="container-nav-items flex"
         :class="{ 'menu-abierto': menuAbierto }"
       >
-        <!-- Elementos de navegación a cada sección del sitio web -->
         <div class="nav__item">
-          <router-link to="/peliculas" class="centrado-flex font-size-pequenio">
-            Películas
-          </router-link>
+          <router-link to="/peliculas" class="centrado-flex font-size-pequenio"
+            >Películas</router-link
+          >
         </div>
         <div class="nav__item">
-          <router-link to="/series" class="centrado-flex font-size-pequenio">
-            Series
-          </router-link>
+          <router-link to="/series" class="centrado-flex font-size-pequenio"
+            >Series</router-link
+          >
         </div>
         <div class="nav__item">
-          <router-link to="/comunidad" class="centrado-flex font-size-pequenio">
-            Comunidad
-          </router-link>
+          <router-link to="/comunidad" class="centrado-flex font-size-pequenio"
+            >Comunidad</router-link
+          >
         </div>
         <div class="nav__item">
-          <router-link to="/nosotros" class="centrado-flex font-size-pequenio">
-            Nosotros
-          </router-link>
+          <router-link to="/nosotros" class="centrado-flex font-size-pequenio"
+            >Nosotros</router-link
+          >
         </div>
         <div class="nav__item">
           <router-link
@@ -45,7 +38,6 @@
             class="centrado-flex font-size-pequenio"
           >
             Mi espacio
-            <!-- Icono de guardado dentro del enlace -->
             <img
               class="item__bookmark"
               src="/img/ico/bookmark.svg"
@@ -56,15 +48,11 @@
       </section>
     </nav>
 
-    <!-- Sección de acciones (menú móvil, búsqueda y login) -->
     <section id="acciones" class="acciones flex">
-      <!-- Menú hamburguesa para dispositivos móviles -->
       <div v-if="esMovil" class="menu-hamburguesa flex" @click="toggleMenu">
-        <!-- Icono del menú hamburguesa (cerrar/icono menu) -->
         <img class="menu-icono" :src="iconoMenu" alt="Icono de menú" />
       </div>
 
-      <!-- Campo de búsqueda, se muestra solo si la variable 'buscar' es true -->
       <input
         v-if="buscar"
         id="input-busqueda"
@@ -73,19 +61,23 @@
         placeholder="Buscar..."
       />
 
-      <!-- Contenedor de los iconos de búsqueda e inicio de sesión -->
       <div class="acciones__container centrado-flex">
+        <!-- Select para elegir el idioma -->
+        <select
+          class="acciones__idioma"
+          v-model="idiomaSeleccionado"
+          @change="cambiarIdioma"
+        >
+          <option value="es">🇪🇸 Español</option>
+          <option value="en">🇬🇧 English</option>
+        </select>
 
-        <!-- Botón de registro -->
         <div v-if="!buscar" class="container__login">
-          <!-- Enlace para registrarse si el usuario no está registrado -->
           <div v-show="!registrado" class="boton-registrarse">
-            <router-link to="/perfil/registro" class="centrado-flex">
-              Registrarse
-            </router-link>
+            <router-link to="/perfil/registro" class="centrado-flex"
+              >Registrarse</router-link
+            >
           </div>
-
-          <!-- Icono de usuario si ya está registrado -->
           <router-link v-show="registrado" to="/perfil">
             <img
               class="login__icono"
@@ -95,9 +87,7 @@
           </router-link>
         </div>
 
-        <!-- Icono de búsqueda -->
         <div class="oculto container__busqueda">
-          <!-- Icono de la lupa (cerrar/buscar) -->
           <img
             class="busqueda__icono"
             :src="iconoLupa"
@@ -111,55 +101,55 @@
 </template>
 
 <script>
+import { cambiarIdioma, cargarIdioma } from "/src/js/idioma.js";
 
 export default {
   name: "Header",
   data() {
     return {
-      menuAbierto: false, // Menú hamburguesa (abierto/cerrado)
-      esMovil: window.innerWidth <= 1024, // Verifica si la pantalla es de un dispositivo móvil
-      buscar: false, // Barra de búsqueda (abierta/cerrada)
-      registrado: false, // Usuario está registrado o no
+      menuAbierto: false,
+      esMovil: window.innerWidth <= 1024,
+      buscar: false,
+      registrado: false,
+      idiomaSeleccionado: cargarIdioma(), // Cargar idioma desde la cookie
     };
   },
+  mounted() {
+    this.idiomaSeleccionado = cargarIdioma(); // Asegurar que el select se inicialice con la cookie
+    window.addEventListener("resize", this.actualizarTamano);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.actualizarTamano);
+  },
   computed: {
-    // Cambio del logo según el tipo de pantalla
     iconoLogo() {
       return this.esMovil
         ? "/img/logo-no-cd.png"
         : "/img/logo-no-subtitulo.png";
     },
-    // Cambio el icono del menú hamburguesa según su estado
     iconoMenu() {
       return this.menuAbierto
         ? "/img/ico/close.svg"
         : "/img/ico/menu-hamburguesa.svg";
     },
-    // Computed property para alternar el icono de la lupa (buscar/cerrar)
     iconoLupa() {
       return this.buscar ? "/img/ico/close.svg" : "/img/ico/lupa.svg";
     },
   },
   methods: {
-    // Método para abrir o cerrar el menú hamburguesa
     toggleMenu() {
       this.menuAbierto = !this.menuAbierto;
     },
-    // Método que se ejecuta cuando se redimensiona la ventana
     actualizarTamano() {
-      this.esMovil = window.innerWidth <= 1024; // Verifica si sigue siendo un dispositivo móvil
+      this.esMovil = window.innerWidth <= 1024;
       if (!this.esMovil) {
-        this.menuAbierto = false; // Cierra el menú si la pantalla es más grande
+        this.menuAbierto = false;
       }
     },
-  },
-  mounted() {
-    // Se añade un evento 'resize' para detectar cambios en el tamaño de la pantalla
-    window.addEventListener("resize", this.actualizarTamano);
-  },
-  beforeUnmount() {
-    // Se elimina el evento 'resize' al desmontar el componente para evitar fugas de memoria
-    window.removeEventListener("resize", this.actualizarTamano);
+    cambiarIdioma() {
+      cambiarIdioma(this.idiomaSeleccionado); // Guarda el idioma en la cookie
+      location.reload(); // Recargar la página para aplicar el cambio de idioma
+    },
   },
 };
 </script>

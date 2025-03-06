@@ -67,6 +67,7 @@
 import { mostrarCarrusel } from "/src/js/carrusel.js";
 import { mostrarEstrenos } from "/src/js/estrenos.js";
 import { mostrarNoticias } from "/src/js/noticias.js";
+import { cargarIdioma } from "/src/js/idioma.js";
 
 // Importar los componentes de Vue
 import Header from "/src/components/Header.vue";
