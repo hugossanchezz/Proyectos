@@ -206,7 +206,10 @@ footer {
 
   .modal-donaciones__titulos{
     margin-bottom: 0.5rem;
-    align-items: center;
+    
+    h2{
+      text-align: center;
+    }
   }
 
   .modal-donaciones__cantidad{
@@ -214,10 +217,10 @@ footer {
 
     .cantidad-label{
       font-size: map-get($tamanios, "pequenio");
-      width: 35%;
+      display: inline-block;
     }
     .cantidad-input{
-      width: 65%;
+      width: 90%;
       padding-left: 15px;
     }
   }
@@ -285,14 +288,14 @@ footer {
   gap: 10px;
 }
 .name-wrapper {
-  width: 60%;
+  width: 50%;
   height: fit-content;
   display: flex;
   flex-direction: column;
 }
 .expiry-wrapper,
 .cvv-wrapper {
-  width: 30%;
+  width: 50%;
   height: fit-content;
   display: flex;
   flex-direction: column;

@@ -1,14 +1,20 @@
 <template>
   <!-- Formulario de registro -->
   <form class="form flex" @submit.prevent="submitForm">
-    <h1 class="centrado-flex">Crea tu cuenta</h1>
+    <h1 class="centrado-flex">
+      <span v-if="idioma === 'es'">Crea tu cuenta</span>
+      <span v-if="idioma === 'en'">Create your account</span>
+    </h1>
     <hr />
     <div id="progress-container">
       <div id="progress-bar" :style="{ width: progreso + '%' }"></div>
     </div>
 
     <div class="flex-column">
-      <label class="label-form" for="usuario">Nombre de usuario</label>
+      <label class="label-form" for="usuario">
+        <span v-if="idioma === 'es'">Nombre de usuario</span>
+        <span v-if="idioma === 'en'">Username</span>
+      </label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/user.svg" alt="Icono de usuario" />
@@ -17,14 +23,17 @@
         id="usuario"
         class="input"
         type="text"
-        placeholder="Sin caracteres especiales"
+        :placeholder="idioma === 'es' ? 'Sin caracteres especiales' : 'No special characters'"
         required
       />
     </div>
     <div id="error-usuario" class="errorMensaje">{{ errores.usuario }}</div>
 
     <div class="flex-column">
-      <label class="label-form" for="correo">Correo</label>
+      <label class="label-form" for="correo">
+        <span v-if="idioma === 'es'">Correo</span>
+        <span v-if="idioma === 'en'">Email</span>
+      </label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/arroba.svg" alt="Icono de correo" />
@@ -33,14 +42,17 @@
         id="correo"
         class="input"
         type="email"
-        placeholder="Correo electrónico"
+        :placeholder="idioma === 'es' ? 'Correo electrónico' : 'Email address'"
         required
       />
     </div>
     <div id="error-correo" class="errorMensaje">{{ errores.correo }}</div>
 
     <div class="flex-column">
-      <label class="label-form" for="contrasenia">Contraseña</label>
+      <label class="label-form" for="contrasenia">
+        <span v-if="idioma === 'es'">Contraseña</span>
+        <span v-if="idioma === 'en'">Password</span>
+      </label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/candado.svg" alt="Icono de contraseña" />
@@ -49,7 +61,7 @@
         id="contrasenia"
         class="input"
         :type="tipoInputContrasenia"
-        placeholder="Contraseña"
+        :placeholder="idioma === 'es' ? 'Contraseña' : 'Password'"
         required
       />
       <img
@@ -62,22 +74,32 @@
     <!-- Lista de requisitos para la contraseña -->
     <ul v-if="contrasenia.length" class="errorMensaje">
       <li :class="{ correcto: tieneMinuscula }">
-        Debe tener al menos una letra minúscula
+        <span v-if="idioma === 'es'">Debe tener al menos una letra minúscula</span>
+        <span v-if="idioma === 'en'">Must have at least one lowercase letter</span>
       </li>
       <li :class="{ correcto: tieneMayuscula }">
-        Debe tener al menos una letra mayúscula
+        <span v-if="idioma === 'es'">Debe tener al menos una letra mayúscula</span>
+        <span v-if="idioma === 'en'">Must have at least one uppercase letter</span>
       </li>
-      <li :class="{ correcto: tieneNumero }">Debe tener al menos un número</li>
+      <li :class="{ correcto: tieneNumero }">
+        <span v-if="idioma === 'es'">Debe tener al menos un número</span>
+        <span v-if="idioma === 'en'">Must have at least one number</span>
+      </li>
       <li :class="{ correcto: tieneCaracterEspecial }">
-        Debe tener al menos un carácter especial (!@#$%^&*)
+        <span v-if="idioma === 'es'">Debe tener al menos un carácter especial (!@#$%^&*)</span>
+        <span v-if="idioma === 'en'">Must have at least one special character (!@#$%^&*)</span>
       </li>
       <li :class="{ correcto: tieneLongitudMinima }">
-        Debe tener al menos 8 caracteres
+        <span v-if="idioma === 'es'">Debe tener al menos 8 caracteres</span>
+        <span v-if="idioma === 'en'">Must have at least 8 characters</span>
       </li>
     </ul>
 
     <div class="flex-column">
-      <label class="label-form" for="confirmarContrasenia">Confirma tu Contraseña</label>
+      <label class="label-form" for="confirmarContrasenia">
+        <span v-if="idioma === 'es'">Confirma tu Contraseña</span>
+        <span v-if="idioma === 'en'">Confirm your Password</span>
+      </label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/candado.svg" alt="Icono de contraseña" />
@@ -87,7 +109,7 @@
         id="confirmarContrasenia"
         class="input"
         :type="tipoInputConfirmarContrasenia"
-        placeholder="Confirma tu contraseña"
+        :placeholder="idioma === 'es' ? 'Confirma tu contraseña' : 'Confirm your password'"
         required
       />
       <img
@@ -104,7 +126,10 @@
     </div>
 
     <div class="flex-column">
-      <label class="label-form" for="fechaNacimiento">Fecha de Nacimiento</label>
+      <label class="label-form" for="fechaNacimiento">
+        <span v-if="idioma === 'es'">Fecha de Nacimiento</span>
+        <span v-if="idioma === 'en'">Date of Birth</span>
+      </label>
     </div>
     <div class="inputForm flex">
       <img src="/img/ico/calendario.svg" alt="Icono de calendario" />
@@ -121,7 +146,10 @@
     </div>
 
     <div class="flex-column">
-      <label class="label-form" for="generoFavorito">Género favorito</label>
+      <label class="label-form" for="generoFavorito">
+        <span v-if="idioma === 'es'">Género favorito</span>
+        <span v-if="idioma === 'en'">Favorite Genre</span>
+      </label>
     </div>
     <div class="inputForm flex">
       <select
@@ -131,13 +159,13 @@
         class="input flex"
         required
       >
-        <option value="accion">Acción</option>
-        <option value="comedia">Comedia</option>
+        <option value="accion">{{ idioma === 'es' ? 'Acción' : 'Action' }}</option>
+        <option value="comedia">{{ idioma === 'es' ? 'Comedia' : 'Comedy' }}</option>
         <option value="drama">Drama</option>
-        <option value="cienciaFiccion">Ciencia Ficción</option>
-        <option value="terror">Terror</option>
+        <option value="cienciaFiccion">{{ idioma === 'es' ? 'Ciencia Ficción' : 'Science Fiction' }}</option>
+        <option value="terror">{{ idioma === 'es' ? 'Terror' : 'Horror' }}</option>
         <option value="romance">Romance</option>
-        <option value="documental">Documental</option>
+        <option value="documental">{{ idioma === 'es' ? 'Documental' : 'Documentary' }}</option>
       </select>
     </div>
     <div id="error-generoFavorito" class="errorMensaje">
@@ -155,10 +183,12 @@
         <span class="slider"></span>
       </label>
       <label for="aceptarTerminos">
-        Acepto los
-        <router-link to="/perfil/registro/terminos" class="span"
-          >términos y condiciones</router-link
-        >
+        <span v-if="idioma === 'es'">Acepto los </span>
+        <span v-if="idioma === 'en'">I accept the </span>
+        <router-link to="/perfil/registro/terminos" class="span">
+          <span v-if="idioma === 'es'">términos y condiciones</span>
+          <span v-if="idioma === 'en'">terms and conditions</span>
+        </router-link>
       </label>
     </div>
     <div id="error-aceptarTerminos" class="errorMensaje">
@@ -166,14 +196,17 @@
     </div>
 
     <button class="button-submit" type="submit" @click="mostrarModal()">
-      Registrarse
+      <span v-if="idioma === 'es'">Registrarse</span>
+      <span v-if="idioma === 'en'">Register</span>
     </button>
 
     <p class="p">
-      ¿Ya tienes una cuenta?
-      <router-link to="/perfil/iniciar-sesion" class="span"
-        >Inicia sesión</router-link
-      >
+      <span v-if="idioma === 'es'">¿Ya tienes una cuenta? </span>
+      <span v-if="idioma === 'en'">Already have an account? </span>
+      <router-link to="/perfil/iniciar-sesion" class="span">
+        <span v-if="idioma === 'es'">Inicia sesión</span>
+        <span v-if="idioma === 'en'">Log in</span>
+      </router-link>
     </p>
   </form>
   <!-- Modal -->
@@ -184,15 +217,20 @@
     tabindex="-1"
   >
     <div class="modal modal-login flex-column" @click.stop>
-      <h2>🎉¡Acabas de crear una cuenta!🎆</h2>
+      <h2>
+        <span v-if="idioma === 'es'">🎉¡Acabas de crear una cuenta!🎆</span>
+        <span v-if="idioma === 'en'">🎉You've just created an account!🎆</span>
+      </h2>
       <div class="modal-login__div centrado-flex">
-        Ahora puedes iniciar sesión y disfrutar de nuestros servicios.
+        <span v-if="idioma === 'es'">Ahora puedes iniciar sesión y disfrutar de nuestros servicios.</span>
+        <span v-if="idioma === 'en'">Now you can log in and enjoy our services.</span>
       </div>
       <!-- Botón de ir al login -->
       <div class="modal-login__div centrado-flex">
         <router-link to="/perfil/iniciar-sesion" class="span">
           <button class="button-submit button-modal" type="submit">
-            Entrar en mi cuenta
+            <span v-if="idioma === 'es'">Entrar en mi cuenta</span>
+            <span v-if="idioma === 'en'">Log into my account</span>
           </button>
         </router-link>
       </div>
@@ -205,6 +243,8 @@
 </template>
 
 <script>
+import { cargarIdioma } from "/src/js/idioma.js";
+
 export default {
   data() {
     return {
@@ -239,6 +279,7 @@ export default {
         aceptarTerminos: false,
       },
       modalVisible: false,
+      idioma: cargarIdioma(), // Cargar idioma desde la cookie
     };
   },
   computed: {

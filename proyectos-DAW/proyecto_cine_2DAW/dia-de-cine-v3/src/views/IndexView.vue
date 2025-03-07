@@ -23,7 +23,9 @@
       >
         <div class="titulo-noticias centrado-flex">
           <h1>
-            Sección de Noticias <span class="fecha">{{ fechaNoticias }}</span>
+            <span v-if="idioma === 'es'">Sección de Noticias </span>
+            <span v-if="idioma === 'en'">News Section </span>
+            <span class="fecha">{{ fechaNoticias }}</span>
           </h1>
         </div>
         <hr />
@@ -38,7 +40,8 @@
             class="button-submit button-submit-pequenio"
             @click="mostrarMasNoticias"
           >
-            Mostrar más noticias
+            <span v-if="idioma === 'es'">Mostrar más noticias</span>
+            <span v-if="idioma === 'en'">Show more news</span>
           </button>
         </div>
       </div>
@@ -48,7 +51,9 @@
     <aside>
       <div class="titulo-estrenos centrado-flex">
         <h1>
-          Próximos estrenos <span class="fecha">{{ fechaEstrenos }}</span>
+          <span v-if="idioma === 'es'">Próximos estrenos </span>
+          <span v-if="idioma === 'en'">Upcoming releases </span>
+          <span class="fecha">{{ fechaEstrenos }}</span>
         </h1>
       </div>
       <hr />
@@ -63,13 +68,11 @@
 </template>
 
 <script>
-// Importar los scripts JavaScript con la lógica
 import { mostrarCarrusel } from "/src/js/carrusel.js";
 import { mostrarEstrenos } from "/src/js/estrenos.js";
 import { mostrarNoticias } from "/src/js/noticias.js";
 import { cargarIdioma } from "/src/js/idioma.js";
 
-// Importar los componentes de Vue
 import Header from "/src/components/Header.vue";
 import Footer from "/src/components/Footer.vue";
 
@@ -81,37 +84,32 @@ export default {
   },
   data() {
     return {
-      loading: true, // Controla si mostramos el loader o el contenido
+      loading: true,
       fechaNoticias: "",
       fechaEstrenos: "",
       numNoticas: 8,
       numEstrenos: 15,
+      idioma: cargarIdioma(), // Se obtiene el idioma desde la función
     };
   },
   async mounted() {
     this.fechaNoticias = new Date().toLocaleDateString();
     this.fechaEstrenos = new Date().getFullYear();
 
-    // Cargar el carrusel
     mostrarCarrusel();
-
-    // Mostrar los estrenos en el aside
     mostrarEstrenos(this.numEstrenos);
-
-    // Mostrar las noticias mediante la función asíncrona
     await mostrarNoticias(this.numNoticas);
 
-    // Llamar a la función para ocultar el loader y mostrar el contenido
     this.mostrarContenido();
   },
   methods: {
     mostrarContenido() {
       setTimeout(() => {
-        this.loading = false; // Después de un tiempo, ocultamos el loader y mostramos el contenido
+        this.loading = false;
       }, 100);
     },
     async mostrarMasNoticias() {
-      this.numNoticas += 8; // mostramos 8 nuevas noticias
+      this.numNoticas += 8;
       await mostrarNoticias(this.numNoticas);
     },
   },

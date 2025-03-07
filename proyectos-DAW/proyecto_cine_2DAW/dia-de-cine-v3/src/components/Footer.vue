@@ -66,7 +66,12 @@
         @click="copiarEmail"
         @click.stop
       >
-        <h2>Haz <strong>click</strong> para copiar mi correo</h2>
+        <span v-if="idioma === 'es'">
+          <h2>Haz <strong>click</strong> para copiar mi email.</h2>
+        </span>
+        <span v-if="idioma === 'en'">
+          <h2><strong>Click</strong> to copy my email.</h2>
+        </span>
         <hr class="modal__hr" />
         <div class="modal__div flex">
           <div class="email-container flex">
@@ -100,18 +105,35 @@
         @click.stop
       >
         <div class="modal-donaciones__titulos flex-column">
-          <h2>¿Quieres apoyar a <strong>Dia de Cine</strong>?</h2>
-          <div class="p">
-            Puedes hacernos un <strong>donativo</strong> para motivarnos a
-            siguir creciendo y ofreciendo nuevos contenidos.
-          </div>
+          <span v-if="idioma === 'es'">
+            <h2>¿Quieres apoyar a <strong>Dia de Cine</strong>?</h2>
+            <div class="p">
+              Puedes hacernos un <strong>donativo</strong> para motivarnos a
+              siguir creciendo y ofreciendo nuevos contenidos.
+            </div>
+          </span>
+          <span v-if="idioma === 'en'">
+            <h2>Do you want to support <strong>Dia de Cine</strong>?</h2>
+            <div class="p">
+              You can make a <strong>donation</strong> to motivate us to
+              continue growing and offering new content.
+            </div>
+          </span>
         </div>
 
         <hr class="modal__hr" />
         <div class="modal-donaciones__cantidad flex">
-          <label for="cantidad" class="cantidad-label"
-            >Introduce la cantidad que te gustaría donar</label
-          >
+          <span v-if="idioma === 'es'">
+            <label for="cantidad" class="cantidad-label"
+              >Introduce la cantidad que te gustaría donar:</label
+            >
+          </span>
+          <span v-if="idioma === 'en'">
+            <label for="cantidad" class="cantidad-label"
+              >Enter the amount you would like to donate:</label
+            >
+          </span>
+
           <input
             id="cantidad"
             class="cantidad-input"
@@ -129,9 +151,15 @@
               />
             </div>
             <div class="number-container">
-              <label class="input-label" for="cardNumber"
-                >NUMERO DE LA TARJETA</label
-              >
+              <span v-if="idioma === 'es'">
+                <label class="input-label" for="cardNumber"
+                  >NUMERO DE LA TARJETA
+                </label>
+              </span>
+              <span v-if="idioma === 'en'">
+                <label class="input-label" for="cardNumber">CARD NUMBER </label>
+              </span>
+
               <input
                 class="inputstyle"
                 id="cardNumber"
@@ -143,9 +171,17 @@
 
             <div class="name-date-cvv-container">
               <div class="name-wrapper">
-                <label class="input-label" for="holderName"
-                  >TITULAR DE LA TARJETA</label
-                >
+                <span v-if="idioma === 'es'">
+                  <label class="input-label" for="holderName"
+                    >TITULAR DE LA TARJETA</label
+                  >
+                </span>
+                <span v-if="idioma === 'en'">
+                  <label class="input-label" for="holderName"
+                    >CARD HOLDER</label
+                  >
+                </span>
+
                 <input
                   class="inputstyle"
                   id="holderName"
@@ -155,9 +191,17 @@
               </div>
 
               <div class="expiry-wrapper">
-                <label class="input-label" for="expiry"
-                  >FECHA DE CADUCIDAD</label
-                >
+                <span v-if="idioma === 'es'">
+                  <label class="input-label" for="expiry"
+                    >FECHA DE CADUCIDAD</label
+                  >
+                </span>
+                <span v-if="idioma === 'en'">
+                  <label class="input-label" for="expiry"
+                    >EXPIRATION DATE</label
+                  >
+                </span>
+
                 <input
                   class="inputstyle"
                   id="expiry"
@@ -178,7 +222,13 @@
             </div>
           </div>
         </div>
-        <button class="button-submit">Hacer donación</button>
+        <button v-if="idioma === 'es'" class="button-submit">
+          Enviar donación
+        </button>
+
+        <button v-if="idioma === 'en'" class="button-submit">
+          Send donation
+        </button>
 
         <button @click="cerrarModales" class="btn-cerrar centrado-flex">
           <img src="/img/ico/close.svg" alt="Cerrar tarjeta de donaciones" />
@@ -190,6 +240,8 @@
 </template>
 
 <script>
+import { cargarIdioma } from "/src/js/idioma.js";
+
 export default {
   name: "Footer",
   data() {
@@ -197,6 +249,7 @@ export default {
       modalCorreoVisible: false,
       modalDonacionVisible: false,
       currentYear: new Date().getFullYear(), // Obtener el año actual
+      idioma: cargarIdioma(), // Cargar idioma desde la cookie
     };
   },
   computed: {

@@ -13,31 +13,33 @@
         :class="{ 'menu-abierto': menuAbierto }"
       >
         <div class="nav__item">
-          <router-link to="/peliculas" class="centrado-flex font-size-pequenio"
-            >Películas</router-link
-          >
+          <router-link to="/peliculas" class="centrado-flex font-size-pequenio">
+            <span v-if="idioma === 'es'">Películas</span>
+            <span v-if="idioma === 'en'">Movies</span>
+          </router-link>
         </div>
         <div class="nav__item">
-          <router-link to="/series" class="centrado-flex font-size-pequenio"
-            >Series</router-link
-          >
+          <router-link to="/series" class="centrado-flex font-size-pequenio">
+            <span v-if="idioma === 'es'">Series</span>
+            <span v-if="idioma === 'en'">TV Shows</span>
+          </router-link>
         </div>
         <div class="nav__item">
-          <router-link to="/comunidad" class="centrado-flex font-size-pequenio"
-            >Comunidad</router-link
-          >
+          <router-link to="/comunidad" class="centrado-flex font-size-pequenio">
+            <span v-if="idioma === 'es'">Comunidad</span>
+            <span v-if="idioma === 'en'">Community</span>
+          </router-link>
         </div>
         <div class="nav__item">
-          <router-link to="/nosotros" class="centrado-flex font-size-pequenio"
-            >Nosotros</router-link
-          >
+          <router-link to="/nosotros" class="centrado-flex font-size-pequenio">
+            <span v-if="idioma === 'es'">Nosotros</span>
+            <span v-if="idioma === 'en'">About Us</span>
+          </router-link>
         </div>
         <div class="nav__item">
-          <router-link
-            to="/mi-espacio"
-            class="centrado-flex font-size-pequenio"
-          >
-            Mi espacio
+          <router-link to="/mi-espacio" class="centrado-flex font-size-pequenio">
+            <span v-if="idioma === 'es'">Mi espacio</span>
+            <span v-if="idioma === 'en'">My Space</span>
             <img
               class="item__bookmark"
               src="/img/ico/bookmark.svg"
@@ -58,14 +60,14 @@
         id="input-busqueda"
         class="oculto input-busqueda inputForm input"
         type="text"
-        placeholder="Buscar..."
+        :placeholder="idioma === 'es' ? 'Buscar...' : 'Search...'"
       />
 
       <div class="acciones__container centrado-flex">
         <!-- Select para elegir el idioma -->
         <select
           class="acciones__idioma"
-          v-model="idiomaSeleccionado"
+          v-model="idioma"
           @change="cambiarIdioma"
         >
           <option value="es">🇪🇸 Español</option>
@@ -74,9 +76,10 @@
 
         <div v-if="!buscar" class="container__login">
           <div v-show="!registrado" class="boton-registrarse">
-            <router-link to="/perfil/registro" class="centrado-flex"
-              >Registrarse</router-link
-            >
+            <router-link to="/perfil/registro" class="centrado-flex">
+              <span v-if="idioma === 'es'">Registrarse</span>
+              <span v-if="idioma === 'en'">Sign Up</span>
+            </router-link>
           </div>
           <router-link v-show="registrado" to="/perfil">
             <img
@@ -111,11 +114,11 @@ export default {
       esMovil: window.innerWidth <= 1024,
       buscar: false,
       registrado: false,
-      idiomaSeleccionado: cargarIdioma(), // Cargar idioma desde la cookie
+      idioma: cargarIdioma(), // Cargar idioma desde la cookie
     };
   },
   mounted() {
-    this.idiomaSeleccionado = cargarIdioma(); // Asegurar que el select se inicialice con la cookie
+    this.idioma = cargarIdioma(); // Asegurar que el select se inicialice con la cookie
     window.addEventListener("resize", this.actualizarTamano);
   },
   beforeUnmount() {
@@ -147,8 +150,7 @@ export default {
       }
     },
     cambiarIdioma() {
-      cambiarIdioma(this.idiomaSeleccionado); // Guarda el idioma en la cookie
-      location.reload(); // Recargar la página para aplicar el cambio de idioma
+      cambiarIdioma(this.idioma); // Guarda el idioma en la cookie
     },
   },
 };

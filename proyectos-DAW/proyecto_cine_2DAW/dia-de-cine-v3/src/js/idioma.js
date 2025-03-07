@@ -17,7 +17,8 @@ function getCookie(nombre) {
 
 // Función para manejar el cambio de idioma
 function cambiarIdioma(idioma) {
-    setCookie("idioma", idioma, 30); // Guarda el idioma por 30 días
+    setCookie("idioma", idioma, 7); // Guarda el idioma por 7 días
+    location.reload();
 }
 
 // Función para cargar el idioma guardado en la cookie al iniciar
