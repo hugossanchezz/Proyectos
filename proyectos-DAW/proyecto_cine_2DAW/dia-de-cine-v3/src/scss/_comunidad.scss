@@ -1,0 +1,60 @@
+// Variables
+@use "_variables.scss" as *;
+@use "_mixins" as *;
+
+.accordion {
+  padding: 1rem;
+  min-height: 20rem;
+  width: 50%;
+}
+
+.accordion__item {
+  border: 2px solid map-get($colores, "naranja");
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  margin-bottom: 1.5rem;
+  transition: all 0.1s linear;
+
+  .accordion__type{
+    border: 1px solid map-get($colores, "naranja");
+    border-radius: 5px;
+    background-color: map-get($colores, "blanco");
+    top: -15px;
+    left: 10px;
+    position: absolute;
+    padding: 0 3px;
+  }
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  .accordion__toggle-button{
+    justify-content: center;
+  }
+}
+
+.accordion__header {
+  width: 100%;
+  justify-content: space-between;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.accordion__content {
+  border-top: 1px solid #e2e8f0;
+  padding: 5px;
+
+  .accordion__comment{
+    border: 1px solid map-get($colores, "gris_claro");
+    width: fit-content;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+
+    .accordion__comment-user{
+      gap: 10px;
+    }
+  }
+}
