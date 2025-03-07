@@ -30,7 +30,7 @@ const routes = [
     {
         path: '/comunidad',
         name: 'Comunidad',
-        component: TemporalView, //ComunidadView
+        component: ComunidadView, //ComunidadView
     },
     {
         path: '/peliculas',

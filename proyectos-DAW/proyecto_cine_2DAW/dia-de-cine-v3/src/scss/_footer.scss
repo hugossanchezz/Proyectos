@@ -1,4 +1,5 @@
 //Variables
+@use "_mixins" as *;
 @use "_variables.scss" as *;
 
 footer {
@@ -314,13 +315,14 @@ footer {
   width: 100%;
 }
 
-//Ajustes para movil
-@media (max-width: 1024px) {
+// Ajustes para pantallas ≤ 1024px
+@include responsive-layout(1024px) {
   .modal {
     margin: 1rem;
   }
 
-  .contacto{
+  .contacto {
     flex-direction: column;
   }
 }
+

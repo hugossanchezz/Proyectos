@@ -1,5 +1,6 @@
 // Variables
 @use "_variables.scss" as *;
+@use "_mixins" as *;
 
 .contenedor-titulos {
   width: 100%;
@@ -116,10 +117,9 @@
   }
 }
 
-// Estilos para móviles (≤ 768px)
-@media (max-width: 1024px) {
+// Estilos para pantallas ≤ 1024px
+@include responsive-layout(1024px) {
   .contenedor-titulos {
-
     .pagina-controles {
       width: 100%;
       button {

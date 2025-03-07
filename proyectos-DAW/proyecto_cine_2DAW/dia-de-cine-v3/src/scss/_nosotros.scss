@@ -1,5 +1,6 @@
 // Variables
 @use "_variables.scss" as *;
+@use "_mixins" as *;
 
 .sobreNosotros {
   border: 1px solid map-get($colores, "gris_claro");
@@ -20,10 +21,10 @@
   }
 }
 
-@media screen and (max-width: 1440px) {
-
-  .sobreNosotros{
-    margin: 1rem 0 ;
+// Estilos para pantallas ≤ 1440px
+@include responsive-layout(1440px) {
+  .sobreNosotros {
+    margin: 1rem 0;
     width: 70%;
   }
 }

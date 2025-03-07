@@ -1,5 +1,6 @@
 // Variables
 @use "_variables.scss" as *;
+@use "_mixins" as *;
 
 // Elemento para usar en la web
 // <div id="loader" class="loader"></div>
@@ -59,16 +60,17 @@
   width: 100%;
 }
 
-@media (max-width: 1024px) {
+// Ajustes para pantallas ≤ 1024px
+@include responsive-layout(1024px) {
   .contenido-mostrar {
     height: 100%;
-  
     padding: 0;
   }
 }
 
-@media (max-width: 480px) {
-  .contenido-mostrar{
+// Ajustes para pantallas ≤ 480px
+@include responsive-layout(480px) {
+  .contenido-mostrar {
     padding: 5px;
   }
 }

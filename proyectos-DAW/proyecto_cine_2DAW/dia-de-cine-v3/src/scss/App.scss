@@ -1,6 +1,7 @@
 // Importar ficheros modulados
 @use "_variables.scss" as variables;
 @use "_clases-rep.scss" as clases;
+@use "_mixins.scss" as mixins;
 
 @use "_global.scss" as global;
 @use "_main.scss" as main;
@@ -13,6 +14,5 @@
 @use "_en-desarrollo.scss" as desarrollo;
 
 @use "_animacion-carga.scss" as carga;
-@use "_breadcrumb.scss" as breadcrumb;
 
 

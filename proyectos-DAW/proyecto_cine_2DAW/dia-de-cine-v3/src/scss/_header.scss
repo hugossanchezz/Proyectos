@@ -1,4 +1,5 @@
 @use "_variables.scss" as *;
+@use "_mixins" as *;
 
 header {
   color: map-get($colores, "blanco");
@@ -146,8 +147,8 @@ header {
   }
 }
 
-//Ajuster para portátiles o pantallas mas pequeñas
-@media screen and (max-width: 1440px) {
+// Ajustes para portátiles o pantallas más pequeñas (1440px)
+@include responsive-layout(1440px) {
   .section-logo {
     img {
       width: 9rem;
@@ -156,7 +157,7 @@ header {
 }
 
 // Estilos para tabletas (≤ 1024px)
-@media (max-width: 1024px) {
+@include responsive-layout(1024px) {
   header {
     flex-direction: column;
     align-items: center;
@@ -190,7 +191,7 @@ header {
       opacity: 0;
       overflow: hidden;
       display: flex;
-      visibility: hidden; // Oculta sin interrumpir la animación
+      visibility: hidden;
       transition: max-height 0.3s ease-in-out, opacity 0.5s ease-in-out,
         visibility 0.5s ease-in-out, padding 0.5s ease-in-out;
 
@@ -202,7 +203,7 @@ header {
     .menu-abierto {
       max-height: 500px;
       opacity: 1;
-      visibility: visible; // Hace visible gradualmente
+      visibility: visible;
       padding: 10px;
     }
 
@@ -241,7 +242,6 @@ header {
     width: 100%;
     padding: 0.5rem 0;
     gap: 1rem;
-
     justify-content: space-between;
 
     .input-busqueda {
@@ -262,7 +262,7 @@ header {
 }
 
 // Estilos para móviles (≤ 768px)
-@media (max-width: 768px) {
+@include responsive-layout(768px) {
   header {
     padding: 0.5rem;
   }
@@ -286,8 +286,10 @@ header {
   }
 }
 
-@media (max-width: 480px) {
+// Estilos para móviles más pequeños (≤ 480px)
+@include responsive-layout(480px) {
   header {
     width: 100vw;
   }
 }
+

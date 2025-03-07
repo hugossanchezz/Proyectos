@@ -1,5 +1,6 @@
 //Variables
 @use "_variables.scss" as *;
+@use "_mixins" as *;
 
 // main que aparece solo, sin aside
 .main-content {
@@ -121,8 +122,8 @@ aside {
   }
 }
 
-//Ajuster para portátiles o pantallas mas pequeñas
-@media screen and (max-width: 1440px) {
+// Ajustes para portátiles o pantallas más pequeñas (≤ 1440px)
+@include responsive-layout(1440px) {
   .main-content {
     width: 100%;
   }
@@ -141,7 +142,8 @@ aside {
   }
 }
 
-@media (max-width: 1024px) {
+// Estilos para tabletas (≤ 1024px)
+@include responsive-layout(1024px) {
   .main-grid {
     margin-left: 0;
   }
@@ -149,6 +151,7 @@ aside {
   .margin-contenedor-noticias {
     margin: 0 1rem;
   }
+
   .noticias-container {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     margin: 0;
@@ -176,12 +179,13 @@ aside {
   }
 }
 
-@media (max-width: 768px) {
+// Estilos para móviles (≤ 768px)
+@include responsive-layout(768px) {
   .main-grid {
     width: 100vw;
   }
 
-  .card{
+  .card {
     height: fit-content;
   }
 }

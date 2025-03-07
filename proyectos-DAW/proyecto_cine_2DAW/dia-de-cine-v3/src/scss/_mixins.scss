@@ -1,0 +1,7 @@
+// _mixins.scss
+
+@mixin responsive-layout($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
