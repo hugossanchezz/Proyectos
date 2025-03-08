@@ -1,0 +1,11 @@
+-Al desplegar la web las noticias no cargan, si se ejecuta en local con "npm run dev"
+si funciona. Mi api de noticias no dispone de noticias en inglés por lo que muestra el mensaje de
+noticias no disponibles en inglés.
+
+-El cambio de idioma provoca un error en la página(cuando se recarga) en el apartado 
+de peliculas, series y mi espacio. Esto solo ocurre al desplegar el sitio web, en local 
+si funciona. 
+
+-Si quieres ver el contenido de estos tres apartados debes cambiar el idioma 
+en la pagina de inicio y luego ir al apartado deseado
+
