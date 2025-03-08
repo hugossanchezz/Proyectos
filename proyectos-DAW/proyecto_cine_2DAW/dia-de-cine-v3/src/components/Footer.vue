@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="footer flex" :class="{ 'alto-contraste': contrasteActivo }">
     <section class="contacto centrado-flex">
       <!-- Botón de contacto email -->
       <div class="contacto__mail-linkedin flex">
@@ -250,6 +250,7 @@ export default {
       modalDonacionVisible: false,
       currentYear: new Date().getFullYear(), // Obtener el año actual
       idioma: cargarIdioma(), // Cargar idioma desde la cookie
+      contrasteActivo: this.obtenerCookie("contraste") === "true",
     };
   },
   computed: {
@@ -275,6 +276,19 @@ export default {
         .writeText("hugosanchezciudad23@gmail.com")
         .then(console.log("Correo copiado al portapapeles."));
     },
+    obtenerCookie(nombre) {
+      let cookies = document.cookie.split("; ");
+      let cookie = cookies.find(row => row.startsWith(nombre + "="));
+      return cookie ? cookie.split("=")[1] : null;
+    },
+    cargarContraste() {
+      this.contrasteActivo = document.cookie.includes("contraste=activo");
+    },
   },
 };
 </script>
+<style scoped>
+.alto-contraste {
+  background-color: black !important;
+}
+</style>

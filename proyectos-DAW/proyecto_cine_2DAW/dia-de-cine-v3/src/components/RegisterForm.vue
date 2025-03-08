@@ -23,7 +23,11 @@
         id="usuario"
         class="input"
         type="text"
-        :placeholder="idioma === 'es' ? 'Sin caracteres especiales' : 'No special characters'"
+        :placeholder="
+          idioma === 'es'
+            ? 'Sin caracteres especiales'
+            : 'No special characters'
+        "
         required
       />
     </div>
@@ -74,20 +78,32 @@
     <!-- Lista de requisitos para la contraseña -->
     <ul v-if="contrasenia.length" class="errorMensaje">
       <li :class="{ correcto: tieneMinuscula }">
-        <span v-if="idioma === 'es'">Debe tener al menos una letra minúscula</span>
-        <span v-if="idioma === 'en'">Must have at least one lowercase letter</span>
+        <span v-if="idioma === 'es'"
+          >Debe tener al menos una letra minúscula</span
+        >
+        <span v-if="idioma === 'en'"
+          >Must have at least one lowercase letter</span
+        >
       </li>
       <li :class="{ correcto: tieneMayuscula }">
-        <span v-if="idioma === 'es'">Debe tener al menos una letra mayúscula</span>
-        <span v-if="idioma === 'en'">Must have at least one uppercase letter</span>
+        <span v-if="idioma === 'es'"
+          >Debe tener al menos una letra mayúscula</span
+        >
+        <span v-if="idioma === 'en'"
+          >Must have at least one uppercase letter</span
+        >
       </li>
       <li :class="{ correcto: tieneNumero }">
         <span v-if="idioma === 'es'">Debe tener al menos un número</span>
         <span v-if="idioma === 'en'">Must have at least one number</span>
       </li>
       <li :class="{ correcto: tieneCaracterEspecial }">
-        <span v-if="idioma === 'es'">Debe tener al menos un carácter especial (!@#$%^&*)</span>
-        <span v-if="idioma === 'en'">Must have at least one special character (!@#$%^&*)</span>
+        <span v-if="idioma === 'es'"
+          >Debe tener al menos un carácter especial (!@#$%^&*)</span
+        >
+        <span v-if="idioma === 'en'"
+          >Must have at least one special character (!@#$%^&*)</span
+        >
       </li>
       <li :class="{ correcto: tieneLongitudMinima }">
         <span v-if="idioma === 'es'">Debe tener al menos 8 caracteres</span>
@@ -109,7 +125,9 @@
         id="confirmarContrasenia"
         class="input"
         :type="tipoInputConfirmarContrasenia"
-        :placeholder="idioma === 'es' ? 'Confirma tu contraseña' : 'Confirm your password'"
+        :placeholder="
+          idioma === 'es' ? 'Confirma tu contraseña' : 'Confirm your password'
+        "
         required
       />
       <img
@@ -159,32 +177,44 @@
         class="input flex"
         required
       >
-        <option value="accion">{{ idioma === 'es' ? 'Acción' : 'Action' }}</option>
-        <option value="comedia">{{ idioma === 'es' ? 'Comedia' : 'Comedy' }}</option>
+        <option value="accion">
+          {{ idioma === "es" ? "Acción" : "Action" }}
+        </option>
+        <option value="comedia">
+          {{ idioma === "es" ? "Comedia" : "Comedy" }}
+        </option>
         <option value="drama">Drama</option>
-        <option value="cienciaFiccion">{{ idioma === 'es' ? 'Ciencia Ficción' : 'Science Fiction' }}</option>
-        <option value="terror">{{ idioma === 'es' ? 'Terror' : 'Horror' }}</option>
+        <option value="cienciaFiccion">
+          {{ idioma === "es" ? "Ciencia Ficción" : "Science Fiction" }}
+        </option>
+        <option value="terror">
+          {{ idioma === "es" ? "Terror" : "Horror" }}
+        </option>
         <option value="romance">Romance</option>
-        <option value="documental">{{ idioma === 'es' ? 'Documental' : 'Documentary' }}</option>
+        <option value="documental">
+          {{ idioma === "es" ? "Documental" : "Documentary" }}
+        </option>
       </select>
     </div>
     <div id="error-generoFavorito" class="errorMensaje">
       {{ errores.generoFavorito }}
     </div>
 
-    <div class="flex-row flex">
-      <label class="switch">
-        <input
-          v-model="aceptarTerminos"
-          type="checkbox"
-          id="aceptarTerminos"
-          required
-        />
-        <span class="slider"></span>
-      </label>
+    <div class="terminos flex">
+      <div class="terminos__switch">
+        <label class="switch">
+          <input
+            v-model="aceptarTerminos"
+            type="checkbox"
+            id="aceptarTerminos"
+            required
+          />
+          <span class="slider"></span>
+        </label>
+      </div>
       <label for="aceptarTerminos">
-        <span v-if="idioma === 'es'">Acepto los </span>
-        <span v-if="idioma === 'en'">I accept the </span>
+        <span v-if="idioma === 'es'"> Acepto los </span>
+        <span v-if="idioma === 'en'"> I accept the </span>
         <router-link to="/perfil/registro/terminos" class="span">
           <span v-if="idioma === 'es'">términos y condiciones</span>
           <span v-if="idioma === 'en'">terms and conditions</span>
@@ -222,8 +252,12 @@
         <span v-if="idioma === 'en'">🎉You've just created an account!🎆</span>
       </h2>
       <div class="modal-login__div centrado-flex">
-        <span v-if="idioma === 'es'">Ahora puedes iniciar sesión y disfrutar de nuestros servicios.</span>
-        <span v-if="idioma === 'en'">Now you can log in and enjoy our services.</span>
+        <span v-if="idioma === 'es'"
+          >Ahora puedes iniciar sesión y disfrutar de nuestros servicios.</span
+        >
+        <span v-if="idioma === 'en'"
+          >Now you can log in and enjoy our services.</span
+        >
       </div>
       <!-- Botón de ir al login -->
       <div class="modal-login__div centrado-flex">

@@ -1,6 +1,6 @@
 <template>
   <!-- Encabezado -->
-  <header class="flex">
+  <header class="flex" :class="{ 'alto-contraste': contrasteActivo }">
     <section class="section-logo flex">
       <router-link to="/">
         <img id="logo" :src="iconoLogo" alt="Logo" />
@@ -37,7 +37,10 @@
           </router-link>
         </div>
         <div class="nav__item">
-          <router-link to="/mi-espacio" class="centrado-flex font-size-pequenio">
+          <router-link
+            to="/mi-espacio"
+            class="centrado-flex font-size-pequenio"
+          >
             <span v-if="idioma === 'es'">Mi espacio</span>
             <span v-if="idioma === 'en'">My Space</span>
             <img
@@ -64,6 +67,14 @@
       />
 
       <div class="acciones__container centrado-flex">
+        <!-- Botón de cambio de color -->
+        <div class="acciones__color">
+          <label class="switch">
+            <input type="checkbox" v-model="contrasteActivo" @change="toggleContraste" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
         <!-- Select para elegir el idioma -->
         <select
           class="acciones__idioma"
@@ -115,6 +126,7 @@ export default {
       buscar: false,
       registrado: false,
       idioma: cargarIdioma(), // Cargar idioma desde la cookie
+      contrasteActivo: this.obtenerCookie("contraste") === "true",
     };
   },
   mounted() {
@@ -152,6 +164,29 @@ export default {
     cambiarIdioma() {
       cambiarIdioma(this.idioma); // Guarda el idioma en la cookie
     },
+    toggleContraste() {
+      document.documentElement.classList.toggle("alto-contraste", this.contrasteActivo);
+      this.setCookie("contraste", this.contrasteActivo, 365);
+      location.reload();
+    },
+    setCookie(nombre, valor, dias) {
+      let fecha = new Date();
+      fecha.setTime(fecha.getTime() + dias * 24 * 60 * 60 * 1000);
+      document.cookie = `${nombre}=${valor};expires=${fecha.toUTCString()};path=/`;
+    },
+    obtenerCookie(nombre) {
+      let cookies = document.cookie.split("; ");
+      let cookie = cookies.find(row => row.startsWith(nombre + "="));
+      return cookie ? cookie.split("=")[1] : null;
+    },
   },
 };
 </script>
+
+<style scoped>
+/* Estilos para el modo de alto contraste */
+.alto-contraste {
+  background-color: black !important;
+}
+
+</style>

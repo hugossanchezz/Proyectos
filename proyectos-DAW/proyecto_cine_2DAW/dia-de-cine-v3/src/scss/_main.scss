@@ -47,7 +47,7 @@
 
 // Estilos del apartado de noticias del index.php
 .fecha {
-  color: map-get($colores, "naranja");
+  color: map-get($colores, "naranja") !important;
   font-size: map-get($tamanios, "pequenio");
 }
 
@@ -61,8 +61,8 @@
   gap: 2rem;
   margin-top: 1rem;
 
-  .no-noticias{
-    width: 40rem	;
+  .no-noticias {
+    width: 40rem;
   }
 }
 
