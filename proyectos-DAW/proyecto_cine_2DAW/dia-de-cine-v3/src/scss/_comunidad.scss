@@ -17,9 +17,9 @@
   transition: all 0.1s linear;
 
   .accordion__type{
-    border: 1px solid map-get($colores, "naranja");
+    background-color: map-get($colores, "naranja");
+    color: map-get($colores, "blanco");
     border-radius: 5px;
-    background-color: map-get($colores, "blanco");
     top: -15px;
     left: 10px;
     position: absolute;
@@ -27,7 +27,7 @@
   }
 
   &:hover {
-    transform: scale(1.01);
+    box-shadow: 0px 0px 5px 0px rgba(255, 102, 0, 0.75);
   }
 
   .accordion__toggle-button{
@@ -37,9 +37,9 @@
 
 .accordion__header {
   width: 100%;
-  justify-content: space-between;
   margin: 10px;
-  transition: background-color 0.3s ease;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 .accordion__content {
@@ -56,5 +56,11 @@
     .accordion__comment-user{
       gap: 10px;
     }
+  }
+}
+
+@include responsive-layout(1024px) {
+  .accordion {
+    width: 100%;
   }
 }
