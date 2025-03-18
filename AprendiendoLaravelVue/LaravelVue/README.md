@@ -74,3 +74,5 @@ php artisan migrate
 php artisan make:seeder BooksTableSeeder
 php artisan make:migration alter_books_table
 php artisan make:model Book
+php artisan install:api
+php artisan make:controller ApiController
