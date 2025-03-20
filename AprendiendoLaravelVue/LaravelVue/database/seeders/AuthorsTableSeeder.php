@@ -15,8 +15,8 @@ class AuthorsTableSeeder extends Seeder
     {
         DB::table('authors')->insert([
             [
-                'name' => 'J. K. Rowling',
-                'country' => 'United Kingdom',
+                'name' => 'Cervantes',
+                'country' => 'Spain',
             ],
             [
                 'name' => 'J. R. R. Tolkien',
