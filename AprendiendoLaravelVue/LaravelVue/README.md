@@ -66,7 +66,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
-## Commands used
+## Commands used in Laravel
 
 ```
 php artisan make:migration create_categories_table
@@ -76,3 +76,10 @@ php artisan make:migration alter_books_table
 php artisan make:model Book
 php artisan install:api
 php artisan make:controller ApiController
+```
+
+## Commands used in Laravel + Vue
+
+```
+npm install vue --save-dev
+npm install @vitejs/plugin-vue
