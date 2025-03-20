@@ -78,9 +78,16 @@ php artisan install:api
 php artisan make:controller ApiController
 ```
 
-## Commands used in Laravel + Vue
+## Commands used in Vue
 
 ```
 npm install vue --save-dev
 npm install @vitejs/plugin-vue
 npm install vue-router
+```
+
+## Commands used in Autentication 
+
+```
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
