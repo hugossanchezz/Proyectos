@@ -83,3 +83,4 @@ php artisan make:controller ApiController
 ```
 npm install vue --save-dev
 npm install @vitejs/plugin-vue
+npm install vue-router
