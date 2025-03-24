@@ -1,0 +1,31 @@
+<div class="formulario">
+  <h1>Formulario</h1>
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="campo">
+      <label for="nombre">Nombre *</label>
+      <input type="text" formControlName="nombre" />
+    </div>
+
+    <div class="campo">
+      <label for="apellido">Apellido *</label>
+      <input type="text" formControlName="apellido" />
+    </div>
+
+    <div class="campo">
+      <label for="email">Email</label>
+      <input type="text" formControlName="email" />
+    </div>
+
+    <div class="campo">
+      <label for="telefono">Telefono</label>
+      <input type="text" formControlName="telefono" />
+    </div>
+
+    <div class="campo">
+      <label for="politicas">Aceptar politicas</label>
+      <input type="checkbox" formControlName="politicas" />
+    </div>
+
+    <button type="submit" [disabled]="formulario.invalid">Enviar</button >
+  </form>
+</div>

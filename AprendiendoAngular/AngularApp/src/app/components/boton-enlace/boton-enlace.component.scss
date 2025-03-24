@@ -1,0 +1,18 @@
+button{
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: rgb(206, 0, 0);
+  color: white;
+  width: 10rem;
+  height: 5rem;
+
+  font-size: 18px;
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover{
+    background-color: rgb(182, 25, 25);
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+}

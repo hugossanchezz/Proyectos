@@ -1,0 +1,23 @@
+<div>
+  <h1>Listado de usuarios</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(usuario of servicioUsuario.usuarios; track $index){
+        <tr>
+          <td>{{usuario.nombre}}</td>
+          <td>{{usuario.apellido}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.telefono}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
