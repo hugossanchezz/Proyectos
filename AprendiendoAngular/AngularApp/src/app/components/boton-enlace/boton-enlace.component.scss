@@ -3,16 +3,34 @@ button{
   border-radius: 10px;
   background-color: rgb(206, 0, 0);
   color: white;
-  width: 10rem;
-  height: 5rem;
+  width: 9rem;
+  height: 3rem;
 
   font-size: 18px;
 
   transition: all 0.2s ease-in-out;
 
+  cursor: pointer;
+
   &:hover{
     background-color: rgb(182, 25, 25);
     cursor: pointer;
     transform: scale(1.05);
+  }
+
+  &.azul{
+    background-color: rgb(94, 94, 255);
+    border: 2px solid rgb(50, 50, 134);
+  }
+
+  &.verde{
+    background-color: rgb(71, 185, 56);
+    border: 2px solid rgb(50, 134, 50);
+  }
+
+  &.blanco{
+    background-color: white;
+    color:rgb(50, 50, 50) ;
+    border: 2px solid rgb(50, 50, 50);
   }
 }
