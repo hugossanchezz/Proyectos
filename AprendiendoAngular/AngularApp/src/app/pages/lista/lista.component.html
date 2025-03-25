@@ -1,23 +1,30 @@
-<div>
+<div class="encabezado">
   <h1>Listado de usuarios</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Email</th>
-        <th>Teléfono</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for(usuario of servicioUsuario.usuarios; track $index){
-        <tr>
-          <td>{{usuario.nombre}}</td>
-          <td>{{usuario.apellido}}</td>
-          <td>{{usuario.email}}</td>
-          <td>{{usuario.telefono}}</td>
-        </tr>
-      }
-    </tbody>
-  </table>
+
+  <input type="text" [formControl]="filtroBusqueda" placeholder="Buscar" />
 </div>
+
+@if ((usuarios$ | async)?.length) {
+
+<div class="lista">
+  @for(usuario of ((usuarios$ | async)! | filtrarNombre:cadenaBusqueda); track
+  $index; let i = $index){
+  <app-tarjeta [color]="(i + 1) % 2 === 0 ? 'azul' : 'verde'">
+    <div>
+      {{ usuario.nombre | uppercase }} {{ usuario.apellido | uppercase }}
+    </div>
+    <div>{{ usuario.email }}</div>
+    <div>{{ usuario.telefono }}</div>
+    <div class="botones">
+      <app-boton-enlace
+        [color]="(i + 1) % 2 === 0 ? 'azul' : 'verde'"
+        [boton]="{
+          label: 'Ver usuario',
+          ruta: ['/', 'detalles-usuario', usuario.id.toString()]
+        }"
+      ></app-boton-enlace>
+    </div>
+  </app-tarjeta>
+  }
+</div>
+}
