@@ -1,0 +1,12 @@
+@if(!!usuario){
+<h1>Detalles de usuario</h1>
+
+<div class="detalles-usuario">
+  <div>{{ usuario.nombre }}</div>
+  <div>{{ usuario.apellido }}</div>
+  <div>{{ usuario.email }}</div>
+  <div>{{ usuario.telefono }}</div>
+</div>
+}@else{
+<h1>Usuario no encontrado</h1>
+}

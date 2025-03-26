@@ -1,0 +1,19 @@
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .campo {
+    margin: 0.5rem;
+
+    input{
+      margin-left: 1rem;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
