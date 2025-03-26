@@ -15,12 +15,16 @@ export class AppComponent {
 
   public botonesToolbar: BotonEnlace[]=[
     {
-      label: 'lista',
+      label: 'Lista',
       ruta: ['/', 'lista'],
     },
     {
-      label:'formulario',
+      label:'Formulario',
       ruta: ['/','formulario']
+    },
+    {
+      label:'Ahorcado',
+      ruta: ['/','ahorcado']
     }
   ]
 }

@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/formulario/formulario.component').then(m => m.FormularioComponent)
   },
   {
+    path: 'ahorcado',
+    loadComponent: () => import('./pages/ahorcado/ahorcado.component').then(m => m.AhorcadoComponent)
+  },
+  {
     path: 'detalles-usuario/:id',
     loadComponent: () => import('./pages/detalles-usuario/detalles-usuario.component').then(m => m.DetallesUsuarioComponent)
   },
