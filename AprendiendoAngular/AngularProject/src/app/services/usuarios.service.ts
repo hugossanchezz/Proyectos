@@ -41,21 +41,21 @@ export class UsuariosService {
     return guardado;
   }
 
-  public eliminarUsuario(id: number): string | undefined {
-    try {
-      const usuarios: Usuario[] = this._usuarios$.value as Usuario[];
-      const usuarioIndexEliminar = usuarios.findIndex((u) => u.id === id);
-      if (usuarioIndexEliminar >= 0) {
-        usuarios.splice(usuarioIndexEliminar, 1);
-        localStorage.setItem(this.BDD_USUARIOS, JSON.stringify(usuarios));
-        localStorage.setItem(this.BDD_ULTIMO_ID, id.toString());
-        this._usuarios$.next(usuarios);
-        return 'Usuario eliminado';
-      }
-    } catch (error) {
-      return 'Error al eliminar el usuario';
-    }
-  }
+  // public eliminarUsuario(id: number): string {
+  //   try {
+  //     const usuarios: Usuario[] = this._usuarios$.value as Usuario[];
+  //     const usuarioIndexEliminar = usuarios.findIndex((u) => u.id === id);
+  //     if (usuarioIndexEliminar >= 0) {
+  //       usuarios.splice(usuarioIndexEliminar, 1);
+  //       localStorage.setItem(this.BDD_USUARIOS, JSON.stringify(usuarios));
+  //       localStorage.setItem(this.BDD_ULTIMO_ID, id.toString());
+  //       this._usuarios$.next(usuarios);
+  //       return 'Usuario eliminado';
+  //     }
+  //   } catch (error) {
+  //     return 'Error al eliminar el usuario';
+  //   }
+  // }
 
   public getUsuario(id: number) {
     const usuarios = this._usuarios$.value as Usuario[];
