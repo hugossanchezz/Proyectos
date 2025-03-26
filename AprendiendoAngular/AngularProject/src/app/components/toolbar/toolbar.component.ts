@@ -17,6 +17,4 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class ToolbarComponent {
   @Input()
   public botones?: BotonEnlace[];
-
-  @Input() public color?: string;
 }
