@@ -1,0 +1,20 @@
+<div class="ahorcado">
+  <button mat-fab extended (click)="reiniciarJuego()"> Reiniciar</button>
+
+  <div class="letras">
+    <div *ngFor="let letra of letrasAdivinadas">{{ letra }} </div>
+  </div>
+  <div class="errores">
+    Intentos restantes: {{ intentosRestantes }}
+  </div>
+  <div class="letras-usadas">
+    Letras incorrectas: {{ letrasIncorrectas.join(', ') }}
+  </div>
+  <div class="input">
+    <input type="text" [(ngModel)]="letraIngresada" maxlength="1">
+    <button mat-stroked-button (click)="verificarLetra()">Verificar</button>
+  </div>
+  <div *ngIf="juegoTerminado">
+    {{ mensaje }}
+  </div>
+</div>
