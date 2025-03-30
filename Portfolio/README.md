@@ -1,6 +1,6 @@
 # Portfolio de hugossanchezz
 
-**¡Bienvenido a mi portfolio!** Soy un desarrollador web en proceso de formación, apasionado por crear páginas webs y aprender nuevas tecnologías. Este repositorio contiene una selección de mis proyectos personales, cada uno de los cuales refleja mi progreso y habilidades en el desarrollo web.
+**¡Bienvenido a mi *futuro* portfolio!** Soy un desarrollador web en proceso de formación, apasionado por crear páginas webs y aprender nuevas tecnologías. Este repositorio contiene una selección de mis proyectos personales, cada uno de los cuales refleja mi progreso y habilidades en el desarrollo web.
 
 ## Sobre mí
 
