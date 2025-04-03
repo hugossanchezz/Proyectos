@@ -17,4 +17,18 @@
   <div *ngIf="juegoTerminado">
     {{ mensaje }}
   </div>
+
+  <div class="tabla">
+    <table class="mat-elevation-z8">
+      <th>PALABRA</th>
+      <th>GANADO</th>
+      <th>FECHA</th>
+
+      <tr *ngFor="let partida of partidas">
+        <td>{{ partida.palabra }}</td>
+        <td>{{ partida.ganado }}</td>
+        <td>{{ partida.fecha }}</td>
+      </tr>
+    </table>
+  </div>
 </div>

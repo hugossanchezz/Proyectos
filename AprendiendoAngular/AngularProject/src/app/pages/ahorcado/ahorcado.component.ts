@@ -14,6 +14,7 @@ export class AhorcadoComponent implements OnInit {
   public letrasPalabra: string[] = [];
   public letrasAdivinadas: string[] = [];
   public letrasIncorrectas: string[] = [];
+  public partidas: any[] = [];
   public intentosMaximos: number = 6;
   public intentosRestantes: number = this.intentosMaximos;
   public juegoTerminado: boolean = false;
@@ -26,6 +27,11 @@ export class AhorcadoComponent implements OnInit {
     'programacion',
     'javascript',
     'tecnologia',
+    'aplicaciones',
+    'frontend',
+    'backend',
+    'fullstack',
+    'react',
   ];
 
   ngOnInit(): void {
@@ -40,6 +46,7 @@ export class AhorcadoComponent implements OnInit {
     this.intentosRestantes = this.intentosMaximos;
     this.juegoTerminado = false;
     this.mensaje = '';
+
   }
 
   seleccionarPalabraAleatoria(): string {
@@ -65,9 +72,23 @@ export class AhorcadoComponent implements OnInit {
           this.letrasAdivinadas[i] = letra;
         }
       });
+
       if (!this.letrasAdivinadas.includes('_')) {
         this.juegoTerminado = true;
         this.mensaje = '¡Ganaste!';
+
+        let ahora = new Date();
+
+        let fechaFormateada = ahora.toLocaleDateString('es-ES'); // Formato español (día/mes/año)
+        let horaFormateada = ahora.toLocaleTimeString('es-ES');
+
+        let partida = {
+          palabra: this.palabraSeleccionada,
+          ganado: "SI",
+          fecha: fechaFormateada + ' ' + horaFormateada,
+        }
+
+        this.partidas.push(partida);
       }
     } else {
       this.letrasIncorrectas.push(letra);
@@ -75,6 +96,19 @@ export class AhorcadoComponent implements OnInit {
       if (this.intentosRestantes === 0) {
         this.juegoTerminado = true;
         this.mensaje = '¡Perdiste! La palabra era: ' + this.palabraSeleccionada;
+
+        let ahora = new Date();
+
+        let fechaFormateada = ahora.toLocaleDateString('es-ES'); // Formato español (día/mes/año)
+        let horaFormateada = ahora.toLocaleTimeString('es-ES');
+
+        let partida = {
+          palabra: this.palabraSeleccionada,
+          ganado: "NO",
+          fecha: fechaFormateada + ' ' + horaFormateada,
+        }
+
+        this.partidas.push(partida);
       }
     }
   }
