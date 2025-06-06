@@ -1,0 +1,46 @@
+const request = document.querySelector(".request");
+        const dataContainer = document.querySelector(".activity");
+
+        request.addEventListener("click", () => {
+            fetchUserData();
+        });
+
+        async function fetchUserData() {
+            try {
+                const response = await fetch("https://reqres.in/api/users?page=2");
+                const data = await response.json();
+                displayUsers(data.data); // Accedemos a la propiedad 'data' que contiene el array de usuarios
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                dataContainer.innerHTML = "<p>Error al cargar los datos.</p>";
+            }
+        }
+
+        function displayUsers(users) {
+            dataContainer.innerHTML = ""; // Limpiar el contenedor
+
+            if (users && users.length > 0) {
+                users.forEach(user => {
+                    const userCard = document.createElement("div");
+                    userCard.classList.add("user-card");
+
+                    const avatar = document.createElement("img");
+                    avatar.src = user.avatar;
+                    avatar.alt = `Avatar de ${user.first_name} ${user.last_name}`;
+                    avatar.classList.add("avatar");
+
+                    const name = document.createElement("h4");
+                    name.textContent = `${user.first_name} ${user.last_name}`;
+
+                    const email = document.createElement("p");
+                    email.textContent = user.email;
+
+                    userCard.appendChild(avatar);
+                    userCard.appendChild(name);
+                    userCard.appendChild(email);
+                    dataContainer.appendChild(userCard);
+                });
+            } else {
+                dataContainer.innerHTML = "<p>No se encontraron usuarios.</p>";
+            }
+        }

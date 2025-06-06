@@ -1,0 +1,20 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "Hugo"
+  ],
+  "license": "MIT",
+  "author": "Hugo",
+  "type": "commonjs",
+  "main": "activity.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "connect": "^3.7.0",
+    "cypress": "^14.3.2",
+    "serve-static": "^2.2.0"
+  }
+}
